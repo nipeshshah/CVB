@@ -1,0 +1,264 @@
+﻿@{
+    Layout = "~/Views/Shared/_LayoutCopy.cshtml";
+}
+<style>
+@*    .nav-pills .nav-link {
+        margin: 0px;
+        text-align: left;
+    }
+
+    .sidebar-button-link.active {
+        display: block;
+        background-color: #007bff;
+        color: white;
+        padding: 10px;
+        padding-left: 20px;
+        font-variant: titling-caps;
+        font-weight: bold;
+        letter-spacing: 1px;
+    }
+
+    .sidebar-button-link {
+        display: block;
+        background-color: white;
+        color: #007bff;
+        padding: 10px;
+        padding-left: 20px;
+        font-variant: titling-caps;
+        font-weight: bold;
+        letter-spacing: 1px;
+    }*@
+    .slideInUp>a{
+        display:block;
+        padding:6px 6px;
+    }
+</style>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-2">
+
+            <div class="bg-light rounded p-2 mb-4 wow slideInUp" data-wow-delay="0.1s">
+                <h4 class="mb-4">Profile</h4>
+                @Html.ActionLink("Personal Information", "PersonalInfo", "Profile", new object { }, new { @class = "" })
+                @Html.ActionLink("Profile Picture", "ProfilePic", "Profile", new object { }, new { @class = "active" })
+                @Html.ActionLink("Languages", "Language", "Profile", new object { }, new { @class = "" })
+                @Html.ActionLink("Experience", "Experience", "Profile", new object { }, new { @class = "" })
+                @Html.ActionLink("Education Qualification", "ProfilePic", "Profile", new object { }, new { @class = "" })
+                @Html.ActionLink("Skills", "Skills", "Profile", new object { }, new { @class = "" })
+                @Html.ActionLink("Certification", "Certification", "Profile", new object { }, new { @class = "" })
+                @Html.ActionLink("Projects", "Projects", "Profile", new object { }, new { @class = "" })
+                @Html.ActionLink("Public Profiles", "PublicProfile", "Profile", new object { }, new { @class = "" })
+                @Html.ActionLink("Patents", "Patents", "Profile", new object { }, new { @class = "" })
+                @Html.ActionLink("Copyrights", "Copyrights", "Profile", new object { }, new { @class = "" })
+                @Html.ActionLink("Awards", "Awards", "Profile", new object { }, new { @class = "" })
+                @Html.ActionLink("Hobbies", "Hobbies", "Profile", new object { }, new { @class = "" })
+            </div>
+            <!-- Tab navs -->
+            @*<div class="nav flex-column nav-pills text-center"
+                 id="v-pills-tab"
+                 role="tablist"
+                 aria-orientation="vertical">
+                @Html.ActionLink("Personal Information", "PersonalInfo", "Profile", new object { }, new { @class = "nav-link" })
+                @Html.ActionLink("Profile Picture", "ProfilePic", "Profile", new object { }, new { @class = "nav-link active" })
+                @Html.ActionLink("Languages", "Language", "Profile", new object { }, new { @class = "nav-link" })
+                @Html.ActionLink("Experience", "Experience", "Profile", new object { }, new { @class = "nav-link" })
+                @Html.ActionLink("Education Qualification", "ProfilePic", "Profile", new object { }, new { @class = "nav-link" })
+                @Html.ActionLink("Skills", "Skills", "Profile", new object { }, new { @class = "nav-link" })
+                @Html.ActionLink("Certification", "Certification", "Profile", new object { }, new { @class = "nav-link" })
+                @Html.ActionLink("Projects", "Projects", "Profile", new object { }, new { @class = "nav-link" })
+                @Html.ActionLink("Public Profiles", "PublicProfile", "Profile", new object { }, new { @class = "nav-link" })
+                @Html.ActionLink("Patents", "Patents", "Profile", new object { }, new { @class = "nav-link" })
+                @Html.ActionLink("Copyrights", "Copyrights", "Profile", new object { }, new { @class = "nav-link" })
+                @Html.ActionLink("Awards", "Awards", "Profile", new object { }, new { @class = "nav-link" })
+                @Html.ActionLink("Hobbies", "Hobbies", "Profile", new object { }, new { @class = "nav-link" })
+
+            </div>*@
+            <!-- Tab navs -->
+
+        </div>
+        <div class="col-md-10">
+            @*<div class="vr vr-blurry position-absolute my-0 h-500 d-none d-md-block top-0 end-0"></div>
+                <div>
+                    <h3 class="text-md-center">@ViewBag.Title</h3>
+                    <hr class="hr hr-blurry" />
+                </div>*@
+            @RenderBody()
+            <div class="d-none">
+                <table class="table align-middle mb-0 bg-white">
+                    <thead class="bg-light">
+                        <tr>
+                            <th>Name</th>
+                            <th>Title</th>
+                            <th>Status</th>
+                            <th>Position</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <div class="d-flex align-items-center">
+                                    <img src="https://mdbootstrap.com/img/new/avatars/8.jpg"
+                                         alt=""
+                                         style="width: 45px; height: 45px"
+                                         class="rounded-circle" />
+                                    <div class="ms-3">
+                                        <p class="fw-bold mb-1">John Doe</p>
+                                        <p class="text-muted mb-0">john.doe@gmail.com</p>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <p class="fw-normal mb-1">Software engineer</p>
+                                <p class="text-muted mb-0">IT department</p>
+                            </td>
+                            <td>
+                                <span class="badge badge-success rounded-pill d-inline">Active</span>
+                            </td>
+                            <td>Senior</td>
+                            <td>
+                                <button type="button" class="btn btn-link btn-sm btn-rounded">
+                                    Edit
+                                </button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="d-flex align-items-center">
+                                    <img src="https://mdbootstrap.com/img/new/avatars/6.jpg"
+                                         class="rounded-circle"
+                                         alt=""
+                                         style="width: 45px; height: 45px" />
+                                    <div class="ms-3">
+                                        <p class="fw-bold mb-1">Alex Ray</p>
+                                        <p class="text-muted mb-0">alex.ray@gmail.com</p>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <p class="fw-normal mb-1">Consultant</p>
+                                <p class="text-muted mb-0">Finance</p>
+                            </td>
+                            <td>
+                                <span class="badge badge-primary rounded-pill d-inline">Onboarding</span>
+                            </td>
+                            <td>Junior</td>
+                            <td>
+                                <button type="button"
+                                        class="btn btn-link btn-rounded btn-sm fw-bold"
+                                        data-mdb-ripple-color="dark">
+                                    Edit
+                                </button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="d-flex align-items-center">
+                                    <img src="https://mdbootstrap.com/img/new/avatars/7.jpg"
+                                         class="rounded-circle"
+                                         alt=""
+                                         style="width: 45px; height: 45px" />
+                                    <div class="ms-3">
+                                        <p class="fw-bold mb-1">Kate Hunington</p>
+                                        <p class="text-muted mb-0">kate.hunington@gmail.com</p>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <p class="fw-normal mb-1">Designer</p>
+                                <p class="text-muted mb-0">UI/UX</p>
+                            </td>
+                            <td>
+                                <span class="badge badge-warning rounded-pill d-inline">Awaiting</span>
+                            </td>
+                            <td>Senior</td>
+                            <td>
+                                <button type="button"
+                                        class="btn btn-link btn-rounded btn-sm fw-bold"
+                                        data-mdb-ripple-color="dark">
+                                    Edit
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="d-none">
+                <section class="mb-5">
+                    <h4 class="m-2 mt-5"><strong>Submit New Request</strong></h4>
+
+                    <div class="row d-flex justify-content-center">
+                        <div class="col-md-12">
+                            <form>
+                                <!-- 2 column grid layout with text inputs for the first and last names -->
+                                <div class="row mb-4">
+                                    <div class="col-md-3 col-sm-4">
+                                        <div class="form-outline">
+                                            <input type="text" id="form3Example1" class="form-control" />
+                                            <label class="form-label" for="form3Example1">First name</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3 col-sm-4">
+                                        <div class="form-outline">
+                                            <input type="text" id="form3Example2" class="form-control" />
+                                            <label class="form-label" for="form3Example2">Last name</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3 col-sm-4">
+                                        <div class="form-outline">
+                                            <input type="text" id="form3Example1" class="form-control" />
+                                            <label class="form-label" for="form3Example1">First name</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3 col-sm-4">
+                                        <div class="form-outline">
+                                            <input type="text" id="form3Example2" class="form-control" />
+                                            <label class="form-label" for="form3Example2">Last name</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row mb-4">
+                                    <!-- Email input -->
+                                    <div class="col-md-3 col-sm-4">
+                                        <div class="form-outline mb-4">
+                                            <input type="email" id="form3Example3" class="form-control" />
+                                            <label class="form-label" for="form3Example3">Email address</label>
+                                        </div>
+
+                                    </div>
+                                    <div class="col-md-3 col-sm-4">
+                                        <!-- Password input -->
+                                        <div class="form-outline mb-4">
+                                            <input type="password" id="form3Example4" class="form-control" />
+                                            <label class="form-label" for="form3Example4">Password</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3 col-sm-4">
+                                        <!-- Checkbox -->
+                                        <div class="form-check d-flex justify-content-center mb-4">
+                                            <input class="form-check-input me-2"
+                                                   type="checkbox"
+                                                   value=""
+                                                   id="form2Example3"
+                                                   checked />
+                                            <label class="form-check-label" for="form2Example3">
+                                                Subscribe to our newsletter
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex justify-content-between bg-light mb-3">
+                                        <div class="p-2 col-example">&nbsp;</div>
+                                        <div class="p-2 col-example">&nbsp;</div>
+                                        <div class="p-2 col-example"><button type="submit" class="btn btn-primary btn-lg m-1">Save</button></div>
+                                    </div>
+
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+</div>
+

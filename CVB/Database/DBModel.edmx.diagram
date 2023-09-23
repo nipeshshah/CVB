@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="f7e8bd16da104b1bb879925efd8396e6" Name="Diagram1">
+        <EntityTypeShape EntityType="dbresumebuilderModel.AspNetUser" Width="1.5" PointX="0.75" PointY="32.5" />
+        <EntityTypeShape EntityType="dbresumebuilderModel.Award" Width="1.5" PointX="5.25" PointY="49.375" />
+        <EntityTypeShape EntityType="dbresumebuilderModel.Certification" Width="1.5" PointX="5.25" PointY="65.75" />
+        <EntityTypeShape EntityType="dbresumebuilderModel.CompanyDetail" Width="1.5" PointX="5.25" PointY="7.75" />
+        <EntityTypeShape EntityType="dbresumebuilderModel.ContactU" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="dbresumebuilderModel.Copyright" Width="1.5" PointX="5.25" PointY="24.125" />
+        <EntityTypeShape EntityType="dbresumebuilderModel.Cours" Width="1.5" PointX="5.25" PointY="46" />
+        <EntityTypeShape EntityType="dbresumebuilderModel.Education" Width="1.5" PointX="5.25" PointY="17.125" />
+        <EntityTypeShape EntityType="dbresumebuilderModel.Experience" Width="1.5" PointX="5.25" PointY="52.5" />
+        <EntityTypeShape EntityType="dbresumebuilderModel.Hobby" Width="1.5" PointX="5.25" PointY="56.5" />
+        <EntityTypeShape EntityType="dbresumebuilderModel.Language" Width="1.5" PointX="5.25" PointY="20.625" />
+        <EntityTypeShape EntityType="dbresumebuilderModel.Member" Width="1.5" PointX="3" PointY="31.25" />
+        <EntityTypeShape EntityType="dbresumebuilderModel.NonCompanySharing" Width="1.5" PointX="10.5" PointY="33" />
+        <EntityTypeShape EntityType="dbresumebuilderModel.Patent" Width="1.5" PointX="5.25" PointY="14.125" />
+        <EntityTypeShape EntityType="dbresumebuilderModel.PersonalInformation" Width="1.5" PointX="5.25" PointY="31.625" />
+        <EntityTypeShape EntityType="dbresumebuilderModel.Plan" Width="1.5" PointX="5.25" PointY="39" />
+        <EntityTypeShape EntityType="dbresumebuilderModel.Preference" Width="1.5" PointX="5.25" PointY="10.875" />
+        <EntityTypeShape EntityType="dbresumebuilderModel.Project" Width="1.5" PointX="5.25" PointY="61.875" />
+        <EntityTypeShape EntityType="dbresumebuilderModel.PublicProfile" Width="1.5" PointX="5.25" PointY="59.125" />
+        <EntityTypeShape EntityType="dbresumebuilderModel.Resume" Width="1.5" PointX="8.25" PointY="32.25" />
+        <EntityTypeShape EntityType="dbresumebuilderModel.ResumeSection" Width="1.5" PointX="13.5" PointY="33" />
+        <EntityTypeShape EntityType="dbresumebuilderModel.Skill" Width="1.5" PointX="5.25" PointY="43.125" />
+        <EntityTypeShape EntityType="dbresumebuilderModel.sysdiagram" Width="1.5" PointX="2.75" PointY="0.75" />
+        <EntityTypeShape EntityType="dbresumebuilderModel.Template" Width="1.5" PointX="6" PointY="28.125" />
+        <EntityTypeShape EntityType="dbresumebuilderModel.TemplateSection" Width="1.5" PointX="11.25" PointY="29.125" />
+        <AssociationConnector Association="dbresumebuilderModel.FK_Member_AspNetUsers" />
+        <AssociationConnector Association="dbresumebuilderModel.FK_Awards_Member" />
+        <AssociationConnector Association="dbresumebuilderModel.FK_Certifications_Member" />
+        <AssociationConnector Association="dbresumebuilderModel.FK_CompanyDetails_Member" />
+        <AssociationConnector Association="dbresumebuilderModel.FK_Copyrights_Member" />
+        <AssociationConnector Association="dbresumebuilderModel.FK_Courses_Member" />
+        <AssociationConnector Association="dbresumebuilderModel.FK_Education_Member" />
+        <AssociationConnector Association="dbresumebuilderModel.FK_Experience_Member" />
+        <AssociationConnector Association="dbresumebuilderModel.FK_Hobby_Member" />
+        <AssociationConnector Association="dbresumebuilderModel.FK_Languages_Member" />
+        <AssociationConnector Association="dbresumebuilderModel.FK_Languages_Member1" />
+        <AssociationConnector Association="dbresumebuilderModel.FK_NonCompanySharing_Member" />
+        <AssociationConnector Association="dbresumebuilderModel.FK_Patents_Member" />
+        <AssociationConnector Association="dbresumebuilderModel.FK_PersonalInformation_Member" />
+        <AssociationConnector Association="dbresumebuilderModel.FK_Plan_Member" />
+        <AssociationConnector Association="dbresumebuilderModel.FK_Preference_Member" />
+        <AssociationConnector Association="dbresumebuilderModel.FK_Projects_Member" />
+        <AssociationConnector Association="dbresumebuilderModel.FK_PublicProfile_Member" />
+        <AssociationConnector Association="dbresumebuilderModel.FK_Resumes_Member" />
+        <AssociationConnector Association="dbresumebuilderModel.FK_Skills_Member" />
+        <AssociationConnector Association="dbresumebuilderModel.FK_NonCompanySharing_Resumes" />
+        <AssociationConnector Association="dbresumebuilderModel.FK_Resumes_Templates" />
+        <AssociationConnector Association="dbresumebuilderModel.FK_ResumeSections_Resumes" />
+        <AssociationConnector Association="dbresumebuilderModel.FK_ResumeSections_TemplateSections" />
+        <AssociationConnector Association="dbresumebuilderModel.FK_TemplateSections_Templates" />
+        <EntityTypeShape EntityType="dbresumebuilderModel.Chat" Width="1.5" PointX="5.25" PointY="1.25" />
+        <EntityTypeShape EntityType="dbresumebuilderModel.Referral" Width="1.5" PointX="5.25" PointY="4.5" />
+        <EntityTypeShape EntityType="dbresumebuilderModel.Sharing" Width="1.5" PointX="5.25" PointY="69.375" />
+        <AssociationConnector Association="dbresumebuilderModel.FK_Chat_Member" />
+        <AssociationConnector Association="dbresumebuilderModel.FK_Chat_Member1" />
+        <AssociationConnector Association="dbresumebuilderModel.FK_Referrals_Member" />
+        <AssociationConnector Association="dbresumebuilderModel.FK_Referrals_Member1" />
+        <AssociationConnector Association="dbresumebuilderModel.FK_Sharing_Member" />
+        <AssociationConnector Association="dbresumebuilderModel.FK_Sharing_Member1" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,20 @@
+﻿@using CVB.Models
+@model LoginViewModel
+@{
+    ViewBag.Title = "Connect through Google";
+    Layout = "~/Views/Shared/_LayoutCopy.cshtml";
+}
+
+<div class="row">
+    <div class="col-md-4"></div>
+    <div class="col-md-4" style="text-align:center">
+        <section id="socialLoginForm">
+          Login with your @Html.Partial("_ExternalLoginsListPartial", new ExternalLoginListViewModel { ReturnUrl = ViewBag.ReturnUrl }) Account
+        </section>
+    </div>
+    <div class="col-md-4"></div>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

@@ -1,0 +1,30 @@
+﻿
+@{
+    ViewBag.Title = "Upload Profile Picture";
+    Layout = "~/Views/Shared/ViewPage1.cshtml";
+}
+<form enctype="multipart/form-data" method="POST">
+    <div class="container-fluid mb-5 wow fadeIn" data-wow-delay="0.1s" style="padding: 35px;">
+        <div class="container">
+            <div class="row g-2">
+                <div class="col-md-12">
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <div class="form-floating">
+                                @*<label for="picture">Upload Profile Picture:</label>*@
+                                <input type="file" class="form-control" id="picture" name="picture" placeholder="Profile Picture">
+                                <label for="name">Upload Profile Picture</label>
+                            </div><br />
+                            <div class="form-floating">
+                                <button class="btn btn-primary w-100 py-3" type="submit">Upload</button>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <img src="~/Assets2/img/carousel-2.jpg" class="col-md-8" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

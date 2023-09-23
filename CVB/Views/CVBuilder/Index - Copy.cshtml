@@ -1,0 +1,146 @@
+﻿@model CVB.Database.Language
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<script src="~/ClientSideLogic/jspdf/jspdf.umd.min.js"></script>
+
+<script>
+    //window.jsPDF = window.jspdf.jsPDF;
+
+    //var doc = new jsPDF();
+    window.jsPDF = window.jspdf.jsPDF;
+    $(document).ready(function () {
+        var doc = new jsPDF({
+            orientation: 'p',
+            unit: 'in',
+            format: 'a4',
+            putOnlyUsedFonts: true,
+            floatPrecision: 16 // or "smart", default is 16
+        });
+
+        doc.setLineWidth(2);
+
+        var columns = [
+            { title: "COL1", dataKey: "col1" },
+            { title: "COL2", dataKey: "col2" },
+            { title: "COL3", dataKey: "col3" },
+            { title: "COL4", dataKey: "col4" }
+        ];
+        var rows = [
+            {
+                "col1": 'status',
+                "col2": 'data1data2',
+                "col3": 'creator',
+                "col4": new Date().getUTCDate()
+            },
+            {
+                "col1": "data-cell_r2_c1",
+                "col2": "data-cell_r2_c2",
+                "col3": "data-cell3_r2_c3",
+                "col4": "data-cell4_r2_c4"
+            },
+            {
+                "col1": "data-cell_r3_c1",
+                "col2": "data-cell_r3_c2",
+                "col3": "data-cell3_r3_c3",
+                "col4": "data-cell4_r3_c4"
+            }
+        ];
+
+
+        var header = ['1', '2', '3', '4'];
+        var data = [{ 1: '1', 2: '2', 3: '3', 4: '4' }];
+        var config = {
+            autoSize: true,
+            printHeaders: true
+        }
+        
+        doc.table(20,20,data, header, config);
+
+
+        doc.addImage("../Content/nipesh.jpg", "JPEG", 1, 1, 2, 2);
+
+        doc.setFont("consolas", "normal", "bold");
+        doc.setFontSize(18);
+        doc.text('Nipesh Shah', 3.25, 1.25);
+
+        doc.setFontSize(15);
+        doc.text('Senior Technical Lead', 3.25, 1.5);
+
+        
+        //doc.text(20, 30, 'This is client-side Javascript to generate a PDF.');
+
+        // Add new page
+        //doc.addPage();
+        //doc.text(20, 20, 'Visit CodexWorld.com');
+
+        //doc.addImage("Content/placeholder-image.png", "JPEG", 15, 40, 180, 180);
+
+        $('#iframetarget').attr('src', doc.output('datauristring'));
+    });
+</script>
+
+
+<h2>Index</h2>
+<iframe width="1200" height="800" id="iframetarget"></iframe>
+@*
+    <div>
+        <h4>Language</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.UserId)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.UserId)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Language1)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Language1)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.ReadProficiency)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.ReadProficiency)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.WriteProficiency)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.WriteProficiency)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.SpeakProficiency)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.SpeakProficiency)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.IsNative)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.IsNative)
+            </dd>
+
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>*@

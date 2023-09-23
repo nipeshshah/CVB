@@ -1,0 +1,19 @@
+﻿@model CVB.Models.IndexViewModel
+
+@{
+    ViewBag.Title = "LoginSuccess";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<script>
+    debugger;
+    var model = @Html.Raw(Json.Encode(Model));
+    //sess(model);
+    localStorage.setItem("key_token", model.MemberId);
+    localStorage.setItem("key_email", model.Email);
+    localStorage.setItem("key_time", new Date());
+    if (model.ReturnUrl == undefined)
+        window.location = "Index";
+    else
+        window.location = model.ReturnUrl;
+</script>

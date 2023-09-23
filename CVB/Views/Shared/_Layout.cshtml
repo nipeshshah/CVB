@@ -1,0 +1,388 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <title>Material Design for Bootstrap</title>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css" />
+    <!-- Google Fonts Roboto -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" />
+    <!-- MDB -->
+    <link rel="stylesheet" href="~/Assets/css/mdb.min.css" />
+    <!-- Custom styles -->
+    <link rel="stylesheet" href="~/Assets/css/style.css" />
+    @RenderSection("scripts", required: false)
+    <style>
+        .navbar .nav-link {
+            color: navy !important;
+        }
+
+        .card-block {
+            margin-bottom: 1rem !important;
+            background: #e5e5e5;
+            padding: 5px;
+            border-radius: 5px;
+            border: 1px solid #e5e5e5;
+        }
+    </style>
+    <script src="~/Scripts/jquery-3.4.1.js"></script>
+    <script src="~/ClientSideLogic/axios/axios.min.js"></script>
+    <script src="~/ClientSideLogic/Common/CommonService.js"></script>
+    <script src="~/ClientSideLogic/moment.js/moment.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        #cvmaker-header {
+            max-width: calc(1600px + 10%);
+            margin: 0 auto;
+            padding: 0 5%;
+        }
+
+            #cvmaker-header .l_header_container {
+                display: flex;
+                justify-content: space-between;
+                flex-flow: row nowrap;
+            }
+
+        a:link, a:focus, a:hover, a:active, a:visited {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        #cvmaker-header .l_header_container .l_header_left {
+            margin: 14px 0 10px 0;
+        }
+
+        #cvmaker-header .l_header_container .l_header_right {
+            margin: 25px 0 10px 0;
+        }
+
+        .banner {
+            background: radial-gradient(657px 657px at 2% 90%,#92b6fc 0,#dcf1f600 40%),radial-gradient(642px 642px at 82% 115%,#b4cdff 0,#dcf1f600 25%),linear-gradient(-73.25deg,#dcf2f7 7.43%,#9accd5 94.82%);
+            color: #000;
+        }
+
+        .banner2 {
+            padding: 10px;
+            margin: auto;
+        }
+
+        .banner3 {
+            margin: auto;
+        }
+
+        .cnavbar-nav {
+            font-weight: 400;
+            font-size: 18px;
+            padding: 0px 15px;
+            margin: auto;
+            width: fit-content;
+        }
+
+        .cnav-item {
+            align-items: center;
+            width: fit-content;
+            padding: 12px;
+            float: left;
+        }
+
+        .navbar {
+            -moz-box-shadow: none !important;
+            -webkit-box-shadow: none !important;
+            box-shadow: none !important;
+        }
+
+        .table td, .table th {
+            vertical-align: middle;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div id="cvmaker-header" aria-label="cvmaker Header">
+            <div class="l_header_container">
+                <div class="l_header_left">
+
+                    <a href="/?form=dash_2" id="reward_header_cvmaker_logo">
+                        <img class="bing_logo" src="//az15297.vo.msecnd.net/images/rewards/membercenter/missions/Ms_Logo_48px.png" alt="cvmaker">
+                    </a>
+                    <a class="l_header_title" href="/?form=dash_2" aria-label="cvmaker" id="reward_header_cvmaker">
+                        CV Maker &nbsp; | &nbsp; @@cvmaker
+                    </a>
+                </div>
+                <div class="l_header_right">
+                    <a class="redirect_link amc_link" href="https://account.microsoft.com" aria-label="Microsoft account" id="reward_header_amc">
+                        Google Account
+                    </a>
+                    <span class="redirect_link additional_info"> | </span>
+                    <a class="redirect_link additional_info" href="#">
+                        Nipesh Shah
+                    </a>
+                    <a class="redirect_link additional_info" href="/Account/Login">
+                        Login
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="banner">
+            <div class="banner2 col-lg-10 col-sm-12">
+                <div class="row">
+                    <div class="col-lg-6 col-sm-12">
+                        <h2>CV Maker</h2>
+                    </div>
+                    <div class="col-lg-6 col-sm-12 text-right">
+                        <h2></h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--<div style="background-color:maroon">
+            <div class="cnavbar-nav me-auto mb-2 mb-lg-0">
+                <div class="cnav-item">
+                    @Html.ActionLink("Personal Information", "Index", "Profile", new object { }, new { @class = "nav-link" })
+                </div>-->
+        @*<li class="nav-item"><a class="nav-link" href="#">Manage Profile</a></li>*@
+        @*<li class="nav-item"><a class="nav-link" href="#">Personal Details</a></li>
+            <li class="nav-item"><a class="nav-link" href="#">Description</a></li>
+            <li class="nav-item"><a class="nav-link" href="#">Education</a></li>
+            <li class="nav-item"><a class="nav-link" href="#">Experience</a></li>*@
+        <!--<div class="cnav-item">
+                    @Html.ActionLink("Manage Resumes", "Index", "CVBuilder", new object { }, new { @class = "nav-link" })
+                </div>
+                <div class="cnav-item"><a class="nav-link" href="#">FAQ</a></div>
+            </div>
+        </div>-->
+        <!--Main Navigation-->
+        <!-- Navbar -->
+        <nav class="navbar navbar-expand-lg navbar-dark d-none d-lg-block" style="z-index: 2000;">
+            <div class="banner3 col-lg-10 col-sm-12">
+                <div class="container-fluid">
+                    <!-- Navbar brand -->
+                    <button class="navbar-toggler" type="button" data-mdb-toggle="collapse" data-mdb-target="#navbarExample01"
+                            aria-controls="navbarExample01" aria-expanded="false" aria-label="Toggle navigation">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarExample01">
+                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                            <li class="nav-item">
+                                @Html.ActionLink("Personal Information", "Index", "Profile", new object { }, new { @class = "nav-link" })
+                            </li>
+                            @*<li class="nav-item"><a class="nav-link" href="#">Manage Profile</a></li>*@
+                            @*<li class="nav-item"><a class="nav-link" href="#">Personal Details</a></li>
+                                <li class="nav-item"><a class="nav-link" href="#">Description</a></li>
+                                <li class="nav-item"><a class="nav-link" href="#">Education</a></li>
+                                <li class="nav-item"><a class="nav-link" href="#">Experience</a></li>*@
+                            <li class="nav-item">
+                                @Html.ActionLink("Manage Resumes", "Index", "CVBuilder", new object { }, new { @class = "nav-link" })
+                            </li>
+                            <li class="nav-item"><a class="nav-link" href="#">FAQ</a></li>
+                        </ul>
+
+                        <ul class="navbar-nav d-flex flex-row">
+                            <!-- Icons -->
+                            <li class="nav-item me-3 me-lg-0">
+                                <a class="nav-link" href="https://www.youtube.com/channel/UC5CF7mLQZhvx8O5GODZAhdA" rel="nofollow"
+                                   target="_blank">
+                                    <i class="fab fa-youtube"></i>
+                                </a>
+                            </li>
+                            <li class="nav-item me-3 me-lg-0">
+                                <a class="nav-link" href="https://www.facebook.com/mdbootstrap" rel="nofollow" target="_blank">
+                                    <i class="fab fa-facebook-f"></i>
+                                </a>
+                            </li>
+                            <li class="nav-item me-3 me-lg-0">
+                                <a class="nav-link" href="https://twitter.com/MDBootstrap" rel="nofollow" target="_blank">
+                                    <i class="fab fa-twitter"></i>
+                                </a>
+                            </li>
+                            <li class="nav-item me-3 me-lg-0">
+                                <a class="nav-link" href="https://github.com/mdbootstrap/mdb-ui-kit" rel="nofollow" target="_blank">
+                                    <i class="fab fa-github"></i>
+                                </a>
+                            </li>
+                            <li class="nav-item me-3 me-lg-0">
+                                <div class="nav-link dropdown">
+                                    <a class="dropdown-toggle d-flex align-items-center hidden-arrow" href="#"
+                                       id="navbarDropdownMenuAvatar" role="button" data-mdb-toggle="dropdown"
+                                       aria-expanded="false">
+                                        <img src="https://mdbcdn.b-cdn.net/img/new/avatars/2.webp" class="rounded-circle"
+                                             height="25" alt="Black and White Portrait of a Man" loading="lazy" />
+                                    </a>
+                                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuAvatar">
+                                        <li>
+                                            <a class="dropdown-item" href="/Account/Login">Login</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="nav-link dropdown" style="display:none">
+                                    <a class="dropdown-toggle d-flex align-items-center hidden-arrow" href="#"
+                                       id="navbarDropdownMenuAvatar" role="button" data-mdb-toggle="dropdown"
+                                       aria-expanded="false">
+                                        <img src="https://mdbcdn.b-cdn.net/img/new/avatars/2.webp" class="rounded-circle"
+                                             height="25" alt="Black and White Portrait of a Man" loading="lazy" />
+                                    </a>
+                                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuAvatar">
+                                        <li>
+                                            <a class="dropdown-item" href="#">Profile</a>
+                                        </li>
+                                        <li>
+                                            <a class="dropdown-item" href="#">Logout</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+                        </ul>
+                        <!-- Avatar -->
+                    </div>
+                </div>
+            </div>
+        </nav>
+        <!-- Navbar -->
+        @RenderSection("header", required: false)
+    </header>
+    <hr class="hr hr-blurry" />
+    <h3 class="text-center">@ViewBag.Title</h3>
+    <hr class="hr hr-blurry" />
+    <main class="mt-2">
+        <div class="container-fluid col-lg-10 col-sm-12">
+            @RenderBody()
+        </div>
+    </main>
+    <!--Main Navigation-->
+    <!-- Footer -->
+    <footer class="text-center text-lg-start bg-white text-muted">
+        <!-- Section: Social media -->
+        <section class="d-flex justify-content-center justify-content-lg-between p-4 border-top border-bottom">
+            <!-- Left -->
+            <div class="me-5 d-none d-lg-block">
+                <span>Get connected with us on social networks:</span>
+            </div>
+            <!-- Left -->
+            <!-- Right -->
+            <div>
+                <a href="" class="me-4 link-secondary">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+                <a href="" class="me-4 link-secondary">
+                    <i class="fab fa-twitter"></i>
+                </a>
+                <a href="" class="me-4 link-secondary">
+                    <i class="fab fa-google"></i>
+                </a>
+                <a href="" class="me-4 link-secondary">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="" class="me-4 link-secondary">
+                    <i class="fab fa-linkedin"></i>
+                </a>
+                <a href="" class="me-4 link-secondary">
+                    <i class="fab fa-github"></i>
+                </a>
+            </div>
+            <!-- Right -->
+        </section>
+        <!-- Section: Social media -->
+        <!-- Section: Links  -->
+        <section class="">
+            <div class="container text-center text-md-start mt-5">
+                <!-- Grid row -->
+                <div class="row mt-3">
+                    <!-- Grid column -->
+                    <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+                        <!-- Content -->
+                        <h6 class="text-uppercase fw-bold mb-4">
+                            <i class="fas fa-gem me-3 text-secondary"></i>Company name
+                        </h6>
+                        <p>
+                            Here you can use rows and columns to organize your footer content. Lorem ipsum
+                            dolor sit amet, consectetur adipisicing elit.
+                        </p>
+                    </div>
+                    <!-- Grid column -->
+                    <!-- Grid column -->
+                    <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+                        <!-- Links -->
+                        @*<h6 class="text-uppercase fw-bold mb-4">
+                                Products
+                            </h6>*@
+                        <p>
+                            <a href="#!" class="text-reset">About Us</a>
+                        </p>
+                        <p>
+                            <a href="#!" class="text-reset">FAQ</a>
+                        </p>
+                        <p>
+                            <a href="#!" class="text-reset">Pricing</a>
+                        </p>
+                        <p>
+                            <a href="#!" class="text-reset">Sharing & Caring</a>
+                        </p>
+                        <p>
+                            <a href="#!" class="text-reset">Contact Us</a>
+                        </p>
+                    </div>
+                    <!-- Grid column -->
+                    <!-- Grid column -->
+                    <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
+                        <!-- Links -->
+                        @*<h6 class="text-uppercase fw-bold mb-4">
+                                Useful links
+                            </h6>*@
+
+                        <p>
+                            <a href="#!" class="text-reset">Product Updates</a>
+                        </p>
+                        <p>
+                            <a href="#!" class="text-reset">Terms of Service</a>
+                        </p>
+                        <p>
+                            <a href="#!" class="text-reset">Privacy</a>
+                        </p>
+                        <p>
+                            <a href="#!" class="text-reset">Right of Withdrawl</a>
+                        </p>
+                        <p>
+                            <a href="#!" class="text-reset">How to Use</a>
+                        </p>
+                    </div>
+                    <!-- Grid column -->
+                    <!-- Grid column -->
+                    <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+                        <!-- Links -->
+                        <h6 class="text-uppercase fw-bold mb-4">Contact</h6>
+                        <p><i class="fas fa-home me-3 text-secondary"></i> New York, NY 10012, US</p>
+                        <p>
+                            <i class="fas fa-envelope me-3 text-secondary"></i>
+                            info@example.com
+                        </p>
+                        <p><i class="fas fa-phone me-3 text-secondary"></i> + 01 234 567 88</p>
+                        <p><i class="fas fa-print me-3 text-secondary"></i> + 01 234 567 89</p>
+                    </div>
+                    <!-- Grid column -->
+                </div>
+                <!-- Grid row -->
+            </div>
+        </section>
+        <!-- Section: Links  -->
+        <!-- Copyright -->
+        <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.025);">
+            © 2021 Copyright:
+            <a class="text-reset fw-bold" href="https://mdbootstrap.com/">MDBootstrap.com</a>
+        </div>
+        <!-- Copyright -->
+    </footer>
+    <!-- Footer -->
+    <!-- MDB -->
+    <script type="text/javascript" src="~/Assets/js/mdb.min.js"></script>
+    <!-- Custom scripts -->
+    @*<script type="text/javascript" src="~/Assets/js/script.js"></script>*@
+</body>
+
+</html>
+

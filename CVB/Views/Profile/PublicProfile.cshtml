@@ -1,0 +1,40 @@
+﻿
+@{
+    ViewBag.Title = "Online Public Profiles";
+    Layout = "~/Views/Shared/ViewPage1.cshtml";
+}
+<script src="~/ClientSideLogic/profile.js"></script>
+<script>
+
+    $(document).ready(function () {
+        console.log('First Call:');
+
+        userprofile.personaldetails(callback);
+        
+    });
+
+    function callback(data) {
+        $('#abc').text(data.data.Response);
+    }
+
+</script>
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-3">
+            <label for="link-title">Title</label>
+        </div>
+        <div class="col-md-7">
+            <label for="link">Link</label>
+        </div>
+    </div>
+    <!-- You can repeat the row below to add more links -->
+    <div class="row">
+        <div class="col-md-3" id="abc">
+            <span>Personal Website</span>
+        </div>
+        <div class="col-md-7">
+            <a href="https://www.example.com">https://www.example.com</a>
+        </div>
+    </div>
+    <!-- You can repeat the row above to add more links -->
+</div>

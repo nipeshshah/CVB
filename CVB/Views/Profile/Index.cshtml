@@ -1,0 +1,234 @@
+﻿
+@{
+    ViewBag.Title = "My Profile";
+    Layout = "~/Views/Shared/ViewPage1.cshtml";
+}
+
+<style>
+    .head {
+        font-weight: bold;
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+
+    .content {
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+
+    /*.row {
+        border-bottom: 1px double black;
+    }*/
+
+    .profilepic {
+        width: 300px;
+        height: 400px;
+    }
+
+    xdiv {
+        border: 1px solid black;
+    }
+</style>
+<div>
+    <div class="row">
+        <div class="col-md-5">
+            <h3>Personal Details</h3>
+            <div class="row"><div class="col-md-4 head">First Name:</div><div class="col-md-8 content">John</div></div>
+            <div class="row"><div class="col-md-4 head">Middle Name:</div><div class="col-md-8 content">Doe</div></div>
+            <div class="row"><div class="col-md-4 head">Last Name:</div><div class="col-md-8 content">John</div></div>
+            <div class="row"><div class="col-md-4 head">Preferred Name:</div><div class="col-md-8 content">Doe</div></div>
+            <div class="row"><div class="col-md-4 head">City:</div><div class="col-md-8 content">Doe</div></div>
+            <div class="row"><div class="col-md-4 head">Country:</div><div class="col-md-8 content">Doe</div></div>
+            <div class="row"><div class="col-md-4 head">Pin Code:</div><div class="col-md-8 content">Doe</div></div>
+            <div class="row"><div class="col-md-4 head">Phone:</div><div class="col-md-8 content">Doe</div></div>
+            <div class="row"><div class="col-md-4 head">EMail:</div><div class="col-md-8 content">Doe</div></div>
+        </div>
+        <div class="col-md-7">
+            <div class=" text-center">
+                <img src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"
+                     alt="Profile Image" class="profilepic img-fluid rounded-circle mt-4">
+            </div>
+            <div class="row">
+                <div class="col-md-4 head">Title:</div>
+                <div class="col-md-8 content">Doe</div>
+            </div>
+            <div class="row">
+                <div class="col-md-4 head">Description:</div>
+                <div class="col-md-8 content">Doe</div>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <h3>Languages Known</h3>
+            <div class="row content">
+                <div class="col-md-3 head">English</div>
+                <div class="col-md-3 content">Can Read Fluently</div>
+                <div class="col-md-3 content">Can Write Fluently</div>
+                <div class="col-md-3 content">Can Speak Normally</div>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <h3>Experience</h3>
+            <div class="row content">
+                <div class="col-md-4"><span class="head">Synoverge Technologies (Ahmedabad, India)</span><i><br />Associate Software Engineer <br />From Jun 2011 to June 2013</i></div>
+                <div class="col-md-8"><br />Mainly handling software deliveries.</div>
+            </div>
+            <div class="row content">
+                <div class="col-md-4"><span class="head">Synoverge Technologies (Ahmedabad, India)</span><i><br />Associate Software Engineer <br />From Jun 2011 to June 2013</i></div>
+                <div class="col-md-8"><br />Mainly handling software deliveries.</div>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <h3>Education Qualifications</h3>
+            <div class="row content">
+                <div class="col-md-4"><span class="head">MCA - Master of Computer Applications</span></div>
+                <div class="col-md-8">
+                    <i>
+                        Dharmsinh Desai Institute Of Technologies (Nadiad, India)<br />
+                        Dharmsinh Desai University
+                        <br />From Jun 2009 to June 2011
+                    </i>
+                </div>
+            </div>
+            <div class="row content">
+                <div class="col-md-4"><span class="head">B.Com - Bachlor of Commerce</span></div>
+                <div class="col-md-8">
+                    <i>
+                        HACC (GLS Campus, Ahmedabad, India)<br />
+                        Gujarat University
+                        <br />From Jun 2005 to June 2008
+                    </i>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <h3>Courses</h3>
+            <div class="row content">
+                <div class="col-md-4"><span class="head">Asp.Net Course<br />3 Months</span></div>
+                <div class="col-md-8">
+                    <i>
+                        CDAC Institute<br />
+                        Ahmedabad
+                        <br />In 2010
+                    </i>
+                </div>
+            </div>
+            <div class="row content">
+                <div class="col-md-4"><span class="head">Core Java<br />2 Months</span></div>
+                <div class="col-md-8">
+                    <i>
+                        CDAC <br />
+                        Ahmedabad
+                        <br />June 2008
+                    </i>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <h3>Skills</h3>
+            <div class="row content">
+                <div class="col-md-3 head">Tally 9.0</div>
+                <div class="col-md-3 content">Expert</div>
+                <div class="col-md-3 content">CDAC Course</div>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <h3>Certifications</h3>
+            <div class="row content">
+                <div class="col-md-4"><span class="head">Doeacc O'Level Certification</span></div>
+                <div class="col-md-8">
+                    <i>
+                        Doeacc Society Central Government<br />
+                        Certified with A+ Grade<br />
+                        Application Programming, HTML Designing<br />
+                        Certified on 15 June 2005 (Expiring on Some Date)
+                    </i>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <h3>Projects</h3>
+            <div class="row content">
+                <div class="col-md-4"><span class="head">HACC - Home Appliance Controlling System</span></div>
+                <div class="col-md-8">
+                    <i>
+                        <b>Technologies:</b> C#, SQL, ASP.Net<br />
+                        <b>Tools:</b> VS Code<br />
+                        <b>Owner:</b> Self Project/Company Project/School Project<br />
+                        <b>Role:</b> Project Manager<br />
+                        <b>Team Size:</b> 5 Members<br />
+                        <b>Short Description:</b> Short description in 255 characters<br />
+                        <b>Long Description:</b> Long description in 500 characters
+                    </i>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <h3>Public Profiles</h3>
+            <div class="row content">
+                <div class="col-md-4">
+                    <span class="head">Linked In</span><br />
+                    <span class="head">Github</span>
+                </div>
+                <div class="col-md-8">
+                    <i>
+                        <a href="#">https://linkedin.com/nipeshshah</a><br />
+                        <a href="#">https://github.com/nipeshshah</a>
+                    </i>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <h3>Patents</h3>
+            <div class="row content">
+                <div class="col-md-4"><span class="head">Patent No 1</span></div>
+                <div class="col-md-8">
+                    <i>
+                        Some patent of abc<br />
+                        <b>Registration Date:</b> 22/05/2023<br />
+                        <b>Details:</b> Details of the patent<br />
+                    </i>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <h3>Copyrights</h3>
+            <div class="row content">
+                <div class="col-md-4"><span class="head">Copyright No 1</span></div>
+                <div class="col-md-8">
+                    <i>
+                        Some copyright of abc<br />
+                        <b>Registration Date:</b> 22/05/2023<br />
+                        <b>Details:</b> Details of the copyright<br />
+                    </i>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <h3>Awards</h3>
+            <div class="row content">
+                <div class="col-md-4"><span class="head">Award No 1</span></div>
+                <div class="col-md-8">
+                    <i>
+                        Best Employee Award<br />
+                        <b>by, </b> 200 Ok Solutions<br />
+                        <b>Received On:</b> 25/05/2023<br />
+                        <b>Area of Award:</b> Internal Company Award</b>
+                    </i>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <h3>Hobby</h3>
+            <div class="row content">
+                <div class="col-md-4">
+                    <span class="head">Hobbies</span>
+                </div>
+                <div class="col-md-8">
+                    <i>
+                        Playing Cricket<br />Swimming<br />Reading
+                    </i>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

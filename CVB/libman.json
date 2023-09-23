@@ -1,0 +1,24 @@
+{
+  "version": "1.0",
+  "defaultProvider": "cdnjs",
+  "libraries": [
+    {
+      "library": "axios@1.5.0",
+      "destination": "ClientSideLogic/axios/",
+      "files": [
+        "axios.min.js"
+      ]
+    },
+    {
+      "library": "moment.js@2.29.4",
+      "destination": "ClientSideLogic/moment.js/"
+    },
+    {
+      "library": "jspdf@2.5.1",
+      "destination": "ClientSideLogic/jspdf/",
+      "files": [
+        "jspdf.umd.min.js"
+      ]
+    }
+  ]
+}

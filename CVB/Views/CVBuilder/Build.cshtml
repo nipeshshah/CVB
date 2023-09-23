@@ -1,0 +1,168 @@
+﻿
+@{
+    ViewBag.Title = "Select Resume Template";
+    Layout = "~/Views/Shared/_LayoutCopy.cshtml";
+}
+<script>
+    function updateImage(obj) {
+        //debugger;
+        //$('#mainimage').attr('src', $(obj).attr('src'));
+        $('#templateName').text($(obj).parent().text().trim());
+        $('#btnNext').removeAttr('disabled')
+    }
+
+    function callNext() {
+        window.location = 'https://localhost:44304/CVBuilder/BuildFinalize/' + $('#templateName').text().trim();
+    }
+
+</script>
+<div >
+    <div class="container-xxl pb-5">
+        <div class="container">
+            @*<h1 class="text-center mb-5 wow fadeInUp" data-wow-delay="0.1s">Explore By Category</h1>*@
+            <div class="row g-4">
+                <div class="col-lg-6 wow fadeIn" data-wow-delay="0.5s">
+                    @*<a class="btn btn-primary py-3 px-5 mt-3" href="">Next</a>*@
+                    <p>
+                        <i class="fa fa-check text-primary  py-3 px-5 mt-3"></i>Selected template: <span id="templateName">Template 1</span>
+                    </p>
+                </div>
+
+                <div class="col-lg-6 wow fadeIn" style="text-align:right" data-wow-delay="0.5s">
+                    @*<a class="btn btn-primary py-3 px-5 mt-3" href="">Next</a>*@
+                    <a class="btn btn-default btn-outline-primary py-3 px-5 mt-3" disabled="disabled" id="btnNext" onclick="callNext(); return false;" href="">Next</a>
+                </div>
+                <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.1s">
+                    <a class="cat-item rounded p-4" href="">
+                        <img src="~/Assets/img/Template1.PNG" class="card-img-top cat-item rounded p-4" style="height: 233px;" onclick="updateImage(this); return false" alt="Image 1">
+                        <h6 class="mb-3 text-center" style="background-color:white">Marketing</h6>
+                        @*<i class="fa fa-3x fa-mail-bulk text-primary mb-4"></i>*@
+                        @*<p class="mb-0">123 Vacancy</p>*@
+                    </a>
+                </div>
+                <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.3s">
+                    <a class="cat-item rounded p-4" href="">
+                        <i class="fa fa-3x fa-headset text-primary mb-4"></i>
+                        <h6 class="mb-3">Customer Service</h6>
+                        <p class="mb-0">123 Vacancy</p>
+                    </a>
+                </div>
+                <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.5s">
+                    <a class="cat-item rounded p-4" href="">
+                        <i class="fa fa-3x fa-user-tie text-primary mb-4"></i>
+                        <h6 class="mb-3">Human Resource</h6>
+                        <p class="mb-0">123 Vacancy</p>
+                    </a>
+                </div>
+                <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.7s">
+                    <a class="cat-item rounded p-4" href="">
+                        <i class="fa fa-3x fa-tasks text-primary mb-4"></i>
+                        <h6 class="mb-3">Project Management</h6>
+                        <p class="mb-0">123 Vacancy</p>
+                    </a>
+                </div>
+                <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.1s">
+                    <a class="cat-item rounded p-4" href="">
+                        <i class="fa fa-3x fa-chart-line text-primary mb-4"></i>
+                        <h6 class="mb-3">Business Development</h6>
+                        <p class="mb-0">123 Vacancy</p>
+                    </a>
+                </div>
+                <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.3s">
+                    <a class="cat-item rounded p-4" href="">
+                        <i class="fa fa-3x fa-hands-helping text-primary mb-4"></i>
+                        <h6 class="mb-3">Sales & Communication</h6>
+                        <p class="mb-0">123 Vacancy</p>
+                    </a>
+                </div>
+                <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.5s">
+                    <a class="cat-item rounded p-4" href="">
+                        <i class="fa fa-3x fa-book-reader text-primary mb-4"></i>
+                        <h6 class="mb-3">Teaching & Education</h6>
+                        <p class="mb-0">123 Vacancy</p>
+                    </a>
+                </div>
+                <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.7s">
+                    <a class="cat-item rounded p-4" href="">
+                        <i class="fa fa-3x fa-drafting-compass text-primary mb-4"></i>
+                        <h6 class="mb-3">Design & Creative</h6>
+                        <p class="mb-0">123 Vacancy</p>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--<div class="row">-->
+    <!-- Left Section -->
+    <!--<div class="col-md-6">
+
+        <div class="row">-->
+    <!-- Image 1 -->
+    <!--<div class="col-md-4">
+        <div class="card mb-3">
+            <img src="~/Assets/img/Template1.PNG" class="card-img-top" style="height: 233px;" onclick="updateImage(this)" alt="Image 1">
+            <div class="card-body">
+                <a href="/CVBuilder/BuildFinalize/template1"><h5 class="card-title text-center">Image 1</h5></a>
+            </div>
+        </div>
+    </div>-->
+    <!-- Image 2 -->
+    <!--<div class="col-md-4">
+        <div class="card mb-3">
+            <img src="https://t3.ftcdn.net/jpg/02/51/55/46/360_F_251554631_FLQCoeVFXWjSr32bCSC3cK75JSy3CiSI.jpg" onclick="updateImage(this)"
+                 class="card-img-top" alt="Image 2">
+            <div class="card-body">
+                <h5 class="card-title text-center">Image 2</h5>
+            </div>
+        </div>
+    </div>-->
+    <!-- Image 3 -->
+    <!--<div class="col-md-4">
+        <div class="card mb-3">
+            <img src="https://t3.ftcdn.net/jpg/02/51/55/46/360_F_251554631_FLQCoeVFXWjSr32bCSC3cK75JSy3CiSI.jpg" class="card-img-top" alt="Image 3">
+            <div class="card-body">
+                <h5 class="card-title text-center">Image 3</h5>
+            </div>
+        </div>
+    </div>-->
+    <!-- Image 4 -->
+    <!--<div class="col-md-4">
+        <div class="card mb-3">
+            <img src="https://t3.ftcdn.net/jpg/02/51/55/46/360_F_251554631_FLQCoeVFXWjSr32bCSC3cK75JSy3CiSI.jpg" class="card-img-top" alt="Image 4">
+            <div class="card-body">
+                <h5 class="card-title">Image 4</h5>
+            </div>
+        </div>
+    </div>-->
+    <!-- Image 5 -->
+    <!--<div class="col-md-4">
+        <div class="card mb-3">
+            <img src="https://t3.ftcdn.net/jpg/02/51/55/46/360_F_251554631_FLQCoeVFXWjSr32bCSC3cK75JSy3CiSI.jpg" class="card-img-top" alt="Image 5">
+            <div class="card-body">
+                <h5 class="card-title text-center">Image 5</h5>
+            </div>
+        </div>
+    </div>-->
+    <!-- Image 6 -->
+    <!--<div class="col-md-4">
+                <div class="card mb-3">
+                    <img src="https://t3.ftcdn.net/jpg/02/51/55/46/360_F_251554631_FLQCoeVFXWjSr32bCSC3cK75JSy3CiSI.jpg" class="card-img-top" alt="Image 6">
+                    <div class="card-body">
+                        <h5 class="card-title text-center">Image 6</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>-->
+    <!-- Right Section with PDF -->
+    <!--<div class="col-md-6">
+            <img id="mainimage" src="https://t3.ftcdn.net/jpg/02/51/55/46/360_F_251554631_FLQCoeVFXWjSr32bCSC3cK75JSy3CiSI.jpg"
+                 class="card-img-top vh-100" style="width:100%"
+                 alt="Image 4">
+        </div>
+        <div class="col-md-12">
+            <div id="selectedTemplateName"></div>
+            <button class="btn btn-primary" onclick="callNext()">Next</button>
+        </div>
+    </div>-->
+</div>
