@@ -43,7 +43,7 @@
                 @Html.ActionLink("Profile Picture", "ProfilePic", "Profile", new object { }, new { @class = "active" })
                 @Html.ActionLink("Languages", "Language", "Profile", new object { }, new { @class = "" })
                 @Html.ActionLink("Experience", "Experience", "Profile", new object { }, new { @class = "" })
-                @Html.ActionLink("Education Qualification", "ProfilePic", "Profile", new object { }, new { @class = "" })
+                @Html.ActionLink("Education Qualification", "Qualification", "Profile", new object { }, new { @class = "" })
                 @Html.ActionLink("Skills", "Skills", "Profile", new object { }, new { @class = "" })
                 @Html.ActionLink("Certification", "Certification", "Profile", new object { }, new { @class = "" })
                 @Html.ActionLink("Projects", "Projects", "Profile", new object { }, new { @class = "" })
@@ -55,24 +55,24 @@
             </div>
             <!-- Tab navs -->
             @*<div class="nav flex-column nav-pills text-center"
-                 id="v-pills-tab"
-                 role="tablist"
-                 aria-orientation="vertical">
-                @Html.ActionLink("Personal Information", "PersonalInfo", "Profile", new object { }, new { @class = "nav-link" })
-                @Html.ActionLink("Profile Picture", "ProfilePic", "Profile", new object { }, new { @class = "nav-link active" })
-                @Html.ActionLink("Languages", "Language", "Profile", new object { }, new { @class = "nav-link" })
-                @Html.ActionLink("Experience", "Experience", "Profile", new object { }, new { @class = "nav-link" })
-                @Html.ActionLink("Education Qualification", "ProfilePic", "Profile", new object { }, new { @class = "nav-link" })
-                @Html.ActionLink("Skills", "Skills", "Profile", new object { }, new { @class = "nav-link" })
-                @Html.ActionLink("Certification", "Certification", "Profile", new object { }, new { @class = "nav-link" })
-                @Html.ActionLink("Projects", "Projects", "Profile", new object { }, new { @class = "nav-link" })
-                @Html.ActionLink("Public Profiles", "PublicProfile", "Profile", new object { }, new { @class = "nav-link" })
-                @Html.ActionLink("Patents", "Patents", "Profile", new object { }, new { @class = "nav-link" })
-                @Html.ActionLink("Copyrights", "Copyrights", "Profile", new object { }, new { @class = "nav-link" })
-                @Html.ActionLink("Awards", "Awards", "Profile", new object { }, new { @class = "nav-link" })
-                @Html.ActionLink("Hobbies", "Hobbies", "Profile", new object { }, new { @class = "nav-link" })
+                     id="v-pills-tab"
+                     role="tablist"
+                     aria-orientation="vertical">
+                    @Html.ActionLink("Personal Information", "PersonalInfo", "Profile", new object { }, new { @class = "nav-link" })
+                    @Html.ActionLink("Profile Picture", "ProfilePic", "Profile", new object { }, new { @class = "nav-link active" })
+                    @Html.ActionLink("Languages", "Language", "Profile", new object { }, new { @class = "nav-link" })
+                    @Html.ActionLink("Experience", "Experience", "Profile", new object { }, new { @class = "nav-link" })
+                    @Html.ActionLink("Education Qualification", "ProfilePic", "Profile", new object { }, new { @class = "nav-link" })
+                    @Html.ActionLink("Skills", "Skills", "Profile", new object { }, new { @class = "nav-link" })
+                    @Html.ActionLink("Certification", "Certification", "Profile", new object { }, new { @class = "nav-link" })
+                    @Html.ActionLink("Projects", "Projects", "Profile", new object { }, new { @class = "nav-link" })
+                    @Html.ActionLink("Public Profiles", "PublicProfile", "Profile", new object { }, new { @class = "nav-link" })
+                    @Html.ActionLink("Patents", "Patents", "Profile", new object { }, new { @class = "nav-link" })
+                    @Html.ActionLink("Copyrights", "Copyrights", "Profile", new object { }, new { @class = "nav-link" })
+                    @Html.ActionLink("Awards", "Awards", "Profile", new object { }, new { @class = "nav-link" })
+                    @Html.ActionLink("Hobbies", "Hobbies", "Profile", new object { }, new { @class = "nav-link" })
 
-            </div>*@
+                </div>*@
             <!-- Tab navs -->
 
         </div>
@@ -262,3 +262,6 @@
     </div>
 </div>
 
+@section scripts {
+    @RenderSection("scripts", required: false)
+}

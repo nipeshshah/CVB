@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using CVB.Database;
-using CVB.Framework;
+using DBHandler.Database;
+using Helpers;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
@@ -33,8 +33,8 @@ namespace CVB.Controllers
             var userId = User.Identity.GetUserId();
             var model = new IndexViewModel
             {
-                Email = new Database.dbresumebuilderEntities().AspNetUsers.Where(t => t.Id == userId).First().Email,
-                MemberId = new CVB.Framework.fw().security.EncryptString(userId.ToString()),
+                Email = new DBHandler.Database.dbresumebuilderEntities().AspNetUsers.Where(t => t.Id == userId).First().Email,
+                MemberId = new Helpers.Helper().security.EncryptString(userId.ToString()),
                 ReturnUrl = returnUrl
             };
             return View(model);
@@ -47,6 +47,7 @@ namespace CVB.Controllers
         }
         public ActionResult PersonalInfo()
         {
+
             return View();
         }
         public ActionResult Language()

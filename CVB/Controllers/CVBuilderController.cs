@@ -23,8 +23,11 @@ namespace CVB.Controllers
         [Route("BuildFinalize/{template}")]
         public ActionResult BuildFinalize(string template)
         {
-            if(string.IsNullOrEmpty(template))
+            if (string.IsNullOrEmpty(template))
+            {
                 return View("Build");
+            }
+            ViewBag.Template = template;
             return View();
         }
 

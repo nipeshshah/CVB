@@ -1,66 +1,149 @@
-﻿
-@{
-    ViewBag.Title = "Projects";
+﻿@{
+    ViewBag.Title = "Language";
     Layout = "~/Views/Shared/ViewPage1.cshtml";
 }
+@section scripts {
+    <script src="~/ClientSideLogic/profile.js"></script>
+    <script>
 
-<div class="container mt-5">
-    <div class="row">
-        <div class="col-md-2">
-            <label for="title">Title</label>
+        $(document).ready(function () {
+            console.log('First Call to Projects:');
+            userprofile.loadProjects(callback);
+        });
+
+        function callback(data) {
+            var langs = JSON.parse(data.data);
+            $('#projectsRow').html('<tr>');
+            var html = "";
+            debugger;
+            JSON.parse(data.data).forEach(function name(params) {
+                html += '<tr>'
+                html += '<td>' + params.Title + '</td>'
+                html += '<td>' + params.Technologies + '</td>'
+                html += '<td>' + params.Tools + '</td>'
+                html += '<td>' + params.Owner + '</td>'
+                html += '<td>' + params.Role + '</td>'
+                html += '<td>' + params.TeamSIze + '</td>'
+                html += '</tr>'
+                html += '<tr>'
+                html += '<td colspan="6">' + params.ShortDescription + '</td>'
+                html += '<td colspan="6">' + params.LongDescription + '</td>'
+                html += '</tr>'
+            });
+            $('#projectsRow').html(html + "</tr>");
+        }
+
+        function createProject() {
+            var formData = {
+                title: $("#title").val(),
+                owner: $("#owner").val(),
+                technologies: $("#technologies").val(),
+                tools: $("#tools").val(),
+                role: $("#role").val(),
+                teamsize: $("#teamsize").val(),
+                shortdescription: $("#shortdescription").val(),
+                longdescription: $("#longdescription").val()
+            };
+
+            // Convert the JavaScript object to JSON
+            //var formDataJSON = JSON.stringify(formData);
+
+            userprofile.updateProjects(formData);
+            userprofile.loadProjects(callback);
+
+        }
+
+    </script>
+}
+
+<div>
+    <section class="mb-2">
+        <div class="row d-flex justify-content-center">
+            <div class="col-md-12">
+                <form>
+                    <div class="row mb-4">
+                        <div class="col-md-4 col-sm-6">
+                            <div class="form-floating">
+                                <input type="text" id="title" class="form-control" name="title" placeholder="Title" />
+                                <label class="form-label" for="title">Title</label>
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-sm-6">
+                            <div class="form-floating">
+                                <input type="text" id="technologies" class="form-control" name="technologies" placeholder="Technologies" />
+                                <label class="form-label" for="technologies">Technologies</label>
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-sm-6">
+                            <div class="form-floating">
+                                <input type="text" id="tools" class="form-control" name="tools" placeholder="Tools" />
+                                <label class="form-label" for="tools">Tools</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mb-4">
+                        <div class="col-md-4 col-sm-6">
+                            <div class="form-floating">
+                                <input type="text" id="owner" class="form-control" name="owner" placeholder="Owner" />
+                                <label class="form-label" for="owner">Owner</label>
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-sm-6">
+                            <div class="form-floating">
+                                <input type="text" id="role" class="form-control" name="role" placeholder="Role" />
+                                <label class="form-label" for="role">Role</label>
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-sm-4">
+                            <div class="form-floating">
+                                <input type="text" id="teamsize" class="form-control" name="teamsize" placeholder="Team Size" />
+                                <label class="form-label" for="teamsize">Team Size</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mb-4">
+                        <div class="col-lg-6 col-md-12 col-sm-12">
+                            <div class="form-floating">
+                                <textarea id="shortdescription" class="form-control" name="shortdescription" placeholder="Short Description" rows="4" required></textarea>
+                                <label class="form-label" for="shortdescription">Short Description</label>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-12 col-sm-12">
+                            <div class="form-floating">
+                                <textarea class="form-control" id="longdescription" name="longdescription" placeholder="Long Description" rows="4" required></textarea>
+                                <label class="form-label" for="longdescription">Long Description</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-between bg-light mb-3">
+                        <div class="p-2 col-example">&nbsp;</div>
+                        <div class="p-2 col-example">&nbsp;</div>
+                        <div class="p-2 col-example"><button type="button" onclick="createProject()" class="btn btn-primary btn-lg m-1">Save</button></div>
+                    </div>
+                </form>
+            </div>
         </div>
-        <div class="col-md-2">
-            <label for="technologies">Technologies</label>
-        </div>
-        <div class="col-md-2">
-            <label for="tools">Tools</label>
-        </div>
-        <div class="col-md-1">
-            <label for="owner">Owner</label>
-        </div>
-        <div class="col-md-1">
-            <label for="role">Role</label>
-        </div>
-        <div class="col-md-1">
-            <label for="team-size">Team Size</label>
-        </div>
-        </div>
-    <div class="row">
-        <div class="col-md-6">
-            <label for="short-description"><i><small>Short Description</small></i></label>
-        </div>
-        <div class="col-md-6">
-            <label for="long-description"><i><small>Long Description</small></i></label>
-        </div>
-    </div>
-    <!-- You can repeat the row below to add more projects -->
-    <div class="row">
-        <div class="col-md-2">
-            <span>Project A</span>
-        </div>
-        <div class="col-md-2">
-            <span>Java, Spring</span>
-        </div>
-        <div class="col-md-2">
-            <span>Eclipse</span>
-        </div>
-        <div class="col-md-1">
-            <span>John Doe</span>
-        </div>
-        <div class="col-md-1">
-            <span>Developer</span>
-        </div>
-        <div class="col-md-1">
-            <span>5</span>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-6">
-            <span><i><small>Web app development</small></i></span>
-        </div>
-        <div class="col-md-6">
-            <span><i><small>A web application for managing tasks and projects.</small></i></span>
-        </div>
-    </div>
-    <!-- You can repeat the row above to add more projects -->
+    </section>
+</div>
+
+
+<div>
+    <table class="table align-middle mb-0 bg-white">
+        <thead class="bg-light">
+            <tr>
+                <th>Project Title</th>
+                <th>Technologies</th>
+                <th>Tools</th>
+                <th>Owner</th>
+                <th>Role</th>
+                <th>Team Size</th>
+            </tr>
+            <tr>
+                <td colspan="6">Short Description</td>
+                <td colspan="6">Long Description</td>
+            </tr>
+        </thead>
+        <tbody id="projectsRow">
+        </tbody>
+    </table>
 </div>

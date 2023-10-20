@@ -47,6 +47,14 @@
         post('profile/api/createskills', callback);
     },
 
+    loadProjects: function loadProjects(callback) {
+        get('profile/api/loadprojects/' + "4938f26b-4ed0-4a40-9c5e-d5934ff8c819", callback);
+    },
+
+    updateProjects: function createProjects(callback) {
+        post('profile/api/createprojects', callback);
+    },
+
     getProficiency: function(proficiency) {
         var prof = '';
         switch (proficiency) {

@@ -4,39 +4,40 @@
     Layout = "~/Views/Shared/ViewPage1.cshtml";
 }
 
-<script src="~/ClientSideLogic/profile.js"></script>
-<script>
+@section scripts {
+    <script src="~/ClientSideLogic/profile.js"></script>
+    <script>
 
-    $(document).ready(function () {
-        userprofile.loadSkills(callback);
-    });
-
-    function callback(data) {
-        debugger;
-        var exps = JSON.parse(data.data);
-        $('#skillsRow').html('');
-        var html = "";
-        exps.forEach(function name(item) {
-            html += `<tr><td>`+ item.Skill1 + `</td>
-                     <td>`+ userprofile.getProficiency(item.Proficiency) + `</td>
-                     <td>`+ item.Certifications + `</td></tr>`
+        $(document).ready(function () {
+            userprofile.loadSkills(callback);
         });
-        $('#skillsRow').replaceWith(html);
-    }
 
-    function createSkill() {
-        var formData = {
-            skill: $("#skill").val(),
-            proficiency: $("#proficiency").val(),
-            certifications: $("#certifications").val()
-        };
+        function callback(data) {
+            var exps = JSON.parse(data.data);
+            $('#skillsRow').html('');
+            var html = "";
+            exps.forEach(function name(item) {
+                html += `<tr><td>` + item.Skill1 + `</td>
+                             <td>`+ userprofile.getProficiency(item.Proficiency) + `</td>
+                             <td>`+ item.Certifications + `</td></tr>`
+            });
+            $('#skillsRow').replaceWith(html);
+        }
 
-        userprofile.updateSkills(formData);
-        userprofile.loadSkills(callback);
+        function createSkills() {
+            var formData = {
+                skill: $("#skill").val(),
+                proficiency: $("#proficiency").val(),
+                certifications: $("#certifications").val()
+            };
 
-    }
+            userprofile.updateSkills(formData);
+            userprofile.loadSkills(callback);
 
-</script>
+        }
+
+    </script>
+}
 
 <div>
     <section class="mb-2">
@@ -45,27 +46,34 @@
                 <form>
                     <div class="row mb-4">
                         <div class="col-md-3 col-sm-4">
-                            <div class="form-outline">
-                                <input type="text" id="skill" class="form-control" name="skill" />
+                            <div class="form-floating">
+                                <input type="text" id="skill" class="form-control" name="skill" placeholder="Skill" />
                                 <label class="form-label" for="skill">Skill</label>
                             </div>
                         </div>
                         <div class="col-md-3 col-sm-4">
-                            <div class="form-outline">
+                            <div class="form-floating">
                                 <select class="form-control" id="proficiency" name="proficiency" required>
                                     <option value="Beginner">Beginner</option>
                                     <option value="Intermediate">Intermediate</option>
                                     <option value="Advanced">Advanced</option>
                                     <option value="Expert">Expert</option>
                                 </select>
+                                <label class="form-label" for="proficiency">Proficiency</label>
                             </div>
                         </div>
                         <div class="col-md-3 col-sm-4">
-                            <div class="form-outline">
-                                <input type="text" id="certifications" class="form-control" name="certifications" />
+                            <div class="form-floating">
+                                <input type="text" id="certifications" class="form-control" name="certifications" placeholder="Certifications (If Any)" />
                                 <label class="form-label" for="certifications">Certifications (If Any)</label>
                             </div>
                         </div>
+                    </div>
+
+                    <div class="d-flex justify-content-between bg-light mb-3">
+                        <div class="p-2 col-example">&nbsp;</div>
+                        <div class="p-2 col-example">&nbsp;</div>
+                        <div class="p-2 col-example"><button type="button" onclick="createSkills()" class="btn btn-primary btn-lg m-1">Save</button></div>
                     </div>
                 </form>
             </div>

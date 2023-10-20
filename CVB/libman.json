@@ -19,6 +19,13 @@
       "files": [
         "jspdf.umd.min.js"
       ]
+    },
+    {
+      "library": "jquery@3.7.1",
+      "destination": "ClientSideLogic/jquery/",
+      "files": [
+        "jquery.min.js"
+      ]
     }
   ]
 }

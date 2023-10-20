@@ -1,0 +1,2167 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="dbresumebuilderModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="AspNetUsers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="256" />
+          <Property Name="EmailConfirmed" Type="bit" Nullable="false" />
+          <Property Name="PasswordHash" Type="nvarchar(max)" />
+          <Property Name="SecurityStamp" Type="nvarchar(max)" />
+          <Property Name="PhoneNumber" Type="nvarchar(max)" />
+          <Property Name="PhoneNumberConfirmed" Type="bit" Nullable="false" />
+          <Property Name="TwoFactorEnabled" Type="bit" Nullable="false" />
+          <Property Name="LockoutEndDateUtc" Type="datetime" />
+          <Property Name="LockoutEnabled" Type="bit" Nullable="false" />
+          <Property Name="AccessFailedCount" Type="int" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="256" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Awards">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MemberId" Type="nvarchar" MaxLength="128" />
+          <Property Name="AwardTitle" Type="nvarchar" MaxLength="50" />
+          <Property Name="AwardedBy" Type="nvarchar" MaxLength="50" />
+          <Property Name="ReceivedOn" Type="date" />
+          <Property Name="AreaCompititionTitle" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="Certifications">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MemberId" Type="nvarchar" MaxLength="128" />
+          <Property Name="CertificateTitle" Type="nvarchar" MaxLength="100" />
+          <Property Name="Organization" Type="nvarchar" MaxLength="100" />
+          <Property Name="GradeRank" Type="nvarchar" MaxLength="50" />
+          <Property Name="AreaOfExpertise" Type="nvarchar" MaxLength="100" />
+          <Property Name="DateOfCertification" Type="date" />
+          <Property Name="ValidTill" Type="date" />
+        </EntityType>
+        <EntityType Name="Chat">
+          <Key>
+            <PropertyRef Name="ChatId" />
+          </Key>
+          <Property Name="ChatId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FromUser" Type="nvarchar" MaxLength="128" />
+          <Property Name="ToUser" Type="nvarchar" MaxLength="128" />
+          <Property Name="MessageDateTime" Type="datetime" />
+          <Property Name="Message" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="CompanyDetails">
+          <Key>
+            <PropertyRef Name="MemberId" />
+          </Key>
+          <Property Name="MemberId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="CompanyName" Type="nvarchar" MaxLength="50" />
+          <Property Name="CompanyAddress" Type="nvarchar(max)" />
+          <Property Name="CompanyWebsite" Type="nvarchar" MaxLength="150" />
+          <Property Name="Location" Type="nvarchar" MaxLength="50" />
+          <Property Name="ContactPerson" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="ContactUs">
+          <Key>
+            <PropertyRef Name="ContactUsId" />
+          </Key>
+          <Property Name="ContactUsId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RequestDate" Type="datetime" />
+          <Property Name="SenderEmailId" Type="nvarchar" MaxLength="50" />
+          <Property Name="Title" Type="nvarchar" MaxLength="255" />
+          <Property Name="Description" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Copyrights">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="MemberId" Type="nvarchar" MaxLength="128" />
+          <Property Name="CRTitle" Type="nvarchar" MaxLength="255" />
+          <Property Name="CRDate" Type="date" />
+          <Property Name="CRDescription" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Courses">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MemberId" Type="nvarchar" MaxLength="128" />
+          <Property Name="CourseTitle" Type="nvarchar" MaxLength="100" />
+          <Property Name="Institute" Type="nvarchar" MaxLength="100" />
+          <Property Name="Address" Type="nvarchar" MaxLength="50" />
+          <Property Name="Tenure" Type="nvarchar" MaxLength="100" />
+          <Property Name="PersuedIn" Type="nchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="Education">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MemberId" Type="nvarchar" MaxLength="128" />
+          <Property Name="NameOfSchoolCollege" Type="nvarchar" MaxLength="250" />
+          <Property Name="Qualification" Type="nvarchar" MaxLength="100" />
+          <Property Name="Location" Type="nvarchar" MaxLength="50" />
+          <Property Name="EducationBoard" Type="nvarchar" MaxLength="100" />
+          <Property Name="StartDate" Type="date" />
+          <Property Name="EndTime" Type="date" />
+        </EntityType>
+        <EntityType Name="Experience">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MemberId" Type="nvarchar" MaxLength="128" />
+          <Property Name="JobTItle" Type="nvarchar" MaxLength="50" />
+          <Property Name="Employer" Type="nvarchar(max)" />
+          <Property Name="CIty" Type="nvarchar" MaxLength="50" />
+          <Property Name="State" Type="nvarchar" MaxLength="50" />
+          <Property Name="Country" Type="nvarchar" MaxLength="50" />
+          <Property Name="StartDate" Type="date" />
+          <Property Name="EndTime" Type="date" />
+          <Property Name="IsCurrent" Type="int" />
+          <Property Name="Description" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Hobby">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MemberId" Type="nvarchar" MaxLength="128" />
+          <Property Name="Hobby" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Languages">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MemberId" Type="nvarchar" MaxLength="128" />
+          <Property Name="Language" Type="nvarchar" MaxLength="50" />
+          <Property Name="ReadProficiency" Type="int" />
+          <Property Name="WriteProficiency" Type="int" />
+          <Property Name="SpeakProficiency" Type="int" />
+          <Property Name="IsNative" Type="int" />
+        </EntityType>
+        <EntityType Name="Member">
+          <Key>
+            <PropertyRef Name="MemberId" />
+          </Key>
+          <Property Name="GoogleId" Type="nvarchar" MaxLength="128" />
+          <Property Name="MemberId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="ReferralCode" Type="nvarchar" MaxLength="10" />
+          <Property Name="RegistrationDate" Type="datetime" />
+          <Property Name="RegistrationType" Type="int" />
+        </EntityType>
+        <EntityType Name="NonCompanySharing">
+          <Key>
+            <PropertyRef Name="ShareindId" />
+          </Key>
+          <Property Name="ShareindId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MemberId" Type="nvarchar" MaxLength="128" />
+          <Property Name="SharedEmail" Type="nvarchar" MaxLength="50" />
+          <Property Name="ResumeId" Type="int" />
+          <Property Name="SharedOn" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Patents">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MemberId" Type="nvarchar" MaxLength="128" />
+          <Property Name="PatentTitle" Type="nvarchar" MaxLength="255" />
+          <Property Name="PatentDate" Type="date" />
+          <Property Name="PatentDescription" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="PersonalInformation">
+          <Key>
+            <PropertyRef Name="PersonalInfoId" />
+          </Key>
+          <Property Name="PersonalInfoId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MemberId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="50" />
+          <Property Name="MiddleName" Type="nvarchar" MaxLength="50" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="50" />
+          <Property Name="PreferredName" Type="nvarchar" MaxLength="50" />
+          <Property Name="City" Type="nvarchar" MaxLength="50" />
+          <Property Name="Country" Type="nvarchar" MaxLength="50" />
+          <Property Name="Pincode" Type="nvarchar" MaxLength="50" />
+          <Property Name="Phone" Type="nvarchar" MaxLength="50" />
+          <Property Name="Email" Type="nvarchar" MaxLength="50" />
+          <Property Name="State" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Plan">
+          <Key>
+            <PropertyRef Name="PlanId" />
+          </Key>
+          <Property Name="PlanId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MemberId" Type="nvarchar" MaxLength="128" />
+          <Property Name="GoogleId" Type="nvarchar" MaxLength="128" />
+          <Property Name="RegisteredEmail" Type="nvarchar" MaxLength="50" />
+          <Property Name="SubscribedPlan" Type="int" />
+          <Property Name="FromDate" Type="datetime" />
+          <Property Name="ToDate" Type="datetime" />
+          <Property Name="PaymentDate" Type="datetime" />
+          <Property Name="PaymentMode" Type="nvarchar" MaxLength="50" />
+          <Property Name="PaymentAmount" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="Comments" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Preference">
+          <Key>
+            <PropertyRef Name="MemberId" />
+          </Key>
+          <Property Name="MemberId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="IsLookingForJob" Type="int" />
+          <Property Name="PreferredSkills" Type="nvarchar(max)" />
+          <Property Name="PreferredLocation" Type="nvarchar(max)" />
+          <Property Name="PreferredDesignation" Type="nvarchar(max)" />
+          <Property Name="CurrentLocation" Type="nvarchar" MaxLength="50" />
+          <Property Name="IsReadyToReallocate" Type="int" />
+        </EntityType>
+        <EntityType Name="Projects">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MemberId" Type="nvarchar" MaxLength="128" />
+          <Property Name="ProjectTitle" Type="nvarchar" MaxLength="100" />
+          <Property Name="Technologies" Type="nvarchar" MaxLength="255" />
+          <Property Name="Tools" Type="nvarchar" MaxLength="255" />
+          <Property Name="Ownerr" Type="nvarchar" MaxLength="255" />
+          <Property Name="Role" Type="nvarchar" MaxLength="100" />
+          <Property Name="TeamSIze" Type="nvarchar" MaxLength="100" />
+          <Property Name="ShortDescription" Type="nvarchar" MaxLength="255" />
+          <Property Name="LongDescription" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="PublicProfile">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="MemberId" Type="nvarchar" MaxLength="128" />
+          <Property Name="Title" Type="nvarchar" MaxLength="100" />
+          <Property Name="Link" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Referrals">
+          <Key>
+            <PropertyRef Name="ReferralId" />
+          </Key>
+          <Property Name="ReferralId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" />
+          <Property Name="ReferredByUserId" Type="nvarchar" MaxLength="128" />
+        </EntityType>
+        <EntityType Name="Resumes">
+          <Key>
+            <PropertyRef Name="ResumeId" />
+          </Key>
+          <Property Name="ResumeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MemberId" Type="nvarchar" MaxLength="128" />
+          <Property Name="Title" Type="nvarchar" MaxLength="255" />
+          <Property Name="CreatedOn" Type="datetime" />
+          <Property Name="DownloadCount" Type="int" />
+          <Property Name="ViewCount" Type="int" />
+          <Property Name="PublicUrl" Type="nvarchar" MaxLength="50" />
+          <Property Name="SecurityCode" Type="nvarchar" MaxLength="25" />
+          <Property Name="PublicSharingType" Type="int" />
+          <Property Name="IsDeleted" Type="bit" />
+          <Property Name="TemplateId" Type="int" />
+        </EntityType>
+        <EntityType Name="ResumeSections">
+          <Key>
+            <PropertyRef Name="ResumeSectionId" />
+          </Key>
+          <Property Name="ResumeSectionId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ResumeId" Type="int" />
+          <Property Name="SectionId" Type="int" />
+          <Property Name="IsSelected" Type="bit" />
+          <Property Name="SectionOrder" Type="int" />
+        </EntityType>
+        <EntityType Name="Sharing">
+          <Key>
+            <PropertyRef Name="SharingId" />
+          </Key>
+          <Property Name="SharingId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MemberId" Type="nvarchar" MaxLength="128" />
+          <Property Name="CompanyMemberId" Type="nvarchar" MaxLength="128" />
+          <Property Name="ResumeId" Type="int" />
+          <Property Name="SharedOn" Type="datetime" />
+          <Property Name="Status" Type="nvarchar" MaxLength="50" />
+          <Property Name="RevokedOn" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Skills">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MemberId" Type="nvarchar" MaxLength="128" />
+          <Property Name="Skill" Type="nvarchar" MaxLength="50" />
+          <Property Name="Proficiency" Type="int" />
+          <Property Name="Certifications" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="Templates">
+          <Key>
+            <PropertyRef Name="TemplateId" />
+          </Key>
+          <Property Name="TemplateId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="50" />
+          <Property Name="TemplateHtmlUrl" Type="nvarchar(max)" />
+          <Property Name="PreviewImageUrl" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="TemplateSections">
+          <Key>
+            <PropertyRef Name="SectionId" />
+          </Key>
+          <Property Name="SectionId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AllowReorder" Type="bit" />
+          <Property Name="AllowSelection" Type="bit" />
+          <Property Name="TemplateId" Type="int" />
+          <Property Name="SectionName" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <Association Name="FK_Awards_Member">
+          <End Role="Member" Type="Self.Member" Multiplicity="0..1" />
+          <End Role="Awards" Type="Self.Awards" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Member">
+              <PropertyRef Name="MemberId" />
+            </Principal>
+            <Dependent Role="Awards">
+              <PropertyRef Name="MemberId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Certifications_Member">
+          <End Role="Member" Type="Self.Member" Multiplicity="0..1" />
+          <End Role="Certifications" Type="Self.Certifications" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Member">
+              <PropertyRef Name="MemberId" />
+            </Principal>
+            <Dependent Role="Certifications">
+              <PropertyRef Name="MemberId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Chat_Member">
+          <End Role="Member" Type="Self.Member" Multiplicity="0..1" />
+          <End Role="Chat" Type="Self.Chat" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Member">
+              <PropertyRef Name="MemberId" />
+            </Principal>
+            <Dependent Role="Chat">
+              <PropertyRef Name="FromUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Chat_Member1">
+          <End Role="Member" Type="Self.Member" Multiplicity="0..1" />
+          <End Role="Chat" Type="Self.Chat" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Member">
+              <PropertyRef Name="MemberId" />
+            </Principal>
+            <Dependent Role="Chat">
+              <PropertyRef Name="ToUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CompanyDetails_Member">
+          <End Role="Member" Type="Self.Member" Multiplicity="1" />
+          <End Role="CompanyDetails" Type="Self.CompanyDetails" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Member">
+              <PropertyRef Name="MemberId" />
+            </Principal>
+            <Dependent Role="CompanyDetails">
+              <PropertyRef Name="MemberId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Copyrights_Member">
+          <End Role="Member" Type="Self.Member" Multiplicity="0..1" />
+          <End Role="Copyrights" Type="Self.Copyrights" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Member">
+              <PropertyRef Name="MemberId" />
+            </Principal>
+            <Dependent Role="Copyrights">
+              <PropertyRef Name="MemberId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Courses_Member">
+          <End Role="Member" Type="Self.Member" Multiplicity="0..1" />
+          <End Role="Courses" Type="Self.Courses" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Member">
+              <PropertyRef Name="MemberId" />
+            </Principal>
+            <Dependent Role="Courses">
+              <PropertyRef Name="MemberId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Education_Member">
+          <End Role="Member" Type="Self.Member" Multiplicity="0..1" />
+          <End Role="Education" Type="Self.Education" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Member">
+              <PropertyRef Name="MemberId" />
+            </Principal>
+            <Dependent Role="Education">
+              <PropertyRef Name="MemberId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Experience_Member">
+          <End Role="Member" Type="Self.Member" Multiplicity="0..1" />
+          <End Role="Experience" Type="Self.Experience" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Member">
+              <PropertyRef Name="MemberId" />
+            </Principal>
+            <Dependent Role="Experience">
+              <PropertyRef Name="MemberId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Hobby_Member">
+          <End Role="Member" Type="Self.Member" Multiplicity="0..1" />
+          <End Role="Hobby" Type="Self.Hobby" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Member">
+              <PropertyRef Name="MemberId" />
+            </Principal>
+            <Dependent Role="Hobby">
+              <PropertyRef Name="MemberId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Languages_Member">
+          <End Role="Member" Type="Self.Member" Multiplicity="0..1" />
+          <End Role="Languages" Type="Self.Languages" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Member">
+              <PropertyRef Name="MemberId" />
+            </Principal>
+            <Dependent Role="Languages">
+              <PropertyRef Name="MemberId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Languages_Member1">
+          <End Role="Member" Type="Self.Member" Multiplicity="0..1" />
+          <End Role="Languages" Type="Self.Languages" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Member">
+              <PropertyRef Name="MemberId" />
+            </Principal>
+            <Dependent Role="Languages">
+              <PropertyRef Name="MemberId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Member_AspNetUsers">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="0..1" />
+          <End Role="Member" Type="Self.Member" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Member">
+              <PropertyRef Name="GoogleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NonCompanySharing_Member">
+          <End Role="Member" Type="Self.Member" Multiplicity="0..1" />
+          <End Role="NonCompanySharing" Type="Self.NonCompanySharing" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Member">
+              <PropertyRef Name="MemberId" />
+            </Principal>
+            <Dependent Role="NonCompanySharing">
+              <PropertyRef Name="MemberId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NonCompanySharing_Resumes">
+          <End Role="Resumes" Type="Self.Resumes" Multiplicity="0..1" />
+          <End Role="NonCompanySharing" Type="Self.NonCompanySharing" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Resumes">
+              <PropertyRef Name="ResumeId" />
+            </Principal>
+            <Dependent Role="NonCompanySharing">
+              <PropertyRef Name="ResumeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Patents_Member">
+          <End Role="Member" Type="Self.Member" Multiplicity="0..1" />
+          <End Role="Patents" Type="Self.Patents" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Member">
+              <PropertyRef Name="MemberId" />
+            </Principal>
+            <Dependent Role="Patents">
+              <PropertyRef Name="MemberId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PersonalInformation_Member">
+          <End Role="Member" Type="Self.Member" Multiplicity="1" />
+          <End Role="PersonalInformation" Type="Self.PersonalInformation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Member">
+              <PropertyRef Name="MemberId" />
+            </Principal>
+            <Dependent Role="PersonalInformation">
+              <PropertyRef Name="MemberId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Plan_Member">
+          <End Role="Member" Type="Self.Member" Multiplicity="0..1" />
+          <End Role="Plan" Type="Self.Plan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Member">
+              <PropertyRef Name="MemberId" />
+            </Principal>
+            <Dependent Role="Plan">
+              <PropertyRef Name="MemberId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Preference_Member">
+          <End Role="Member" Type="Self.Member" Multiplicity="1" />
+          <End Role="Preference" Type="Self.Preference" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Member">
+              <PropertyRef Name="MemberId" />
+            </Principal>
+            <Dependent Role="Preference">
+              <PropertyRef Name="MemberId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Projects_Member">
+          <End Role="Member" Type="Self.Member" Multiplicity="0..1" />
+          <End Role="Projects" Type="Self.Projects" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Member">
+              <PropertyRef Name="MemberId" />
+            </Principal>
+            <Dependent Role="Projects">
+              <PropertyRef Name="MemberId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PublicProfile_Member">
+          <End Role="Member" Type="Self.Member" Multiplicity="0..1" />
+          <End Role="PublicProfile" Type="Self.PublicProfile" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Member">
+              <PropertyRef Name="MemberId" />
+            </Principal>
+            <Dependent Role="PublicProfile">
+              <PropertyRef Name="MemberId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Referrals_Member">
+          <End Role="Member" Type="Self.Member" Multiplicity="0..1" />
+          <End Role="Referrals" Type="Self.Referrals" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Member">
+              <PropertyRef Name="MemberId" />
+            </Principal>
+            <Dependent Role="Referrals">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Referrals_Member1">
+          <End Role="Member" Type="Self.Member" Multiplicity="0..1" />
+          <End Role="Referrals" Type="Self.Referrals" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Member">
+              <PropertyRef Name="MemberId" />
+            </Principal>
+            <Dependent Role="Referrals">
+              <PropertyRef Name="ReferredByUserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Resumes_Member">
+          <End Role="Member" Type="Self.Member" Multiplicity="0..1" />
+          <End Role="Resumes" Type="Self.Resumes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Member">
+              <PropertyRef Name="MemberId" />
+            </Principal>
+            <Dependent Role="Resumes">
+              <PropertyRef Name="MemberId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Resumes_Templates">
+          <End Role="Templates" Type="Self.Templates" Multiplicity="0..1" />
+          <End Role="Resumes" Type="Self.Resumes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Templates">
+              <PropertyRef Name="TemplateId" />
+            </Principal>
+            <Dependent Role="Resumes">
+              <PropertyRef Name="TemplateId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ResumeSections_Resumes">
+          <End Role="Resumes" Type="Self.Resumes" Multiplicity="0..1" />
+          <End Role="ResumeSections" Type="Self.ResumeSections" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Resumes">
+              <PropertyRef Name="ResumeId" />
+            </Principal>
+            <Dependent Role="ResumeSections">
+              <PropertyRef Name="ResumeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ResumeSections_TemplateSections">
+          <End Role="TemplateSections" Type="Self.TemplateSections" Multiplicity="0..1" />
+          <End Role="ResumeSections" Type="Self.ResumeSections" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TemplateSections">
+              <PropertyRef Name="SectionId" />
+            </Principal>
+            <Dependent Role="ResumeSections">
+              <PropertyRef Name="SectionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Sharing_Member">
+          <End Role="Member" Type="Self.Member" Multiplicity="0..1" />
+          <End Role="Sharing" Type="Self.Sharing" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Member">
+              <PropertyRef Name="MemberId" />
+            </Principal>
+            <Dependent Role="Sharing">
+              <PropertyRef Name="MemberId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Sharing_Member1">
+          <End Role="Member" Type="Self.Member" Multiplicity="0..1" />
+          <End Role="Sharing" Type="Self.Sharing" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Member">
+              <PropertyRef Name="MemberId" />
+            </Principal>
+            <Dependent Role="Sharing">
+              <PropertyRef Name="CompanyMemberId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Skills_Member">
+          <End Role="Member" Type="Self.Member" Multiplicity="0..1" />
+          <End Role="Skills" Type="Self.Skills" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Member">
+              <PropertyRef Name="MemberId" />
+            </Principal>
+            <Dependent Role="Skills">
+              <PropertyRef Name="MemberId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TemplateSections_Templates">
+          <End Role="Templates" Type="Self.Templates" Multiplicity="0..1" />
+          <End Role="TemplateSections" Type="Self.TemplateSections" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Templates">
+              <PropertyRef Name="TemplateId" />
+            </Principal>
+            <Dependent Role="TemplateSections">
+              <PropertyRef Name="TemplateId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="dbresumebuilderModelStoreContainer">
+          <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Awards" EntityType="Self.Awards" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Certifications" EntityType="Self.Certifications" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Chat" EntityType="Self.Chat" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CompanyDetails" EntityType="Self.CompanyDetails" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ContactUs" EntityType="Self.ContactUs" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Copyrights" EntityType="Self.Copyrights" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Courses" EntityType="Self.Courses" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Education" EntityType="Self.Education" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Experience" EntityType="Self.Experience" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Hobby" EntityType="Self.Hobby" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Languages" EntityType="Self.Languages" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Member" EntityType="Self.Member" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NonCompanySharing" EntityType="Self.NonCompanySharing" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Patents" EntityType="Self.Patents" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PersonalInformation" EntityType="Self.PersonalInformation" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Plan" EntityType="Self.Plan" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Preference" EntityType="Self.Preference" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Projects" EntityType="Self.Projects" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PublicProfile" EntityType="Self.PublicProfile" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Referrals" EntityType="Self.Referrals" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Resumes" EntityType="Self.Resumes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ResumeSections" EntityType="Self.ResumeSections" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Sharing" EntityType="Self.Sharing" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Skills" EntityType="Self.Skills" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Templates" EntityType="Self.Templates" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TemplateSections" EntityType="Self.TemplateSections" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Awards_Member" Association="Self.FK_Awards_Member">
+            <End Role="Member" EntitySet="Member" />
+            <End Role="Awards" EntitySet="Awards" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Certifications_Member" Association="Self.FK_Certifications_Member">
+            <End Role="Member" EntitySet="Member" />
+            <End Role="Certifications" EntitySet="Certifications" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Chat_Member" Association="Self.FK_Chat_Member">
+            <End Role="Member" EntitySet="Member" />
+            <End Role="Chat" EntitySet="Chat" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Chat_Member1" Association="Self.FK_Chat_Member1">
+            <End Role="Member" EntitySet="Member" />
+            <End Role="Chat" EntitySet="Chat" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CompanyDetails_Member" Association="Self.FK_CompanyDetails_Member">
+            <End Role="Member" EntitySet="Member" />
+            <End Role="CompanyDetails" EntitySet="CompanyDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Copyrights_Member" Association="Self.FK_Copyrights_Member">
+            <End Role="Member" EntitySet="Member" />
+            <End Role="Copyrights" EntitySet="Copyrights" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Courses_Member" Association="Self.FK_Courses_Member">
+            <End Role="Member" EntitySet="Member" />
+            <End Role="Courses" EntitySet="Courses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Education_Member" Association="Self.FK_Education_Member">
+            <End Role="Member" EntitySet="Member" />
+            <End Role="Education" EntitySet="Education" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Experience_Member" Association="Self.FK_Experience_Member">
+            <End Role="Member" EntitySet="Member" />
+            <End Role="Experience" EntitySet="Experience" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Hobby_Member" Association="Self.FK_Hobby_Member">
+            <End Role="Member" EntitySet="Member" />
+            <End Role="Hobby" EntitySet="Hobby" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Languages_Member" Association="Self.FK_Languages_Member">
+            <End Role="Member" EntitySet="Member" />
+            <End Role="Languages" EntitySet="Languages" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Languages_Member1" Association="Self.FK_Languages_Member1">
+            <End Role="Member" EntitySet="Member" />
+            <End Role="Languages" EntitySet="Languages" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Member_AspNetUsers" Association="Self.FK_Member_AspNetUsers">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="Member" EntitySet="Member" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NonCompanySharing_Member" Association="Self.FK_NonCompanySharing_Member">
+            <End Role="Member" EntitySet="Member" />
+            <End Role="NonCompanySharing" EntitySet="NonCompanySharing" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NonCompanySharing_Resumes" Association="Self.FK_NonCompanySharing_Resumes">
+            <End Role="Resumes" EntitySet="Resumes" />
+            <End Role="NonCompanySharing" EntitySet="NonCompanySharing" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Patents_Member" Association="Self.FK_Patents_Member">
+            <End Role="Member" EntitySet="Member" />
+            <End Role="Patents" EntitySet="Patents" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PersonalInformation_Member" Association="Self.FK_PersonalInformation_Member">
+            <End Role="Member" EntitySet="Member" />
+            <End Role="PersonalInformation" EntitySet="PersonalInformation" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Plan_Member" Association="Self.FK_Plan_Member">
+            <End Role="Member" EntitySet="Member" />
+            <End Role="Plan" EntitySet="Plan" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Preference_Member" Association="Self.FK_Preference_Member">
+            <End Role="Member" EntitySet="Member" />
+            <End Role="Preference" EntitySet="Preference" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Projects_Member" Association="Self.FK_Projects_Member">
+            <End Role="Member" EntitySet="Member" />
+            <End Role="Projects" EntitySet="Projects" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PublicProfile_Member" Association="Self.FK_PublicProfile_Member">
+            <End Role="Member" EntitySet="Member" />
+            <End Role="PublicProfile" EntitySet="PublicProfile" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Referrals_Member" Association="Self.FK_Referrals_Member">
+            <End Role="Member" EntitySet="Member" />
+            <End Role="Referrals" EntitySet="Referrals" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Referrals_Member1" Association="Self.FK_Referrals_Member1">
+            <End Role="Member" EntitySet="Member" />
+            <End Role="Referrals" EntitySet="Referrals" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Resumes_Member" Association="Self.FK_Resumes_Member">
+            <End Role="Member" EntitySet="Member" />
+            <End Role="Resumes" EntitySet="Resumes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Resumes_Templates" Association="Self.FK_Resumes_Templates">
+            <End Role="Templates" EntitySet="Templates" />
+            <End Role="Resumes" EntitySet="Resumes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ResumeSections_Resumes" Association="Self.FK_ResumeSections_Resumes">
+            <End Role="Resumes" EntitySet="Resumes" />
+            <End Role="ResumeSections" EntitySet="ResumeSections" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ResumeSections_TemplateSections" Association="Self.FK_ResumeSections_TemplateSections">
+            <End Role="TemplateSections" EntitySet="TemplateSections" />
+            <End Role="ResumeSections" EntitySet="ResumeSections" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Sharing_Member" Association="Self.FK_Sharing_Member">
+            <End Role="Member" EntitySet="Member" />
+            <End Role="Sharing" EntitySet="Sharing" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Sharing_Member1" Association="Self.FK_Sharing_Member1">
+            <End Role="Member" EntitySet="Member" />
+            <End Role="Sharing" EntitySet="Sharing" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Skills_Member" Association="Self.FK_Skills_Member">
+            <End Role="Member" EntitySet="Member" />
+            <End Role="Skills" EntitySet="Skills" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TemplateSections_Templates" Association="Self.FK_TemplateSections_Templates">
+            <End Role="Templates" EntitySet="Templates" />
+            <End Role="TemplateSections" EntitySet="TemplateSections" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="dbresumebuilderModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="dbresumebuilderEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="AspNetUsers" EntityType="dbresumebuilderModel.AspNetUser" />
+          <EntitySet Name="Awards" EntityType="dbresumebuilderModel.Award" />
+          <EntitySet Name="Certifications" EntityType="dbresumebuilderModel.Certification" />
+          <EntitySet Name="CompanyDetails" EntityType="dbresumebuilderModel.CompanyDetail" />
+          <EntitySet Name="ContactUs" EntityType="dbresumebuilderModel.ContactU" />
+          <EntitySet Name="Copyrights" EntityType="dbresumebuilderModel.Copyright" />
+          <EntitySet Name="Courses" EntityType="dbresumebuilderModel.Cours" />
+          <EntitySet Name="Educations" EntityType="dbresumebuilderModel.Education" />
+          <EntitySet Name="Experiences" EntityType="dbresumebuilderModel.Experience" />
+          <EntitySet Name="Hobbies" EntityType="dbresumebuilderModel.Hobby" />
+          <EntitySet Name="Languages" EntityType="dbresumebuilderModel.Language" />
+          <EntitySet Name="Members" EntityType="dbresumebuilderModel.Member" />
+          <EntitySet Name="NonCompanySharings" EntityType="dbresumebuilderModel.NonCompanySharing" />
+          <EntitySet Name="Patents" EntityType="dbresumebuilderModel.Patent" />
+          <EntitySet Name="PersonalInformations" EntityType="dbresumebuilderModel.PersonalInformation" />
+          <EntitySet Name="Plans" EntityType="dbresumebuilderModel.Plan" />
+          <EntitySet Name="Preferences" EntityType="dbresumebuilderModel.Preference" />
+          <EntitySet Name="Projects" EntityType="dbresumebuilderModel.Project" />
+          <EntitySet Name="PublicProfiles" EntityType="dbresumebuilderModel.PublicProfile" />
+          <EntitySet Name="Resumes" EntityType="dbresumebuilderModel.Resume" />
+          <EntitySet Name="ResumeSections" EntityType="dbresumebuilderModel.ResumeSection" />
+          <EntitySet Name="Skills" EntityType="dbresumebuilderModel.Skill" />
+          <EntitySet Name="sysdiagrams" EntityType="dbresumebuilderModel.sysdiagram" />
+          <EntitySet Name="Templates" EntityType="dbresumebuilderModel.Template" />
+          <EntitySet Name="TemplateSections" EntityType="dbresumebuilderModel.TemplateSection" />
+          <AssociationSet Name="FK_Member_AspNetUsers" Association="dbresumebuilderModel.FK_Member_AspNetUsers">
+            <End Role="AspNetUser" EntitySet="AspNetUsers" />
+            <End Role="Member" EntitySet="Members" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Awards_Member" Association="dbresumebuilderModel.FK_Awards_Member">
+            <End Role="Member" EntitySet="Members" />
+            <End Role="Award" EntitySet="Awards" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Certifications_Member" Association="dbresumebuilderModel.FK_Certifications_Member">
+            <End Role="Member" EntitySet="Members" />
+            <End Role="Certification" EntitySet="Certifications" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CompanyDetails_Member" Association="dbresumebuilderModel.FK_CompanyDetails_Member">
+            <End Role="Member" EntitySet="Members" />
+            <End Role="CompanyDetail" EntitySet="CompanyDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Copyrights_Member" Association="dbresumebuilderModel.FK_Copyrights_Member">
+            <End Role="Member" EntitySet="Members" />
+            <End Role="Copyright" EntitySet="Copyrights" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Courses_Member" Association="dbresumebuilderModel.FK_Courses_Member">
+            <End Role="Member" EntitySet="Members" />
+            <End Role="Cours" EntitySet="Courses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Education_Member" Association="dbresumebuilderModel.FK_Education_Member">
+            <End Role="Member" EntitySet="Members" />
+            <End Role="Education" EntitySet="Educations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Experience_Member" Association="dbresumebuilderModel.FK_Experience_Member">
+            <End Role="Member" EntitySet="Members" />
+            <End Role="Experience" EntitySet="Experiences" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Hobby_Member" Association="dbresumebuilderModel.FK_Hobby_Member">
+            <End Role="Member" EntitySet="Members" />
+            <End Role="Hobby" EntitySet="Hobbies" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Languages_Member" Association="dbresumebuilderModel.FK_Languages_Member">
+            <End Role="Member" EntitySet="Members" />
+            <End Role="Language" EntitySet="Languages" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Languages_Member1" Association="dbresumebuilderModel.FK_Languages_Member1">
+            <End Role="Member" EntitySet="Members" />
+            <End Role="Language" EntitySet="Languages" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NonCompanySharing_Member" Association="dbresumebuilderModel.FK_NonCompanySharing_Member">
+            <End Role="Member" EntitySet="Members" />
+            <End Role="NonCompanySharing" EntitySet="NonCompanySharings" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Patents_Member" Association="dbresumebuilderModel.FK_Patents_Member">
+            <End Role="Member" EntitySet="Members" />
+            <End Role="Patent" EntitySet="Patents" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PersonalInformation_Member" Association="dbresumebuilderModel.FK_PersonalInformation_Member">
+            <End Role="Member" EntitySet="Members" />
+            <End Role="PersonalInformation" EntitySet="PersonalInformations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Plan_Member" Association="dbresumebuilderModel.FK_Plan_Member">
+            <End Role="Member" EntitySet="Members" />
+            <End Role="Plan" EntitySet="Plans" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Preference_Member" Association="dbresumebuilderModel.FK_Preference_Member">
+            <End Role="Member" EntitySet="Members" />
+            <End Role="Preference" EntitySet="Preferences" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Projects_Member" Association="dbresumebuilderModel.FK_Projects_Member">
+            <End Role="Member" EntitySet="Members" />
+            <End Role="Project" EntitySet="Projects" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PublicProfile_Member" Association="dbresumebuilderModel.FK_PublicProfile_Member">
+            <End Role="Member" EntitySet="Members" />
+            <End Role="PublicProfile" EntitySet="PublicProfiles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Resumes_Member" Association="dbresumebuilderModel.FK_Resumes_Member">
+            <End Role="Member" EntitySet="Members" />
+            <End Role="Resume" EntitySet="Resumes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Skills_Member" Association="dbresumebuilderModel.FK_Skills_Member">
+            <End Role="Member" EntitySet="Members" />
+            <End Role="Skill" EntitySet="Skills" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NonCompanySharing_Resumes" Association="dbresumebuilderModel.FK_NonCompanySharing_Resumes">
+            <End Role="Resume" EntitySet="Resumes" />
+            <End Role="NonCompanySharing" EntitySet="NonCompanySharings" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Resumes_Templates" Association="dbresumebuilderModel.FK_Resumes_Templates">
+            <End Role="Template" EntitySet="Templates" />
+            <End Role="Resume" EntitySet="Resumes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ResumeSections_Resumes" Association="dbresumebuilderModel.FK_ResumeSections_Resumes">
+            <End Role="Resume" EntitySet="Resumes" />
+            <End Role="ResumeSection" EntitySet="ResumeSections" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ResumeSections_TemplateSections" Association="dbresumebuilderModel.FK_ResumeSections_TemplateSections">
+            <End Role="TemplateSection" EntitySet="TemplateSections" />
+            <End Role="ResumeSection" EntitySet="ResumeSections" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TemplateSections_Templates" Association="dbresumebuilderModel.FK_TemplateSections_Templates">
+            <End Role="Template" EntitySet="Templates" />
+            <End Role="TemplateSection" EntitySet="TemplateSections" />
+          </AssociationSet>
+          <EntitySet Name="Chats" EntityType="dbresumebuilderModel.Chat" />
+          <EntitySet Name="Referrals" EntityType="dbresumebuilderModel.Referral" />
+          <EntitySet Name="Sharings" EntityType="dbresumebuilderModel.Sharing" />
+          <AssociationSet Name="FK_Chat_Member" Association="dbresumebuilderModel.FK_Chat_Member">
+            <End Role="Member" EntitySet="Members" />
+            <End Role="Chat" EntitySet="Chats" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Chat_Member1" Association="dbresumebuilderModel.FK_Chat_Member1">
+            <End Role="Member" EntitySet="Members" />
+            <End Role="Chat" EntitySet="Chats" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Referrals_Member" Association="dbresumebuilderModel.FK_Referrals_Member">
+            <End Role="Member" EntitySet="Members" />
+            <End Role="Referral" EntitySet="Referrals" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Referrals_Member1" Association="dbresumebuilderModel.FK_Referrals_Member1">
+            <End Role="Member" EntitySet="Members" />
+            <End Role="Referral" EntitySet="Referrals" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Sharing_Member" Association="dbresumebuilderModel.FK_Sharing_Member">
+            <End Role="Member" EntitySet="Members" />
+            <End Role="Sharing" EntitySet="Sharings" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Sharing_Member1" Association="dbresumebuilderModel.FK_Sharing_Member1">
+            <End Role="Member" EntitySet="Members" />
+            <End Role="Sharing" EntitySet="Sharings" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="AspNetUser">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="EmailConfirmed" Type="Boolean" Nullable="false" />
+          <Property Name="PasswordHash" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SecurityStamp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumberConfirmed" Type="Boolean" Nullable="false" />
+          <Property Name="TwoFactorEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="LockoutEndDateUtc" Type="DateTime" Precision="3" />
+          <Property Name="LockoutEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="AccessFailedCount" Type="Int32" Nullable="false" />
+          <Property Name="UserName" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Members" Relationship="dbresumebuilderModel.FK_Member_AspNetUsers" FromRole="AspNetUser" ToRole="Member" />
+        </EntityType>
+        <EntityType Name="Award">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MemberId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="AwardTitle" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="AwardedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ReceivedOn" Type="DateTime" Precision="0" />
+          <Property Name="AreaCompititionTitle" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Member" Relationship="dbresumebuilderModel.FK_Awards_Member" FromRole="Award" ToRole="Member" />
+        </EntityType>
+        <EntityType Name="Certification">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MemberId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="CertificateTitle" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Organization" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="GradeRank" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="AreaOfExpertise" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="DateOfCertification" Type="DateTime" Precision="0" />
+          <Property Name="ValidTill" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="Member" Relationship="dbresumebuilderModel.FK_Certifications_Member" FromRole="Certification" ToRole="Member" />
+        </EntityType>
+        <EntityType Name="CompanyDetail">
+          <Key>
+            <PropertyRef Name="MemberId" />
+          </Key>
+          <Property Name="MemberId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="CompanyName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CompanyAddress" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CompanyWebsite" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Location" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ContactPerson" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Member" Relationship="dbresumebuilderModel.FK_CompanyDetails_Member" FromRole="CompanyDetail" ToRole="Member" />
+        </EntityType>
+        <EntityType Name="ContactU">
+          <Key>
+            <PropertyRef Name="ContactUsId" />
+          </Key>
+          <Property Name="ContactUsId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RequestDate" Type="DateTime" Precision="3" />
+          <Property Name="SenderEmailId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Title" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Copyright">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="MemberId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="CRTitle" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="CRDate" Type="DateTime" Precision="0" />
+          <Property Name="CRDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Member" Relationship="dbresumebuilderModel.FK_Copyrights_Member" FromRole="Copyright" ToRole="Member" />
+        </EntityType>
+        <EntityType Name="Cours">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MemberId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="CourseTitle" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Institute" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Address" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Tenure" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="PersuedIn" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="Member" Relationship="dbresumebuilderModel.FK_Courses_Member" FromRole="Cours" ToRole="Member" />
+        </EntityType>
+        <EntityType Name="Education">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MemberId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="NameOfSchoolCollege" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Qualification" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Location" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="EducationBoard" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="StartDate" Type="DateTime" Precision="0" />
+          <Property Name="EndTime" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="Member" Relationship="dbresumebuilderModel.FK_Education_Member" FromRole="Education" ToRole="Member" />
+        </EntityType>
+        <EntityType Name="Experience">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MemberId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="JobTItle" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Employer" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CIty" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="State" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Country" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="StartDate" Type="DateTime" Precision="0" />
+          <Property Name="EndTime" Type="DateTime" Precision="0" />
+          <Property Name="IsCurrent" Type="Int32" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Member" Relationship="dbresumebuilderModel.FK_Experience_Member" FromRole="Experience" ToRole="Member" />
+        </EntityType>
+        <EntityType Name="Hobby">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MemberId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="Hobby1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Member" Relationship="dbresumebuilderModel.FK_Hobby_Member" FromRole="Hobby" ToRole="Member" />
+        </EntityType>
+        <EntityType Name="Language">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MemberId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="Language1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ReadProficiency" Type="Int32" />
+          <Property Name="WriteProficiency" Type="Int32" />
+          <Property Name="SpeakProficiency" Type="Int32" />
+          <Property Name="IsNative" Type="Int32" />
+          <NavigationProperty Name="Member" Relationship="dbresumebuilderModel.FK_Languages_Member" FromRole="Language" ToRole="Member" />
+          <NavigationProperty Name="Member1" Relationship="dbresumebuilderModel.FK_Languages_Member1" FromRole="Language" ToRole="Member" />
+        </EntityType>
+        <EntityType Name="Member">
+          <Key>
+            <PropertyRef Name="MemberId" />
+          </Key>
+          <Property Name="GoogleId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="MemberId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ReferralCode" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="RegistrationDate" Type="DateTime" Precision="3" />
+          <Property Name="RegistrationType" Type="Int32" />
+          <NavigationProperty Name="AspNetUser" Relationship="dbresumebuilderModel.FK_Member_AspNetUsers" FromRole="Member" ToRole="AspNetUser" />
+          <NavigationProperty Name="Awards" Relationship="dbresumebuilderModel.FK_Awards_Member" FromRole="Member" ToRole="Award" />
+          <NavigationProperty Name="Certifications" Relationship="dbresumebuilderModel.FK_Certifications_Member" FromRole="Member" ToRole="Certification" />
+          <NavigationProperty Name="CompanyDetail" Relationship="dbresumebuilderModel.FK_CompanyDetails_Member" FromRole="Member" ToRole="CompanyDetail" />
+          <NavigationProperty Name="Copyrights" Relationship="dbresumebuilderModel.FK_Copyrights_Member" FromRole="Member" ToRole="Copyright" />
+          <NavigationProperty Name="Courses" Relationship="dbresumebuilderModel.FK_Courses_Member" FromRole="Member" ToRole="Cours" />
+          <NavigationProperty Name="Educations" Relationship="dbresumebuilderModel.FK_Education_Member" FromRole="Member" ToRole="Education" />
+          <NavigationProperty Name="Experiences" Relationship="dbresumebuilderModel.FK_Experience_Member" FromRole="Member" ToRole="Experience" />
+          <NavigationProperty Name="Hobbies" Relationship="dbresumebuilderModel.FK_Hobby_Member" FromRole="Member" ToRole="Hobby" />
+          <NavigationProperty Name="Languages" Relationship="dbresumebuilderModel.FK_Languages_Member" FromRole="Member" ToRole="Language" />
+          <NavigationProperty Name="Languages1" Relationship="dbresumebuilderModel.FK_Languages_Member1" FromRole="Member" ToRole="Language" />
+          <NavigationProperty Name="NonCompanySharings" Relationship="dbresumebuilderModel.FK_NonCompanySharing_Member" FromRole="Member" ToRole="NonCompanySharing" />
+          <NavigationProperty Name="Patents" Relationship="dbresumebuilderModel.FK_Patents_Member" FromRole="Member" ToRole="Patent" />
+          <NavigationProperty Name="PersonalInformations" Relationship="dbresumebuilderModel.FK_PersonalInformation_Member" FromRole="Member" ToRole="PersonalInformation" />
+          <NavigationProperty Name="Plans" Relationship="dbresumebuilderModel.FK_Plan_Member" FromRole="Member" ToRole="Plan" />
+          <NavigationProperty Name="Preference" Relationship="dbresumebuilderModel.FK_Preference_Member" FromRole="Member" ToRole="Preference" />
+          <NavigationProperty Name="Projects" Relationship="dbresumebuilderModel.FK_Projects_Member" FromRole="Member" ToRole="Project" />
+          <NavigationProperty Name="PublicProfiles" Relationship="dbresumebuilderModel.FK_PublicProfile_Member" FromRole="Member" ToRole="PublicProfile" />
+          <NavigationProperty Name="Resumes" Relationship="dbresumebuilderModel.FK_Resumes_Member" FromRole="Member" ToRole="Resume" />
+          <NavigationProperty Name="Skills" Relationship="dbresumebuilderModel.FK_Skills_Member" FromRole="Member" ToRole="Skill" />
+          <NavigationProperty Name="Chats" Relationship="dbresumebuilderModel.FK_Chat_Member" FromRole="Member" ToRole="Chat" />
+          <NavigationProperty Name="Chats1" Relationship="dbresumebuilderModel.FK_Chat_Member1" FromRole="Member" ToRole="Chat" />
+          <NavigationProperty Name="Referrals" Relationship="dbresumebuilderModel.FK_Referrals_Member" FromRole="Member" ToRole="Referral" />
+          <NavigationProperty Name="Referrals1" Relationship="dbresumebuilderModel.FK_Referrals_Member1" FromRole="Member" ToRole="Referral" />
+          <NavigationProperty Name="Sharings" Relationship="dbresumebuilderModel.FK_Sharing_Member" FromRole="Member" ToRole="Sharing" />
+          <NavigationProperty Name="Sharings1" Relationship="dbresumebuilderModel.FK_Sharing_Member1" FromRole="Member" ToRole="Sharing" />
+        </EntityType>
+        <EntityType Name="NonCompanySharing">
+          <Key>
+            <PropertyRef Name="ShareindId" />
+          </Key>
+          <Property Name="ShareindId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MemberId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="SharedEmail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ResumeId" Type="Int32" />
+          <Property Name="SharedOn" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Member" Relationship="dbresumebuilderModel.FK_NonCompanySharing_Member" FromRole="NonCompanySharing" ToRole="Member" />
+          <NavigationProperty Name="Resume" Relationship="dbresumebuilderModel.FK_NonCompanySharing_Resumes" FromRole="NonCompanySharing" ToRole="Resume" />
+        </EntityType>
+        <EntityType Name="Patent">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MemberId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="PatentTitle" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="PatentDate" Type="DateTime" Precision="0" />
+          <Property Name="PatentDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Member" Relationship="dbresumebuilderModel.FK_Patents_Member" FromRole="Patent" ToRole="Member" />
+        </EntityType>
+        <EntityType Name="PersonalInformation">
+          <Key>
+            <PropertyRef Name="PersonalInfoId" />
+          </Key>
+          <Property Name="PersonalInfoId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MemberId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MiddleName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PreferredName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="City" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Country" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Pincode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="State" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Member" Relationship="dbresumebuilderModel.FK_PersonalInformation_Member" FromRole="PersonalInformation" ToRole="Member" />
+        </EntityType>
+        <EntityType Name="Plan">
+          <Key>
+            <PropertyRef Name="PlanId" />
+          </Key>
+          <Property Name="PlanId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MemberId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="GoogleId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="RegisteredEmail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SubscribedPlan" Type="Int32" />
+          <Property Name="FromDate" Type="DateTime" Precision="3" />
+          <Property Name="ToDate" Type="DateTime" Precision="3" />
+          <Property Name="PaymentDate" Type="DateTime" Precision="3" />
+          <Property Name="PaymentMode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PaymentAmount" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Comments" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Member" Relationship="dbresumebuilderModel.FK_Plan_Member" FromRole="Plan" ToRole="Member" />
+        </EntityType>
+        <EntityType Name="Preference">
+          <Key>
+            <PropertyRef Name="MemberId" />
+          </Key>
+          <Property Name="MemberId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="IsLookingForJob" Type="Int32" />
+          <Property Name="PreferredSkills" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PreferredLocation" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PreferredDesignation" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CurrentLocation" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IsReadyToReallocate" Type="Int32" />
+          <NavigationProperty Name="Member" Relationship="dbresumebuilderModel.FK_Preference_Member" FromRole="Preference" ToRole="Member" />
+        </EntityType>
+        <EntityType Name="Project">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MemberId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="ProjectTitle" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Technologies" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Tools" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Ownerr" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Role" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="TeamSIze" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="ShortDescription" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="LongDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Member" Relationship="dbresumebuilderModel.FK_Projects_Member" FromRole="Project" ToRole="Member" />
+        </EntityType>
+        <EntityType Name="PublicProfile">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="MemberId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="Title" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Link" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Member" Relationship="dbresumebuilderModel.FK_PublicProfile_Member" FromRole="PublicProfile" ToRole="Member" />
+        </EntityType>
+        <EntityType Name="Resume">
+          <Key>
+            <PropertyRef Name="ResumeId" />
+          </Key>
+          <Property Name="ResumeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MemberId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="Title" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+          <Property Name="DownloadCount" Type="Int32" />
+          <Property Name="ViewCount" Type="Int32" />
+          <Property Name="PublicUrl" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SecurityCode" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+          <Property Name="PublicSharingType" Type="Int32" />
+          <Property Name="IsDeleted" Type="Boolean" />
+          <Property Name="TemplateId" Type="Int32" />
+          <NavigationProperty Name="Member" Relationship="dbresumebuilderModel.FK_Resumes_Member" FromRole="Resume" ToRole="Member" />
+          <NavigationProperty Name="NonCompanySharings" Relationship="dbresumebuilderModel.FK_NonCompanySharing_Resumes" FromRole="Resume" ToRole="NonCompanySharing" />
+          <NavigationProperty Name="Template" Relationship="dbresumebuilderModel.FK_Resumes_Templates" FromRole="Resume" ToRole="Template" />
+          <NavigationProperty Name="ResumeSections" Relationship="dbresumebuilderModel.FK_ResumeSections_Resumes" FromRole="Resume" ToRole="ResumeSection" />
+        </EntityType>
+        <EntityType Name="ResumeSection">
+          <Key>
+            <PropertyRef Name="ResumeSectionId" />
+          </Key>
+          <Property Name="ResumeSectionId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ResumeId" Type="Int32" />
+          <Property Name="SectionId" Type="Int32" />
+          <Property Name="IsSelected" Type="Boolean" />
+          <Property Name="SectionOrder" Type="Int32" />
+          <NavigationProperty Name="Resume" Relationship="dbresumebuilderModel.FK_ResumeSections_Resumes" FromRole="ResumeSection" ToRole="Resume" />
+          <NavigationProperty Name="TemplateSection" Relationship="dbresumebuilderModel.FK_ResumeSections_TemplateSections" FromRole="ResumeSection" ToRole="TemplateSection" />
+        </EntityType>
+        <EntityType Name="Skill">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MemberId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="Skill1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Proficiency" Type="Int32" />
+          <Property Name="Certifications" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Member" Relationship="dbresumebuilderModel.FK_Skills_Member" FromRole="Skill" ToRole="Member" />
+        </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Template">
+          <Key>
+            <PropertyRef Name="TemplateId" />
+          </Key>
+          <Property Name="TemplateId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TemplateHtmlUrl" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PreviewImageUrl" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Resumes" Relationship="dbresumebuilderModel.FK_Resumes_Templates" FromRole="Template" ToRole="Resume" />
+          <NavigationProperty Name="TemplateSections" Relationship="dbresumebuilderModel.FK_TemplateSections_Templates" FromRole="Template" ToRole="TemplateSection" />
+        </EntityType>
+        <EntityType Name="TemplateSection">
+          <Key>
+            <PropertyRef Name="SectionId" />
+          </Key>
+          <Property Name="SectionId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AllowReorder" Type="Boolean" />
+          <Property Name="AllowSelection" Type="Boolean" />
+          <Property Name="TemplateId" Type="Int32" />
+          <NavigationProperty Name="ResumeSections" Relationship="dbresumebuilderModel.FK_ResumeSections_TemplateSections" FromRole="TemplateSection" ToRole="ResumeSection" />
+          <NavigationProperty Name="Template" Relationship="dbresumebuilderModel.FK_TemplateSections_Templates" FromRole="TemplateSection" ToRole="Template" />
+          <Property Name="SectionName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <Association Name="FK_Member_AspNetUsers">
+          <End Type="dbresumebuilderModel.AspNetUser" Role="AspNetUser" Multiplicity="0..1" />
+          <End Type="dbresumebuilderModel.Member" Role="Member" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Member">
+              <PropertyRef Name="GoogleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Awards_Member">
+          <End Type="dbresumebuilderModel.Member" Role="Member" Multiplicity="0..1" />
+          <End Type="dbresumebuilderModel.Award" Role="Award" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Member">
+              <PropertyRef Name="MemberId" />
+            </Principal>
+            <Dependent Role="Award">
+              <PropertyRef Name="MemberId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Certifications_Member">
+          <End Type="dbresumebuilderModel.Member" Role="Member" Multiplicity="0..1" />
+          <End Type="dbresumebuilderModel.Certification" Role="Certification" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Member">
+              <PropertyRef Name="MemberId" />
+            </Principal>
+            <Dependent Role="Certification">
+              <PropertyRef Name="MemberId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CompanyDetails_Member">
+          <End Type="dbresumebuilderModel.Member" Role="Member" Multiplicity="1" />
+          <End Type="dbresumebuilderModel.CompanyDetail" Role="CompanyDetail" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Member">
+              <PropertyRef Name="MemberId" />
+            </Principal>
+            <Dependent Role="CompanyDetail">
+              <PropertyRef Name="MemberId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Copyrights_Member">
+          <End Type="dbresumebuilderModel.Member" Role="Member" Multiplicity="0..1" />
+          <End Type="dbresumebuilderModel.Copyright" Role="Copyright" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Member">
+              <PropertyRef Name="MemberId" />
+            </Principal>
+            <Dependent Role="Copyright">
+              <PropertyRef Name="MemberId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Courses_Member">
+          <End Type="dbresumebuilderModel.Member" Role="Member" Multiplicity="0..1" />
+          <End Type="dbresumebuilderModel.Cours" Role="Cours" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Member">
+              <PropertyRef Name="MemberId" />
+            </Principal>
+            <Dependent Role="Cours">
+              <PropertyRef Name="MemberId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Education_Member">
+          <End Type="dbresumebuilderModel.Member" Role="Member" Multiplicity="0..1" />
+          <End Type="dbresumebuilderModel.Education" Role="Education" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Member">
+              <PropertyRef Name="MemberId" />
+            </Principal>
+            <Dependent Role="Education">
+              <PropertyRef Name="MemberId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Experience_Member">
+          <End Type="dbresumebuilderModel.Member" Role="Member" Multiplicity="0..1" />
+          <End Type="dbresumebuilderModel.Experience" Role="Experience" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Member">
+              <PropertyRef Name="MemberId" />
+            </Principal>
+            <Dependent Role="Experience">
+              <PropertyRef Name="MemberId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Hobby_Member">
+          <End Type="dbresumebuilderModel.Member" Role="Member" Multiplicity="0..1" />
+          <End Type="dbresumebuilderModel.Hobby" Role="Hobby" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Member">
+              <PropertyRef Name="MemberId" />
+            </Principal>
+            <Dependent Role="Hobby">
+              <PropertyRef Name="MemberId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Languages_Member">
+          <End Type="dbresumebuilderModel.Member" Role="Member" Multiplicity="0..1" />
+          <End Type="dbresumebuilderModel.Language" Role="Language" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Member">
+              <PropertyRef Name="MemberId" />
+            </Principal>
+            <Dependent Role="Language">
+              <PropertyRef Name="MemberId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Languages_Member1">
+          <End Type="dbresumebuilderModel.Member" Role="Member" Multiplicity="0..1" />
+          <End Type="dbresumebuilderModel.Language" Role="Language" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Member">
+              <PropertyRef Name="MemberId" />
+            </Principal>
+            <Dependent Role="Language">
+              <PropertyRef Name="MemberId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NonCompanySharing_Member">
+          <End Type="dbresumebuilderModel.Member" Role="Member" Multiplicity="0..1" />
+          <End Type="dbresumebuilderModel.NonCompanySharing" Role="NonCompanySharing" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Member">
+              <PropertyRef Name="MemberId" />
+            </Principal>
+            <Dependent Role="NonCompanySharing">
+              <PropertyRef Name="MemberId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Patents_Member">
+          <End Type="dbresumebuilderModel.Member" Role="Member" Multiplicity="0..1" />
+          <End Type="dbresumebuilderModel.Patent" Role="Patent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Member">
+              <PropertyRef Name="MemberId" />
+            </Principal>
+            <Dependent Role="Patent">
+              <PropertyRef Name="MemberId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PersonalInformation_Member">
+          <End Type="dbresumebuilderModel.Member" Role="Member" Multiplicity="1" />
+          <End Type="dbresumebuilderModel.PersonalInformation" Role="PersonalInformation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Member">
+              <PropertyRef Name="MemberId" />
+            </Principal>
+            <Dependent Role="PersonalInformation">
+              <PropertyRef Name="MemberId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Plan_Member">
+          <End Type="dbresumebuilderModel.Member" Role="Member" Multiplicity="0..1" />
+          <End Type="dbresumebuilderModel.Plan" Role="Plan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Member">
+              <PropertyRef Name="MemberId" />
+            </Principal>
+            <Dependent Role="Plan">
+              <PropertyRef Name="MemberId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Preference_Member">
+          <End Type="dbresumebuilderModel.Member" Role="Member" Multiplicity="1" />
+          <End Type="dbresumebuilderModel.Preference" Role="Preference" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Member">
+              <PropertyRef Name="MemberId" />
+            </Principal>
+            <Dependent Role="Preference">
+              <PropertyRef Name="MemberId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Projects_Member">
+          <End Type="dbresumebuilderModel.Member" Role="Member" Multiplicity="0..1" />
+          <End Type="dbresumebuilderModel.Project" Role="Project" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Member">
+              <PropertyRef Name="MemberId" />
+            </Principal>
+            <Dependent Role="Project">
+              <PropertyRef Name="MemberId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PublicProfile_Member">
+          <End Type="dbresumebuilderModel.Member" Role="Member" Multiplicity="0..1" />
+          <End Type="dbresumebuilderModel.PublicProfile" Role="PublicProfile" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Member">
+              <PropertyRef Name="MemberId" />
+            </Principal>
+            <Dependent Role="PublicProfile">
+              <PropertyRef Name="MemberId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Resumes_Member">
+          <End Type="dbresumebuilderModel.Member" Role="Member" Multiplicity="0..1" />
+          <End Type="dbresumebuilderModel.Resume" Role="Resume" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Member">
+              <PropertyRef Name="MemberId" />
+            </Principal>
+            <Dependent Role="Resume">
+              <PropertyRef Name="MemberId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Skills_Member">
+          <End Type="dbresumebuilderModel.Member" Role="Member" Multiplicity="0..1" />
+          <End Type="dbresumebuilderModel.Skill" Role="Skill" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Member">
+              <PropertyRef Name="MemberId" />
+            </Principal>
+            <Dependent Role="Skill">
+              <PropertyRef Name="MemberId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NonCompanySharing_Resumes">
+          <End Type="dbresumebuilderModel.Resume" Role="Resume" Multiplicity="0..1" />
+          <End Type="dbresumebuilderModel.NonCompanySharing" Role="NonCompanySharing" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Resume">
+              <PropertyRef Name="ResumeId" />
+            </Principal>
+            <Dependent Role="NonCompanySharing">
+              <PropertyRef Name="ResumeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Resumes_Templates">
+          <End Type="dbresumebuilderModel.Template" Role="Template" Multiplicity="0..1" />
+          <End Type="dbresumebuilderModel.Resume" Role="Resume" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Template">
+              <PropertyRef Name="TemplateId" />
+            </Principal>
+            <Dependent Role="Resume">
+              <PropertyRef Name="TemplateId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ResumeSections_Resumes">
+          <End Type="dbresumebuilderModel.Resume" Role="Resume" Multiplicity="0..1" />
+          <End Type="dbresumebuilderModel.ResumeSection" Role="ResumeSection" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Resume">
+              <PropertyRef Name="ResumeId" />
+            </Principal>
+            <Dependent Role="ResumeSection">
+              <PropertyRef Name="ResumeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ResumeSections_TemplateSections">
+          <End Type="dbresumebuilderModel.TemplateSection" Role="TemplateSection" Multiplicity="0..1" />
+          <End Type="dbresumebuilderModel.ResumeSection" Role="ResumeSection" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TemplateSection">
+              <PropertyRef Name="SectionId" />
+            </Principal>
+            <Dependent Role="ResumeSection">
+              <PropertyRef Name="SectionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TemplateSections_Templates">
+          <End Type="dbresumebuilderModel.Template" Role="Template" Multiplicity="0..1" />
+          <End Type="dbresumebuilderModel.TemplateSection" Role="TemplateSection" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Template">
+              <PropertyRef Name="TemplateId" />
+            </Principal>
+            <Dependent Role="TemplateSection">
+              <PropertyRef Name="TemplateId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Chat">
+          <Key>
+            <PropertyRef Name="ChatId" />
+          </Key>
+          <Property Name="ChatId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FromUser" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="ToUser" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="MessageDateTime" Type="DateTime" Precision="3" />
+          <Property Name="Message" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Member" Relationship="dbresumebuilderModel.FK_Chat_Member" FromRole="Chat" ToRole="Member" />
+          <NavigationProperty Name="Member1" Relationship="dbresumebuilderModel.FK_Chat_Member1" FromRole="Chat" ToRole="Member" />
+        </EntityType>
+        <EntityType Name="Referral">
+          <Key>
+            <PropertyRef Name="ReferralId" />
+          </Key>
+          <Property Name="ReferralId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="ReferredByUserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Member" Relationship="dbresumebuilderModel.FK_Referrals_Member" FromRole="Referral" ToRole="Member" />
+          <NavigationProperty Name="Member1" Relationship="dbresumebuilderModel.FK_Referrals_Member1" FromRole="Referral" ToRole="Member" />
+        </EntityType>
+        <EntityType Name="Sharing">
+          <Key>
+            <PropertyRef Name="SharingId" />
+          </Key>
+          <Property Name="SharingId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MemberId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="CompanyMemberId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="ResumeId" Type="Int32" />
+          <Property Name="SharedOn" Type="DateTime" Precision="3" />
+          <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="RevokedOn" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Member" Relationship="dbresumebuilderModel.FK_Sharing_Member" FromRole="Sharing" ToRole="Member" />
+          <NavigationProperty Name="Member1" Relationship="dbresumebuilderModel.FK_Sharing_Member1" FromRole="Sharing" ToRole="Member" />
+        </EntityType>
+        <Association Name="FK_Chat_Member">
+          <End Type="dbresumebuilderModel.Member" Role="Member" Multiplicity="0..1" />
+          <End Type="dbresumebuilderModel.Chat" Role="Chat" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Member">
+              <PropertyRef Name="MemberId" />
+            </Principal>
+            <Dependent Role="Chat">
+              <PropertyRef Name="FromUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Chat_Member1">
+          <End Type="dbresumebuilderModel.Member" Role="Member" Multiplicity="0..1" />
+          <End Type="dbresumebuilderModel.Chat" Role="Chat" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Member">
+              <PropertyRef Name="MemberId" />
+            </Principal>
+            <Dependent Role="Chat">
+              <PropertyRef Name="ToUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Referrals_Member">
+          <End Type="dbresumebuilderModel.Member" Role="Member" Multiplicity="0..1" />
+          <End Type="dbresumebuilderModel.Referral" Role="Referral" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Member">
+              <PropertyRef Name="MemberId" />
+            </Principal>
+            <Dependent Role="Referral">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Referrals_Member1">
+          <End Type="dbresumebuilderModel.Member" Role="Member" Multiplicity="0..1" />
+          <End Type="dbresumebuilderModel.Referral" Role="Referral" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Member">
+              <PropertyRef Name="MemberId" />
+            </Principal>
+            <Dependent Role="Referral">
+              <PropertyRef Name="ReferredByUserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Sharing_Member">
+          <End Type="dbresumebuilderModel.Member" Role="Member" Multiplicity="0..1" />
+          <End Type="dbresumebuilderModel.Sharing" Role="Sharing" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Member">
+              <PropertyRef Name="MemberId" />
+            </Principal>
+            <Dependent Role="Sharing">
+              <PropertyRef Name="MemberId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Sharing_Member1">
+          <End Type="dbresumebuilderModel.Member" Role="Member" Multiplicity="0..1" />
+          <End Type="dbresumebuilderModel.Sharing" Role="Sharing" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Member">
+              <PropertyRef Name="MemberId" />
+            </Principal>
+            <Dependent Role="Sharing">
+              <PropertyRef Name="CompanyMemberId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="dbresumebuilderModelStoreContainer" CdmEntityContainer="dbresumebuilderEntities">
+          <EntitySetMapping Name="AspNetUsers">
+            <EntityTypeMapping TypeName="dbresumebuilderModel.AspNetUser">
+              <MappingFragment StoreEntitySet="AspNetUsers">
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="AccessFailedCount" ColumnName="AccessFailedCount" />
+                <ScalarProperty Name="LockoutEnabled" ColumnName="LockoutEnabled" />
+                <ScalarProperty Name="LockoutEndDateUtc" ColumnName="LockoutEndDateUtc" />
+                <ScalarProperty Name="TwoFactorEnabled" ColumnName="TwoFactorEnabled" />
+                <ScalarProperty Name="PhoneNumberConfirmed" ColumnName="PhoneNumberConfirmed" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="SecurityStamp" ColumnName="SecurityStamp" />
+                <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+                <ScalarProperty Name="EmailConfirmed" ColumnName="EmailConfirmed" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Awards">
+            <EntityTypeMapping TypeName="dbresumebuilderModel.Award">
+              <MappingFragment StoreEntitySet="Awards">
+                <ScalarProperty Name="AreaCompititionTitle" ColumnName="AreaCompititionTitle" />
+                <ScalarProperty Name="ReceivedOn" ColumnName="ReceivedOn" />
+                <ScalarProperty Name="AwardedBy" ColumnName="AwardedBy" />
+                <ScalarProperty Name="AwardTitle" ColumnName="AwardTitle" />
+                <ScalarProperty Name="MemberId" ColumnName="MemberId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Certifications">
+            <EntityTypeMapping TypeName="dbresumebuilderModel.Certification">
+              <MappingFragment StoreEntitySet="Certifications">
+                <ScalarProperty Name="ValidTill" ColumnName="ValidTill" />
+                <ScalarProperty Name="DateOfCertification" ColumnName="DateOfCertification" />
+                <ScalarProperty Name="AreaOfExpertise" ColumnName="AreaOfExpertise" />
+                <ScalarProperty Name="GradeRank" ColumnName="GradeRank" />
+                <ScalarProperty Name="Organization" ColumnName="Organization" />
+                <ScalarProperty Name="CertificateTitle" ColumnName="CertificateTitle" />
+                <ScalarProperty Name="MemberId" ColumnName="MemberId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CompanyDetails">
+            <EntityTypeMapping TypeName="dbresumebuilderModel.CompanyDetail">
+              <MappingFragment StoreEntitySet="CompanyDetails">
+                <ScalarProperty Name="ContactPerson" ColumnName="ContactPerson" />
+                <ScalarProperty Name="Location" ColumnName="Location" />
+                <ScalarProperty Name="CompanyWebsite" ColumnName="CompanyWebsite" />
+                <ScalarProperty Name="CompanyAddress" ColumnName="CompanyAddress" />
+                <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+                <ScalarProperty Name="MemberId" ColumnName="MemberId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ContactUs">
+            <EntityTypeMapping TypeName="dbresumebuilderModel.ContactU">
+              <MappingFragment StoreEntitySet="ContactUs">
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="SenderEmailId" ColumnName="SenderEmailId" />
+                <ScalarProperty Name="RequestDate" ColumnName="RequestDate" />
+                <ScalarProperty Name="ContactUsId" ColumnName="ContactUsId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Copyrights">
+            <EntityTypeMapping TypeName="dbresumebuilderModel.Copyright">
+              <MappingFragment StoreEntitySet="Copyrights">
+                <ScalarProperty Name="CRDescription" ColumnName="CRDescription" />
+                <ScalarProperty Name="CRDate" ColumnName="CRDate" />
+                <ScalarProperty Name="CRTitle" ColumnName="CRTitle" />
+                <ScalarProperty Name="MemberId" ColumnName="MemberId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Courses">
+            <EntityTypeMapping TypeName="dbresumebuilderModel.Cours">
+              <MappingFragment StoreEntitySet="Courses">
+                <ScalarProperty Name="PersuedIn" ColumnName="PersuedIn" />
+                <ScalarProperty Name="Tenure" ColumnName="Tenure" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Institute" ColumnName="Institute" />
+                <ScalarProperty Name="CourseTitle" ColumnName="CourseTitle" />
+                <ScalarProperty Name="MemberId" ColumnName="MemberId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Educations">
+            <EntityTypeMapping TypeName="dbresumebuilderModel.Education">
+              <MappingFragment StoreEntitySet="Education">
+                <ScalarProperty Name="EndTime" ColumnName="EndTime" />
+                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+                <ScalarProperty Name="EducationBoard" ColumnName="EducationBoard" />
+                <ScalarProperty Name="Location" ColumnName="Location" />
+                <ScalarProperty Name="Qualification" ColumnName="Qualification" />
+                <ScalarProperty Name="NameOfSchoolCollege" ColumnName="NameOfSchoolCollege" />
+                <ScalarProperty Name="MemberId" ColumnName="MemberId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Experiences">
+            <EntityTypeMapping TypeName="dbresumebuilderModel.Experience">
+              <MappingFragment StoreEntitySet="Experience">
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="IsCurrent" ColumnName="IsCurrent" />
+                <ScalarProperty Name="EndTime" ColumnName="EndTime" />
+                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="CIty" ColumnName="CIty" />
+                <ScalarProperty Name="Employer" ColumnName="Employer" />
+                <ScalarProperty Name="JobTItle" ColumnName="JobTItle" />
+                <ScalarProperty Name="MemberId" ColumnName="MemberId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Hobbies">
+            <EntityTypeMapping TypeName="dbresumebuilderModel.Hobby">
+              <MappingFragment StoreEntitySet="Hobby">
+                <ScalarProperty Name="Hobby1" ColumnName="Hobby" />
+                <ScalarProperty Name="MemberId" ColumnName="MemberId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Languages">
+            <EntityTypeMapping TypeName="dbresumebuilderModel.Language">
+              <MappingFragment StoreEntitySet="Languages">
+                <ScalarProperty Name="IsNative" ColumnName="IsNative" />
+                <ScalarProperty Name="SpeakProficiency" ColumnName="SpeakProficiency" />
+                <ScalarProperty Name="WriteProficiency" ColumnName="WriteProficiency" />
+                <ScalarProperty Name="ReadProficiency" ColumnName="ReadProficiency" />
+                <ScalarProperty Name="Language1" ColumnName="Language" />
+                <ScalarProperty Name="MemberId" ColumnName="MemberId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Members">
+            <EntityTypeMapping TypeName="dbresumebuilderModel.Member">
+              <MappingFragment StoreEntitySet="Member">
+                <ScalarProperty Name="RegistrationType" ColumnName="RegistrationType" />
+                <ScalarProperty Name="RegistrationDate" ColumnName="RegistrationDate" />
+                <ScalarProperty Name="ReferralCode" ColumnName="ReferralCode" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="MemberId" ColumnName="MemberId" />
+                <ScalarProperty Name="GoogleId" ColumnName="GoogleId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NonCompanySharings">
+            <EntityTypeMapping TypeName="dbresumebuilderModel.NonCompanySharing">
+              <MappingFragment StoreEntitySet="NonCompanySharing">
+                <ScalarProperty Name="SharedOn" ColumnName="SharedOn" />
+                <ScalarProperty Name="ResumeId" ColumnName="ResumeId" />
+                <ScalarProperty Name="SharedEmail" ColumnName="SharedEmail" />
+                <ScalarProperty Name="MemberId" ColumnName="MemberId" />
+                <ScalarProperty Name="ShareindId" ColumnName="ShareindId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Patents">
+            <EntityTypeMapping TypeName="dbresumebuilderModel.Patent">
+              <MappingFragment StoreEntitySet="Patents">
+                <ScalarProperty Name="PatentDescription" ColumnName="PatentDescription" />
+                <ScalarProperty Name="PatentDate" ColumnName="PatentDate" />
+                <ScalarProperty Name="PatentTitle" ColumnName="PatentTitle" />
+                <ScalarProperty Name="MemberId" ColumnName="MemberId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PersonalInformations">
+            <EntityTypeMapping TypeName="dbresumebuilderModel.PersonalInformation">
+              <MappingFragment StoreEntitySet="PersonalInformation">
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Pincode" ColumnName="Pincode" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="PreferredName" ColumnName="PreferredName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="MemberId" ColumnName="MemberId" />
+                <ScalarProperty Name="PersonalInfoId" ColumnName="PersonalInfoId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Plans">
+            <EntityTypeMapping TypeName="dbresumebuilderModel.Plan">
+              <MappingFragment StoreEntitySet="Plan">
+                <ScalarProperty Name="Comments" ColumnName="Comments" />
+                <ScalarProperty Name="PaymentAmount" ColumnName="PaymentAmount" />
+                <ScalarProperty Name="PaymentMode" ColumnName="PaymentMode" />
+                <ScalarProperty Name="PaymentDate" ColumnName="PaymentDate" />
+                <ScalarProperty Name="ToDate" ColumnName="ToDate" />
+                <ScalarProperty Name="FromDate" ColumnName="FromDate" />
+                <ScalarProperty Name="SubscribedPlan" ColumnName="SubscribedPlan" />
+                <ScalarProperty Name="RegisteredEmail" ColumnName="RegisteredEmail" />
+                <ScalarProperty Name="GoogleId" ColumnName="GoogleId" />
+                <ScalarProperty Name="MemberId" ColumnName="MemberId" />
+                <ScalarProperty Name="PlanId" ColumnName="PlanId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Preferences">
+            <EntityTypeMapping TypeName="dbresumebuilderModel.Preference">
+              <MappingFragment StoreEntitySet="Preference">
+                <ScalarProperty Name="IsReadyToReallocate" ColumnName="IsReadyToReallocate" />
+                <ScalarProperty Name="CurrentLocation" ColumnName="CurrentLocation" />
+                <ScalarProperty Name="PreferredDesignation" ColumnName="PreferredDesignation" />
+                <ScalarProperty Name="PreferredLocation" ColumnName="PreferredLocation" />
+                <ScalarProperty Name="PreferredSkills" ColumnName="PreferredSkills" />
+                <ScalarProperty Name="IsLookingForJob" ColumnName="IsLookingForJob" />
+                <ScalarProperty Name="MemberId" ColumnName="MemberId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Projects">
+            <EntityTypeMapping TypeName="dbresumebuilderModel.Project">
+              <MappingFragment StoreEntitySet="Projects">
+                <ScalarProperty Name="LongDescription" ColumnName="LongDescription" />
+                <ScalarProperty Name="ShortDescription" ColumnName="ShortDescription" />
+                <ScalarProperty Name="TeamSIze" ColumnName="TeamSIze" />
+                <ScalarProperty Name="Role" ColumnName="Role" />
+                <ScalarProperty Name="Ownerr" ColumnName="Ownerr" />
+                <ScalarProperty Name="Tools" ColumnName="Tools" />
+                <ScalarProperty Name="Technologies" ColumnName="Technologies" />
+                <ScalarProperty Name="ProjectTitle" ColumnName="ProjectTitle" />
+                <ScalarProperty Name="MemberId" ColumnName="MemberId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PublicProfiles">
+            <EntityTypeMapping TypeName="dbresumebuilderModel.PublicProfile">
+              <MappingFragment StoreEntitySet="PublicProfile">
+                <ScalarProperty Name="Link" ColumnName="Link" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="MemberId" ColumnName="MemberId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Resumes">
+            <EntityTypeMapping TypeName="dbresumebuilderModel.Resume">
+              <MappingFragment StoreEntitySet="Resumes">
+                <ScalarProperty Name="TemplateId" ColumnName="TemplateId" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="PublicSharingType" ColumnName="PublicSharingType" />
+                <ScalarProperty Name="SecurityCode" ColumnName="SecurityCode" />
+                <ScalarProperty Name="PublicUrl" ColumnName="PublicUrl" />
+                <ScalarProperty Name="ViewCount" ColumnName="ViewCount" />
+                <ScalarProperty Name="DownloadCount" ColumnName="DownloadCount" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="MemberId" ColumnName="MemberId" />
+                <ScalarProperty Name="ResumeId" ColumnName="ResumeId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ResumeSections">
+            <EntityTypeMapping TypeName="dbresumebuilderModel.ResumeSection">
+              <MappingFragment StoreEntitySet="ResumeSections">
+                <ScalarProperty Name="SectionOrder" ColumnName="SectionOrder" />
+                <ScalarProperty Name="IsSelected" ColumnName="IsSelected" />
+                <ScalarProperty Name="SectionId" ColumnName="SectionId" />
+                <ScalarProperty Name="ResumeId" ColumnName="ResumeId" />
+                <ScalarProperty Name="ResumeSectionId" ColumnName="ResumeSectionId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Skills">
+            <EntityTypeMapping TypeName="dbresumebuilderModel.Skill">
+              <MappingFragment StoreEntitySet="Skills">
+                <ScalarProperty Name="Certifications" ColumnName="Certifications" />
+                <ScalarProperty Name="Proficiency" ColumnName="Proficiency" />
+                <ScalarProperty Name="Skill1" ColumnName="Skill" />
+                <ScalarProperty Name="MemberId" ColumnName="MemberId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="dbresumebuilderModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="definition" ColumnName="definition" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Templates">
+            <EntityTypeMapping TypeName="dbresumebuilderModel.Template">
+              <MappingFragment StoreEntitySet="Templates">
+                <ScalarProperty Name="PreviewImageUrl" ColumnName="PreviewImageUrl" />
+                <ScalarProperty Name="TemplateHtmlUrl" ColumnName="TemplateHtmlUrl" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="TemplateId" ColumnName="TemplateId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TemplateSections">
+            <EntityTypeMapping TypeName="dbresumebuilderModel.TemplateSection">
+              <MappingFragment StoreEntitySet="TemplateSections">
+                <ScalarProperty Name="SectionName" ColumnName="SectionName" />
+                <ScalarProperty Name="TemplateId" ColumnName="TemplateId" />
+                <ScalarProperty Name="AllowSelection" ColumnName="AllowSelection" />
+                <ScalarProperty Name="AllowReorder" ColumnName="AllowReorder" />
+                <ScalarProperty Name="SectionId" ColumnName="SectionId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Chats">
+            <EntityTypeMapping TypeName="dbresumebuilderModel.Chat">
+              <MappingFragment StoreEntitySet="Chat">
+                <ScalarProperty Name="Message" ColumnName="Message" />
+                <ScalarProperty Name="MessageDateTime" ColumnName="MessageDateTime" />
+                <ScalarProperty Name="ToUser" ColumnName="ToUser" />
+                <ScalarProperty Name="FromUser" ColumnName="FromUser" />
+                <ScalarProperty Name="ChatId" ColumnName="ChatId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Referrals">
+            <EntityTypeMapping TypeName="dbresumebuilderModel.Referral">
+              <MappingFragment StoreEntitySet="Referrals">
+                <ScalarProperty Name="ReferredByUserId" ColumnName="ReferredByUserId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="ReferralId" ColumnName="ReferralId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Sharings">
+            <EntityTypeMapping TypeName="dbresumebuilderModel.Sharing">
+              <MappingFragment StoreEntitySet="Sharing">
+                <ScalarProperty Name="RevokedOn" ColumnName="RevokedOn" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="SharedOn" ColumnName="SharedOn" />
+                <ScalarProperty Name="ResumeId" ColumnName="ResumeId" />
+                <ScalarProperty Name="CompanyMemberId" ColumnName="CompanyMemberId" />
+                <ScalarProperty Name="MemberId" ColumnName="MemberId" />
+                <ScalarProperty Name="SharingId" ColumnName="SharingId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

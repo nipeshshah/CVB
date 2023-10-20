@@ -71,8 +71,8 @@ namespace CVB.Controllers
                 TwoFactor = await UserManager.GetTwoFactorEnabledAsync(userId),
                 Logins = await UserManager.GetLoginsAsync(userId),
                 BrowserRemembered = await AuthenticationManager.TwoFactorBrowserRememberedAsync(userId),
-                Email = new Database.dbresumebuilderEntities().AspNetUsers.Where(t => t.Id == userId).First().Email,
-                MemberId = new CVB.Framework.fw().security.EncryptString(userId.ToString())
+                Email = new DBHandler.Database.dbresumebuilderEntities().AspNetUsers.Where(t => t.Id == userId).First().Email,
+                MemberId = new Helpers.Helper().security.EncryptString(userId.ToString())
             };
             return View(model);
         }

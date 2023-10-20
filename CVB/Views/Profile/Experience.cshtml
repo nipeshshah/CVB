@@ -3,51 +3,55 @@
     ViewBag.Title = "Experience";
     Layout = "~/Views/Shared/ViewPage1.cshtml";
 }
-<script src="~/ClientSideLogic/profile.js"></script>
-<script>
+@section scripts {
 
-    $(document).ready(function () {
-        console.log('First Call:');
+    <script src="~/ClientSideLogic/profile.js"></script>
+    <script>
 
-        userprofile.loadExperience(callback);
+        $(document).ready(function () {
+            console.log('First Call:');
 
-    });
+            userprofile.loadExperience(callback);
 
-    function callback(data) {
-        var exps = JSON.parse(data.data);
-        $('#experienceRow').html('');
-        var html = "";
-        exps.forEach(function name(item) {
-            html += `<tr><td>` + item.JobTItle + `</td>
-                <td>`+ item.Employer + `</td>
-                <td>`+ item.CIty + `,` + item.State + + `,` + + item.Country + `</td>
-                <td>`+ moment(item.StartDate).format('MM/DD/YYYY') + `</td>
-                <td>`+ (item.IsCurrent ? "Current" : moment(item.EndTime).format('MM/DD/YYYY')) + `</td>
-                </tr><tr><td colspan="5"><i>`+ item.Description + `</i></td></tr>`
         });
-        $('#experienceRow').html(html);
-    }
 
-    function createExperience() {
-        var formData = {
-            //language: $("#experience").val(),
-            jobTitle: $("#jobTitle").val(),
-            employer: $("#employer").val(),
-            city: $("#city").val(),
-            state: $('#state').val(),
-            country: $('#country').val(),
-            startDate: $('#startDate').val(),
-            endDate: $("#endDate").val(),
-            isCurrent: $('#isCurrent').val(),
-            description: $("#description").val()
-        };
+        function callback(data) {
+            var exps = JSON.parse(data.data);
+            $('#experienceRow').html('');
+            var html = "";
+            exps.forEach(function name(item) {
+                debugger;
+                html += `<tr><td>` + item.JobTItle + `</td>
+                        <td>`+ item.Employer + `</td>
+                        <td>`+ item.CIty + `, ` + item.State + `, ` + item.Country + `</td>
+                        <td>`+ moment(item.StartDate).format('DD/MM/YYYY') + `</td>
+                        <td>`+ (item.IsCurrent == 1 ? "Current" : moment(item.EndTime).format('DD/MM/YYYY')) + `</td>
+                        </tr><tr><td colspan="5"><i>`+ item.Description + `</i></td></tr>`
+            });
+            $('#experienceRow').html(html);
+        }
 
-        userprofile.updateExperience(formData);
-        userprofile.loadExperience(callback);
+        function createExperience() {
+            var formData = {
+                //language: $("#experience").val(),
+                jobTitle: $("#jobTitle").val(),
+                employer: $("#employer").val(),
+                city: $("#city").val(),
+                state: $('#state').val(),
+                country: $('#country').val(),
+                startDate: $('#startDate').val(),
+                endDate: $("#endDate").val(),
+                isCurrent: $('#isCurrent').is(":checked"),
+                description: $("#description").val()
+            };
 
-    }
+            userprofile.updateExperience(formData);
+            userprofile.loadExperience(callback);
 
-</script>
+        }
+
+    </script>
+}
 <div>
     <section class="mb-2">
         <div class="row d-flex justify-content-center">
@@ -55,60 +59,60 @@
                 <form>
                     <div class="row mb-4">
                         <div class="col-md-3 col-sm-4">
-                            <div class="form-outline">
-                                <input type="text" id="jobTitle" class="form-control" name="jobTitle" />
+                            <div class="form-floating">
+                                <input type="text" id="jobTitle" class="form-control" name="jobTitle" placeholder="Job Title" />
                                 <label class="form-label" for="jobTitle">Job Title</label>
                             </div>
                         </div>
                         <div class="col-md-3 col-sm-4">
-                            <div class="form-outline">
-                                <input type="text" id="employer" class="form-control" name="employer" />
+                            <div class="form-floating">
+                                <input type="text" id="employer" class="form-control" name="employer" placeholder="Employer" />
                                 <label class="form-label" for="employer">Employer</label>
                             </div>
                         </div>
                         <div class="col-md-3 col-sm-4">
-                            <div class="form-outline">
-                                <input type="text" id="city" class="form-control" name="city" />
+                            <div class="form-floating">
+                                <input type="text" id="city" class="form-control" name="city" placeholder="City" />
                                 <label class="form-label" for="city">City</label>
                             </div>
                         </div>
                         <div class="col-md-3 col-sm-4">
-                            <div class="form-outline">
-                                <input type="text" id="state" class="form-control" name="state" />
+                            <div class="form-floating">
+                                <input type="text" id="state" class="form-control" name="state" placeholder="State" />
                                 <label class="form-label" for="state">State</label>
                             </div>
                         </div>
                     </div>
                     <div class="row mb-4">
                         <div class="col-md-3 col-sm-4">
-                            <div class="form-outline">
-                                <input type="text" id="country" class="form-control" name="country" />
+                            <div class="form-floating">
+                                <input type="text" id="country" class="form-control" name="country" placeholder="Country" />
                                 <label class="form-label" for="country">Country</label>
                             </div>
                         </div>
                         <div class="col-md-3 col-sm-4">
-                            <div class="form-outline">
-                                <input type="date" id="startDate" class="form-control" name="startDate" />
+                            <div class="form-floating">
+                                <input type="date" id="startDate" class="form-control" name="startDate" placeholder="Start Date" />
                                 <label class="form-label" for="startDate">Start Date</label>
                             </div>
                         </div>
                         <div class="col-md-3 col-sm-4">
-                            <div class="form-outline">
-                                <input type="date" id="endDate" class="form-control" name="endDate" />
+                            <div class="form-floating">
+                                <input type="date" id="endDate" class="form-control" name="endDate" placeholder="End Date" />
                                 <label class="form-label" for="endDate">End Date</label>
                             </div>
                         </div>
                         <div class="col-md-3 col-sm-4">
-                            <div class="form-outline">
-                                <input type="checkbox" id="isCurrent" class="form-check-input" name="isCurrent" />
-                                <label class="form-label" for="isCurrent">Currently Working</label>
+                            <div class="form-check">
+                                <input type="checkbox" id="isCurrent" class="form-control form-check-input" name="isCurrent" />
+                                <label class="form-label" for="isCurrent"> Currently Working</label>
                             </div>
                         </div>
                     </div>
                     <div class="row mb-4">
                         <div class="col-md-12 col-sm-12">
-                            <div class="form-outline">
-                                <textarea class="form-control" id="description" name="description" rows="4" required></textarea>
+                            <div class="form-floating">
+                                <textarea class="form-control" id="description" placeholder="Description" name="description" rows="4" required></textarea>
                                 <label class="form-label" for="description">Description</label>
                             </div>
                         </div>
