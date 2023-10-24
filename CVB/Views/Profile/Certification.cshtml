@@ -3,55 +3,56 @@
     ViewBag.Title = "Certifications";
     Layout = "~/Views/Shared/ViewPage1.cshtml";
 }
+@section scripts {
+    <script src="~/ClientSideLogic/profile.js"></script>
+    <script>
 
-<script src="~/ClientSideLogic/profile.js"></script>
-<script>
+        $(document).ready(function () {
+            console.log('First Call:');
 
-    $(document).ready(function () {
-        console.log('First Call:');
+            userprofile.loadCertification(callback);
 
-        userprofile.loadCertification(callback);
-
-    });
-
-    function callback(data) {
-        var langs = JSON.parse(data.data);
-        $('#languagesRow').html('<tr>');
-        var html = "";
-        debugger;
-        JSON.parse(data.data).forEach(function name(params) {
-            html += '<tr>'
-            html += '<td>' + params.title + '</td>'
-            html += '<td>' + params.organization + '</td>'
-            html += '<td>' + params.grade + '</td>'
-            html += '<td>' + params.areaexpertise + '</td>'
-            html += '<td>' + params.certdate + '</td>'
-            html += '<td>' + params.validtill + '</td>'
-            html += '</tr>'
         });
-        $('#languagesRow').html(html + "</tr>");
-    }
 
-    function createLanguage() {
-        var formData = {
-            title: $("#title").val(),
-            organization: $("#organization").val(),
-            grade: $("#grade").val(),
-            areaexpertise: $("#area-expertise").val(),
-            certdate: $("#cert-date").val(),
-            validtill: $("#valid-till").val()
-        };
+        function callback(data) {
+            var langs = JSON.parse(data.data);
+            $('#certificationRow').html('<tr>');
+            var html = "";
+            debugger;
+            JSON.parse(data.data).forEach(function name(params) {
+                html += '<tr>'
+                html += '<td>' + params.title + '</td>'
+                html += '<td>' + params.organization + '</td>'
+                html += '<td>' + params.grade + '</td>'
+                html += '<td>' + params.areaexpertise + '</td>'
+                html += '<td>' + params.certdate + '</td>'
+                html += '<td>' + params.validtill + '</td>'
+                html += '</tr>'
+            });
+            $('#certificationRow').html(html + "</tr>");
+        }
 
-        // Convert the JavaScript object to JSON
-        //var formDataJSON = JSON.stringify(formData);
+        function createLanguage() {
+            var formData = {
+                title: $("#title").val(),
+                organization: $("#organization").val(),
+                grade: $("#grade").val(),
+                areaexpertise: $("#area-expertise").val(),
+                certdate: $("#cert-date").val(),
+                validtill: $("#valid-till").val()
+            };
 
-        userprofile.updateLanguage(formData);
-        userprofile.loadLanguages(callback);
+            // Convert the JavaScript object to JSON
+            //var formDataJSON = JSON.stringify(formData);
 
-    }
+            updateprofile.updateCertification(formData, function () {
+                    updateprofile.loadCertification(callback);
+            });           
 
-</script>
+        }
 
+    </script>
+}
 
 <div>
     <section class="mb-2">
@@ -59,14 +60,14 @@
             <div class="col-md-12">
                 <form>
                     <div class="row mb-4">
-                        <div class="col-md-6 col-sm-6">
-                            <div class="form-outline">
+                        <div class="col-md-3 col-sm-4">
+                            <div class="form-floating">
                                 <input type="text" id="title" class="form-control" name="title" />
                                 <label class="form-label" for="title">Title</label>
                             </div>
                         </div>
-                        <div class="col-md-6 col-sm-6">
-                            <div class="form-outline">
+                        <div class="col-md-3 col-sm-4">
+                            <div class="form-floating">
                                 <input type="text" id="organization" class="form-control" name="organization" />
                                 <label class="form-label" for="organization">Organization</label>
                             </div>
@@ -74,25 +75,25 @@
                     </div>
                     <div class="row mb-4">
                         <div class="col-md-3 col-sm-4">
-                            <div class="form-outline">
+                            <div class="form-floating">
                                 <input type="text" id="grade" class="form-control" name="grade" />
                                 <label class="form-label" for="grade">Grade/Rank</label>
                             </div>
                         </div>
                         <div class="col-md-3 col-sm-4">
-                            <div class="form-outline">
+                            <div class="form-floating">
                                 <input type="text" id="area-expertise" class="form-control" name="area-expertise" />
                                 <label class="form-label" for="area-expertise">Area of Expertise</label>
                             </div>
                         </div>
                         <div class="col-md-3 col-sm-4">
-                            <div class="form-outline">
+                            <div class="form-floating">
                                 <input type="date" id="cert-date" class="form-control" name="cert-date" />
                                 <label class="form-label" for="cert-date">Date of Certification</label>
                             </div>
                         </div>
                         <div class="col-md-3 col-sm-4">
-                            <div class="form-outline">
+                            <div class="form-floating">
                                 <input type="date" id="valid-till" class="form-control" name="valid-till" />
                                 <label class="form-label" for="valid-till">Valid Till</label>
                             </div>

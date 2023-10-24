@@ -3,30 +3,131 @@
     ViewBag.Title = "Copyrights";
     Layout = "~/Views/Shared/ViewPage1.cshtml";
 }
+@section scripts {
+    <script src="~/ClientSideLogic/profile.js"></script>
+    <script>
 
-<div class="container mt-5">
-    <div class="row">
-        <div class="col-md-3">
-            <label for="patent-title">Title</label>
+        $(document).ready(function () {
+            console.log('First Call:');
+
+            userprofile.loadCopyRight(callback);
+
+        });
+
+        function callback(data) {
+            var copyrights = JSON.parse(data.data);
+            $('#copyRightRow').html('<tr>');
+            var html = "";
+            copyrights.forEach(function name(params) {
+                html += '<tr>'
+                html += '<td>' + params.Title + '</td>'
+                html += '<td>' + params.Date + '</td>'
+                html += '<td>' + params.Description + '</td>'
+                html += '</tr>'
+            });
+            $('#copyRightRow').html(html + "</tr>");
+        }
+
+        function createCopyRight() {
+            var formData = {
+
+                title: $("#copyRight-title").val(),
+
+                date: $("#copyRight-date").val(),
+
+                description: $("#copyRight-description").val()
+
+            };
+
+            userprofile.updateCopyRight(formData, function () {
+                userprofile.loadCopyRight(callback);
+            });
+            
+        }
+
+    </script>
+}
+<div>
+    <section class="mb-2">
+        <div class="row d-flex justify-content-center">
+            <div class="col-md-12">
+                <form>
+                    <div class="row mb-4">
+                        <div class="col-md-3 col-sm-4">
+                            <div class="form-floating">
+                                <input type="text" id="copyright-title" class="form-control" name="copyright-title" placeholder="Title" />
+                                <label for="copyright-title">Title</label>
+                            </div>
+                            <div class="form-floating">
+                                <input type="text" id="copyright-date" class="form-control" name="copyright-date" placeholder="Date" />
+                                <label for="copyright-date">Copyright Date</label>
+                            </div>
+                            <div class="form-floating">
+                                <input type="text" id="copyright-description" class="form-control" name="copyright-description" placeholder="Description" />
+                                <label for="copyright-description">Copyright Description</label>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
         </div>
-        <div class="col-md-3">
-            <label for="patent-date">Copyright Date</label>
-        </div>
-        <div class="col-md-6">
-            <label for="patent-description">Description</label>
-        </div>
-    </div>
-    <!-- You can repeat the row below to add more patents -->
-    <div class="row">
-        <div class="col-md-3">
-            <span>Smartphone Interface Patent</span>
-        </div>
-        <div class="col-md-3">
-            <span>June 15, 2021</span>
-        </div>
-        <div class="col-md-6">
-            <span>A patent for an innovative user interface for smartphones.</span>
-        </div>
-    </div>
-    <!-- You can repeat the row above to add more patents -->
+    </section>
 </div>
+
+<div>
+    <table class="table align-middle mb-0 bg-white">
+        <thead class="bg-light">
+            <tr>
+                <th>Title</th>
+                <th>Copyright Date</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody id="copyRightRow">
+        </tbody>
+    </table>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--< div class="col-md-3 col-sm-4" >
+            <div class="container mt-5">
+                <div class="row">
+                    <div class="col-md-3">
+                        <label for="copyright-title">Title</label>
+                    </div>
+                    <div class="col-md-3">
+                        <label for="copyright-date">Copyright Date</label>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="copyright-description">Description</label>
+                    </div>
+                </div>-->
+<!-- You can repeat the row below to add more copyrights -->
+<!--<div class="row">
+    <div class="col-md-3">
+        <span>Smartphone Interface copyright</span>
+    </div>
+    <div class="col-md-3">
+        <span>June 15, 2021</span>
+    </div>
+    <div class="col-md-6">
+        <span>A copyright for an innovative user interface for smartphones.</span>
+    </div>
+</div>-->
+<!-- You can repeat the row above to add more copyrights -->
+<!--</div>-->

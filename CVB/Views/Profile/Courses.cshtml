@@ -3,80 +3,81 @@
     ViewBag.Title = "Courses";
     Layout = "~/Views/Shared/ViewPage1.cshtml";
 }
+@section scripts {
+    <script src="~/ClientSideLogic/profile.js"></script>
+    <script>
 
-<script src="~/ClientSideLogic/profile.js"></script>
-<script>
-
-    $(document).ready(function () {
-        userprofile.loadCourses(callback);
-    });
-
-    function callback(data) {
-        debugger;
-        var exps = JSON.parse(data.data);
-        $('#courseRow').html('');
-        var html = "";
-        exps.forEach(function name(item) {
-            console.log(item);
-            html += `<tr><td>` + item.CourseTitle + `</td>
-                         <td>`+ item.Institute + `</td>
-                         <td>`+ item.Address + `</td>
-                         <td>`+ item.Tenure + `</td>
-                         <td>`+ item.PersuedIn + `</td>
-                         </tr>`
+        $(document).ready(function () {
+            userprofile.loadCourses(callback);
         });
-        $('#courseRow').html(html);
-    }
 
-    function createCourses() {
-        var formData = {
-            course: $("#course").val(),
-            institute: $("#institute").val(),
-            address: $("#address").val(),
-            tenure: $('#tenure').val(),
-            peruseIn: $('#peruseIn :Selected').val()
-        };
+        function callback(data) {
+            debugger;
+            var exps = JSON.parse(data.data);
+            $('#courseRow').html('');
+            var html = "";
+            exps.forEach(function name(item) {
+                console.log(item);
+                html += `<tr><td>` + item.CourseTitle + `</td>
+                             <td>`+ item.Institute + `</td>
+                             <td>`+ item.Address + `</td>
+                             <td>`+ item.Tenure + `</td>
+                             <td>`+ item.PersuedIn + `</td>
+                             </tr>`
+            });
+            $('#courseRow').html(html);
+        }
 
-        userprofile.updateCourses(formData);
-        userprofile.loadCourses(callback);
+        function createCourses() {
+            var formData = {
+                course: $("#course").val(),
+                institute: $("#institute").val(),
+                address: $("#address").val(),
+                tenure: $('#tenure').val(),
+                peruseIn: $('#peruseIn :Selected').val()
+            };
 
-    }
+            userprofile.updateCourses(formData, function () {
+userprofile.loadCourses(callback);
+            });
+        }
 
-</script>
+    </script>
+}
 <div>
     <section class="mb-2">
         <div class="row d-flex justify-content-center">
             <div class="col-md-12">
                 <form>
                     <div class="row mb-4">
-                        <div class="col-md-6 col-sm-6">
-                            <div class="form-outline">
+                        <div class="col-md-3 col-sm-4">
+                            <div class="form-floating">
                                 <input type="text" id="course" class="form-control" name="course" />
                                 <label class="form-label" for="course">Course</label>
                             </div>
                         </div>
-                        <div class="col-md-6 col-sm-6">
-                            <div class="form-outline">
+                        <div class="col-md-3 col-sm-4">
+                            <div class="form-floating">
                                 <input type="text" id="institute" class="form-control" name="institute" />
                                 <label class="form-label" for="institute">Institute</label>
                             </div>
                         </div>
                     </div>
                     <div class="row mb-4">
-                        <div class="col-md-4 col-sm-4">
-                            <div class="form-outline">
+                        <div class="col-md-3 col-sm-4">
+                            <div class="form-floating">
                                 <input type="text" id="address" class="form-control" name="address" />
                                 <label class="form-label" for="address">Address</label>
                             </div>
                         </div>
-                        <div class="col-md-4 col-sm-4">
-                            <div class="form-outline">
+                        <div class="col-md-3 col-sm-4">
+                            <div class="form-floating">
                                 <input type="text" id="tenure" class="form-control" name="tenure" />
                                 <label class="form-label" for="tenure">Tenure</label>
                             </div>
                         </div>
-                        <div class="col-md-4 col-sm-4">
-                            <div class="form-outline">
+                        <div class="col-md-3 col-sm-4">
+                            <div class="form-floating">
                                 <select class="form-control" id="peruseIn" name="peruseIn" required>
                                     <option value="Full-Time">Full-Time</option>
                                     <option value="Part-Time">Part-Time</option>

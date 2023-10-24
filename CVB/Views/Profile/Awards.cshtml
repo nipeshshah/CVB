@@ -3,8 +3,93 @@
     ViewBag.Title = "Awards";
     Layout = "~/Views/Shared/ViewPage1.cshtml";
 }
+@section scripts {
+    <script src="~/ClientSideLogic/profile.js"></script>
+    <script>
+
+        $(document).ready(function () {
+            console.log('First Call:');
+
+            userprofile.loadAwards(callback);
+
+        });
+
+        function callback(data) {
+            var awards = JSON.parse(data.data);
+            $('#awardsRow').html('<tr>');
+            var html = "";
+            debugger;
+            JSON.parse(data.data).forEach(function name(params) {
+                html += '<tr>'
+                html += '<td>' + params.Title + '</td>'
+                html += '<td>' + params.AwardedBy + '</td>'
+                html += '<td>' + params.ReceivedOn + '</td>'
+                html += '<td>' + params.CompetitionTitle + '</td>'
+                html += '</tr>'
+            });
+            $('#awardsRow').html(html + "</tr>");
+        }
+
+        function createAward() {
+            var formData = {
+                title: $("#award-title").val(),
+                awardedBy: $("#awarded-by").val(),
+                receivedOn: $("#received-on").val(),
+                competitionTitle: $("#competition-title").val()
+            };
+
+            userprofile.updateAward(formData, function () {
+                userprofile.loadAwards(callback);
+            });
+
+        }
+
+    </script>
+}
 
 <div class="container mt-5">
+    <section class="mb-2">
+        <div class="row d-flex justify-content-center">
+            <div class="col-md-12">
+                <form>
+                    <div class="form-floating">
+                        <input type="text" id="award-title" class="form-control" name="award-title" placeholder="Title" />
+                        <label for="award-title">Title</label>
+                    </div>
+                    <div class="col-md-3 col-sm-4">
+                        <div class="form-floating">
+                            <input type="text" id="awarded-by" class="form-control" name="awarded-by" placeholder="Awarded By" />
+                            <label class="form-label" for="awarded-by">Awarded By</label>
+                        </div>
+                        <div class="form-floating">
+                            <input type="text" id="received-on" class="form-control" name="received-on" placeholder="Received On" />
+                            <label class="form-label" for="received-on">Received On</label>
+                        </div>
+                        <div class="form-floating">
+                            <input type="text" id="competition-title" class="form-control" name="competition-title" placeholder="Competition Title" />
+                            <label class="form-label" for="competition-title">Competition Title</label>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+</div>
+<div>
+    <table class="table align-middle mb-0 bg-white">
+        <thead class="bg-light">
+            <tr>
+                <th scope="col">Title</th>
+                <th scope="col">Awarded By</th>
+                <th scope="col">Received On</th>
+                <th scope="col">Competition Title</th>
+            </tr>
+        </thead>
+        <tbody id="awardsRow">
+        </tbody>
+    </table>
+</div>
+<!--<div class="container mt-5">
     <div class="row">
         <div class="col-md-3">
             <label for="award-title">Title</label>
@@ -18,21 +103,21 @@
         <div class="col-md-3">
             <label for="competition-title">Area/Competition Title</label>
         </div>
+    </div>-->
+<!-- You can repeat the row below to add more awards -->
+<!--<div class="row">
+    <div class="col-md-3">
+        <span>Best Employee of the Year</span>
     </div>
-    <!-- You can repeat the row below to add more awards -->
-    <div class="row">
-        <div class="col-md-3">
-            <span>Best Employee of the Year</span>
-        </div>
-        <div class="col-md-3">
-            <span>ABC Corporation</span>
-        </div>
-        <div class="col-md-3">
-            <span>April 28, 2022</span>
-        </div>
-        <div class="col-md-3">
-            <span>Employee Excellence</span>
-        </div>
+    <div class="col-md-3">
+        <span>ABC Corporation</span>
     </div>
-    <!-- You can repeat the row above to add more awards -->
-</div>
+    <div class="col-md-3">
+        <span>April 28, 2022</span>
+    </div>
+    <div class="col-md-3">
+        <span>Employee Excellence</span>
+    </div>
+</div>-->
+<!-- You can repeat the row above to add more awards -->
+<!--</div>-->

@@ -4,17 +4,79 @@
     Layout = "~/Views/Shared/ViewPage1.cshtml";
 }
 
-<div class="container mt-5">
-    <div class="row">
-        <div class="col-md-12">
-            <label for="link-title">Title</label>
+@section scripts {
+    <script src="~/ClientSideLogic/profile.js"></script>
+    <script>
+
+
+        $(document).ready(function () {
+            console.log('First Call:');
+
+            userprofile.loadHobbies(callback);
+
+        });
+
+        function callback(data) {
+            var hobbies = JSON.parse(data.data);
+            $('#hobbiesRow').html('<tr>');
+            var html = "";
+            debugger;
+            hobbies.forEach(function name(params) {
+                html += '<tr>'
+                html += '<td>' + params.Title + '</td>'
+                html += '<td>' + params.Description + '</td>'
+                html += '</tr>'
+            });
+            $('#hobbiesRow').html(html + "</tr>");
+        }
+
+        function createHobbies() {
+            var formData = {
+
+                title: $("#hobby-title").val(),
+
+                description: $("#hobby-description").val()
+
+            };
+
+            userprofile.updateHobbies(formData, function () {
+userprofile.loadHobbies(callback);
+            });
+        }
+    </script>
+}
+
+<div>
+    <section class="mb-2">
+        <div class="row d-flex justify-content-center">
+            <div class="col-md-12">
+                <form>
+                    <div class="row mb-4">
+                        <div class="col-md-3 col-sm-4">
+                            <div class="form-floating">
+                                <input type="text" id="hobby-title" class="form-control" name="hobby-title" placeholder="Title" />
+                                <label for="hobby-title">Title</label>
+                            </div>
+                            <div class="form-floating">
+                                <input type="text" id="hobby-description" class="form-control" name="hobby-description" placeholder="Description" />
+                                <label for="hobby-description">Description</label>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
         </div>
-    </div>
-    <!-- You can repeat the row below to add more links -->
-    <div class="row">
-        <div class="col-md-12">
-            <span>Cricket</span>
-        </div>
-    </div>
-    <!-- You can repeat the row above to add more links -->
+    </section>
+</div>
+
+<div>
+    <table class="table">
+        <thead class="bg-light">
+            <tr>
+                <th>Title</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody id="hobbiesRow">
+        </tbody>
 </div>

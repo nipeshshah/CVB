@@ -45,8 +45,9 @@
                 description: $("#description").val()
             };
 
-            userprofile.updateExperience(formData);
-            userprofile.loadExperience(callback);
+            userprofile.updateExperience(formData, function () {
+userprofile.loadExperience(callback);
+            });
 
         }
 

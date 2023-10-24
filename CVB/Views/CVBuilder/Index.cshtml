@@ -4,6 +4,55 @@
     ViewBag.Title = "My Resumes";
     Layout = "~/Views/Shared/_LayoutCopy.cshtml";
 }
+
+@section scripts {
+    <script src="~/ClientSideLogic/resumetemplate.js"></script>
+    <script>
+
+        $(document).ready(function () {
+            cvtemplate.getresumes(callback);
+        });
+
+        function callback(response) {
+            var langs = JSON.parse(response.data);
+            console.log(langs);
+            $('#resumeItems').html('<tr>');
+            var html = "";
+            langs.forEach(function name(params) {
+                html += `<div id="tab-1" class="tab-pane fade show p-0 active">
+                        <div class="job-item p-4 mb-4">
+                            <div class="row g-4">
+                                <div class="col-sm-12 col-md-8 d-flex align-items-center">
+                                    <div class="text-start ps-4">
+                                        <h5 class="mb-3">`+ params.Title + `</h5>` +
+                    //<span class="text-truncate me-3"><i class="fa fa-map-marker-alt text-primary me-2"></i>`+ moment(params.CreatedOn).format('DD MMM, YYYY') +`</span>
+                    `<span class="text-truncate me-3"><i class="far fa-clock text-primary me-2"> ` + params.Downloads + ` Downloads</i></span>` +
+                    //<span class="text-truncate me-0"><i class="far fa-money-bill-alt text-primary me-2"></i> 682 </span>
+                    //<span class="text-truncate me-0"><i class="far fa-money-bill-alt text-primary me-2"></i> 95 </span>
+                    `<a class="btn btn-link btn-rounded btn-sm fw-bold"
+                                           href="https://localhost:44304/`+ params.User + `/cv/` + params.PublicUrl + `">Resume Public Url</a><code>` + params.Code + `</code>
+                                    </div>
+                                </div>
+                                <div class="col-sm-12 col-md-4 d-flex flex-column align-items-start align-items-md-end justify-content-center">
+                                    <div class="d-flex mb-3">` +
+                    //<a title="Lock" class="btn btn-light btn-square me-3"><i class="fas fa-key m-1"></i></a>
+                    //<a title="Unlock" class="btn btn-light btn-square me-3"><i class="fas fa-unlock m-1"></i></a>
+                    `<a title="Delete" class="btn btn-light btn-square me-3"><i class="fas fa-trash m-1"></i></a>
+                                    </div>
+                                    <small class="text-truncate me-3"><i class="far fa-calendar-alt text-primary me-3"></i>Created : `+ moment(params.CreatedDate).format('DD MMM, YYYY') + `</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>`
+            });
+            $('#resumeItems').html(html + "</tr>");
+            //12 Companies, 22 Emails
+        }
+
+    </script>
+}
+
+
 <div class="container-xxl pb-5">
     <div class="container">
         <h1 class="text-center mb-5 wow fadeInUp" data-wow-delay="0.1s">Resumes</h1>
@@ -11,6 +60,8 @@
             <a href="/CVBuilder/build"><h5 class="card-title"><i class="fas fa-plus me-3 "></i>Create New Resume</h5></a>
         </div>
         <div class="tab-class text-center wow fadeInUp" data-wow-delay="0.3s">
+            <div class="tab-content" id="resumeItems"></div>
+
             <div class="tab-content">
                 <div id="tab-1" class="tab-pane fade show p-0 active">
                     <div class="job-item p-4 mb-4">
@@ -45,77 +96,77 @@
     </div>
 </div>
 @*<div class="text-right">
-    <a href="/CVBuilder/build"><h5 class="card-title"><i class="fas fa-plus me-3 "></i>Create New Resume</h5></a>
-</div>
-<table class="table align-middle mb-0 bg-white">
-    <thead class="bg-light">
-        <tr>
-            <th>
-                Title
-            </th>
-            <th>
-                Created On
-            </th>
-            <th>
-                Shared With Companies
-            </th>
-            <th>
-                Views
-            </th>
-            <th>
-                Downloads
-            </th>
-            <th>
-                Public Url
-            </th>
-            <th>
-                Security Tag
-            </th>
-            <th>
-                Actions
-            </th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>
-                <div class="d-flex align-items-center">
-                    <div class="ms-3">
-                        <p class="fw-bold mb-1">Resume for SharePoint Developer</p>
+        <a href="/CVBuilder/build"><h5 class="card-title"><i class="fas fa-plus me-3 "></i>Create New Resume</h5></a>
+    </div>
+    <table class="table align-middle mb-0 bg-white">
+        <thead class="bg-light">
+            <tr>
+                <th>
+                    Title
+                </th>
+                <th>
+                    Created On
+                </th>
+                <th>
+                    Shared With Companies
+                </th>
+                <th>
+                    Views
+                </th>
+                <th>
+                    Downloads
+                </th>
+                <th>
+                    Public Url
+                </th>
+                <th>
+                    Security Tag
+                </th>
+                <th>
+                    Actions
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>
+                    <div class="d-flex align-items-center">
+                        <div class="ms-3">
+                            <p class="fw-bold mb-1">Resume for SharePoint Developer</p>
+                        </div>
                     </div>
-                </div>
-            </td>
-            <td>
-                20 Jan, 2023
-            </td>
-            <td>
-                12 Companies, 22 Emails
-            </td>
-            <td>
-                682
-            </td>
-            <td>
-                95
-            </td>
-            <td>
-                <a class="btn btn-link btn-rounded btn-sm fw-bold"
-                   href="https://cvmaker.com/nipeshshah/cv/25BX66M">25BX66M</a>
-            </td>
-            <td>
-                NS665SAS#45
-            </td>
-            <td>
-                <button type="button" class="btn btn-primary"><span title="Manage" class="fas fa-plus m-1" /></button>
-                <button type="button" class="btn btn-primary"><span title="Share" class="fas fa-share m-1" /></button>
-                <button type="button" class="btn btn-primary"><span title="Lock" class="fas fa-key m-1" /></button>
-                <button type="button" class="btn btn-primary"><span title="Unlock" class="fas fa-unlock m-1" /></button>
-                <button type="button" class="btn btn-primary"><span title="Delete" class="fas fa-trash m-1" /></button>
-            </td>
-        </tr>
-        
-        
-    </tbody>
-</table>*@
+                </td>
+                <td>
+                    20 Jan, 2023
+                </td>
+                <td>
+                    12 Companies, 22 Emails
+                </td>
+                <td>
+                    682
+                </td>
+                <td>
+                    95
+                </td>
+                <td>
+                    <a class="btn btn-link btn-rounded btn-sm fw-bold"
+                       href="https://cvmaker.com/nipeshshah/cv/25BX66M">25BX66M</a>
+                </td>
+                <td>
+                    NS665SAS#45
+                </td>
+                <td>
+                    <button type="button" class="btn btn-primary"><span title="Manage" class="fas fa-plus m-1" /></button>
+                    <button type="button" class="btn btn-primary"><span title="Share" class="fas fa-share m-1" /></button>
+                    <button type="button" class="btn btn-primary"><span title="Lock" class="fas fa-key m-1" /></button>
+                    <button type="button" class="btn btn-primary"><span title="Unlock" class="fas fa-unlock m-1" /></button>
+                    <button type="button" class="btn btn-primary"><span title="Delete" class="fas fa-trash m-1" /></button>
+                </td>
+            </tr>
+
+
+        </tbody>
+    </table>*@
 
 
 <!--<div class="mt-5 mb-5">
@@ -126,7 +177,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="card-body" style="right:10px; top:10px">
-                        
+
                     </div>
                 </div>
             </div>
@@ -175,7 +226,6 @@
     </div>
 
 </div>-->
-
 <!-- Delete Modal for Card 1 -->
 <!--<div class="modal fade" id="deleteModal1" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel1" aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -196,7 +246,6 @@
         </div>
     </div>
 </div>-->
-
 <!-- Add Bootstrap JS and Popper.js scripts (optional) -->
 <!--<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>-->

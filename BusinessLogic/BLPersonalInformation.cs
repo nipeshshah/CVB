@@ -78,5 +78,65 @@ namespace BusinessLogic
         {
             return Serialize(personalInformation.CreateOrUpdateProjects(userId, data));
         }
+
+        public object GetAwards(string userId)
+        {
+            throw new NotImplementedException();
+        }
+
+        public object GetCertifications(string userId)
+        {
+            throw new NotImplementedException();
+        }
+
+        public object CreateOrUpdateAwards(string v, object data)
+        {
+            throw new NotImplementedException();
+        }
+
+        public object CreateOrUpdateCertifications(string v, object data)
+        {
+            throw new NotImplementedException();
+        }
+
+        public object GetCopyRight(string userId)
+        {
+            throw new NotImplementedException();
+        }
+
+        public object CreateOrUpdateCopyRights(string v, object data)
+        {
+            throw new NotImplementedException();
+        }
+
+        public object GetPatents(string userId)
+        {
+            throw new NotImplementedException();
+        }
+
+        public object CreateOrUpdatePatents(string v, object data)
+        {
+            throw new NotImplementedException();
+        }
+
+        public object GetHobbies(string userId)
+        {
+            throw new NotImplementedException();
+        }
+
+        public object CreateOrUpdateHobbies(string v, object data)
+        {
+            throw new NotImplementedException();
+        }
+
+        public object GetPublicProfileDetails(string userId)
+        {
+            throw new NotImplementedException();
+        }
+
+        public object CreateOrUpdatePublicProfileDetails(string v, object data)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

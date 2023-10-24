@@ -18,6 +18,11 @@ namespace BusinessLogic
         {
             return Serialize(resumeTemplate.SubmitResume(userId, submitPayload.title, submitPayload.publicurl, submitPayload.template, submitPayload.sections, submitPayload.securitycode));
         }
+
+        public object GetResumes(string userId)
+        {
+            return Serialize(resumeTemplate.GetResumes(userId));
+        }
     }
 
 

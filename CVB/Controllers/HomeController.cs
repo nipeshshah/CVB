@@ -10,7 +10,14 @@ namespace CVB.Controllers
     {
         public ActionResult Index()
         {
-            return View();
+            if(User.Identity.IsAuthenticated)
+            {
+                return RedirectToAction("Index", "UserProfile");
+            }
+            else
+            {
+                return RedirectToAction("Login", "Account");
+            }
         }
 
         public ActionResult About()

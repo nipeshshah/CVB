@@ -54,6 +54,18 @@ namespace DBHandler
             return resume;
         }
 
+        public object GetResumes(string userId)
+        {
+            return entities.Resumes.Where(t => t.MemberId == userId).OrderByDescending(t => t.CreatedOn).Select(t => new {
+                Title = t.Title,
+                CreatedDate = t.CreatedOn,
+                PublicUrl = t.PublicUrl,
+                Code = t.SecurityCode,
+                Downloads = t.DownloadCount,
+                User = t.Member.Name
+            }).ToList();
+        }
+
         public List<Template> GetActiveTemplates()
         {
             List<Template> pi = entities.Templates.ToList();
@@ -129,7 +141,7 @@ namespace DBHandler
         {
             JObject pairs = JObject.Parse(data.ToString());
             Skill pi = new Skill(); // entities.Courses.Where(t => t.UserId == "4938f26b-4ed0-4a40-9c5e-d5934ff8c819").FirstOrDefault();
-            pi.MemberId = "4938f26b-4ed0-4a40-9c5e-d5934ff8c819";
+            pi.MemberId = userId;
             entities.Skills.Add(pi);
 
             pi.Skill1 = helper.json.String(pairs, "skill");
@@ -277,9 +289,226 @@ namespace DBHandler
             return pi;
         }
 
-        public object GetActiveTemplates()
+        public List<Certification> LoadCertifications(string userId)
         {
-            throw new NotImplementedException();
+            List<Certification> certifications = entities.Certifications.Where(t => t.MemberId == userId).ToList();
+            return certifications;
         }
+
+        public Certification CreateOrUpdateCertifications(string userId, object data)
+        {
+            Helper helper = new Helper();
+            JObject pairs = JObject.Parse(data.ToString());
+            Certification certification = entities.Certifications.Where(
+                t => t.MemberId == userId && t.CertificateTitle == helper.json.String(pairs, "certificationTitle")).FirstOrDefault();
+            if (certification == null)
+            {
+                certification = new Certification();
+                entities.Certifications.Add(certification);
+                certification.MemberId = userId;
+                certification.CertificateTitle = helper.json.String(pairs, "certificationTitle");
+            }
+            certification.DateOfCertification = helper.json.Date(pairs, "dateOfCertification");
+            certification.Organization = helper.json.String(pairs, "organization");
+            certification.AreaOfExpertise = helper.json.String(pairs, "areaOfExpertise");
+
+            entities.SaveChanges();
+
+            return certification;
+        }
+
+        public List<Patent> LoadPatents(string UserId)
+        {
+            List<Patent> patents = entities.Patents.Where(t => t.MemberId == UserId).ToList();
+            return patents;
+        }
+
+        public Patent CreateOrUpdatePatents(string UserId, object data)
+        {
+            Helper helper = new Helper();
+            JObject pairs = JObject.Parse(data.ToString());
+            Patent patent = entities.Patents.Where(t => t.MemberId == UserId && t.PatentTitle == helper.json.String(pairs, "patentTitle")).FirstOrDefault();
+            if (patent == null)
+            {
+                patent = new Patent();
+                entities.Patents.Add(patent);
+                patent.MemberId = UserId;
+                patent.PatentTitle = helper.json.String(pairs, "patentTitle");
+            }
+            patent.PatentDescription = helper.json.String(pairs, "patentDescription");
+            patent.PatentDate = helper.json.Date(pairs, "patentDate");
+            
+            entities.SaveChanges();
+
+            return patent;
+        }
+
+        public List<PublicProfile> LoadPublicProfile(string UserId)
+        {
+            List<PublicProfile> publicProfile = entities.PublicProfiles.Where(t => t.MemberId == UserId).ToList();
+            return publicProfile;
+        }
+
+        public PublicProfile CreateOrUpdatePublicProfile(string UserId, object data)
+        {
+            Helper helper = new Helper();
+            JObject pairs = JObject.Parse(data.ToString());
+            PublicProfile publicProfile = entities.PublicProfiles.Where(t => t.MemberId == UserId && t.Title == helper.json.String(pairs, "title")).FirstOrDefault();
+            if (publicProfile == null)
+            {
+                publicProfile = new PublicProfile();
+                entities.PublicProfiles.Add(publicProfile);
+                publicProfile.MemberId = UserId;
+                publicProfile.Title = helper.json.String(pairs, "profileTitle");
+            }
+            publicProfile.Link = helper.json.String(pairs, "profileUrl");
+
+            entities.SaveChanges();
+
+            return publicProfile;
+        }
+
+        public List<Award> LoadAwards(string UserId)
+        {
+            List<Award> awards = entities.Awards.Where(t => t.MemberId == UserId).ToList();
+            return awards;
+        }
+
+        public Award CreateOrUpdateAwards(string UserId, object data)
+        {
+            Helper helper = new Helper();
+            JObject pairs = JObject.Parse(data.ToString());
+            Award award = entities.Awards.Where(t => t.MemberId == UserId && t.AwardTitle == helper.json.String(pairs, "awardTitle")).FirstOrDefault();
+            if (award == null)
+            {
+                award = new Award();
+                entities.Awards.Add(award);
+                award.MemberId = UserId;
+                award.AwardTitle = helper.json.String(pairs, "awardTitle");
+            }
+            award.AreaCompititionTitle = helper.json.String(pairs, "areaCompititionTitle");
+            award.ReceivedOn = helper.json.Date(pairs, "receivedOn");
+            award.Description = helper.json.String(pairs, "description");
+
+            entities.SaveChanges();
+
+            return award;
+        }
+
+        public List<Copyright> LoadCopyRight(string UserId)
+        {
+            List<Copyright> copyRights =
+                entities.Copyrights.Where(t => t.MemberId == UserId).ToList();
+            return copyRights;
+        }
+
+        public Copyright CreateOrUpdateCopyRights(string UserId, object data)
+        {
+            Helper helper = new Helper();
+            JObject pairs = JObject.Parse(data.ToString());
+            Copyright copyright = entities.Copyrights.Where(t => t.MemberId == UserId
+                           && t.CRTitle == helper.json.String(pairs, "copyRightTitle")).FirstOrDefault();
+            if (copyright == null)
+            {
+                copyright = new Copyright();
+                entities.Copyrights.Add(copyright);
+                copyright.CRTitle = helper.json.String(pairs, "copyRightTitle");
+            }
+
+            copyright.CRDate = helper.json.Date(pairs, "copyRightDate");
+            copyright.CRDescription = helper.json.String(pairs, "copyRightDescription");
+
+            entities.SaveChanges();
+
+            return copyright;
+
+            //string copyRightTitle = helper.json.String(pairs, "copyRightTitle");
+            //string copyRightUrl = helper.json.String(pairs, "copyRightUrl");
+            //string copyRightDate = helper.json.String(pairs, "copyRightDate");
+            //string copyRightId = helper.json.String(pairs, "copyRightId");
+            //string copyRightDescription = helper.json.String(pairs, "copyRightDescription");
+            //string copyRightHolder = helper.json.String(pairs, "copyRightHolder");
+            //string copyRightType = helper.json.String(pairs, "copyRightType");
+            //string copyRightStatus = helper.json.String(pairs, "copyRightStatus");
+            //string copyRightRegistrationDate = helper.json.String(pairs, "copyRightRegistrationDate");
+            //string copyRightRegistrationNumber = helper.json.String(pairs, "copyRightRegistrationNumber");
+            //string copyRightPublicationDate = helper.json.String(pairs, "copyRightPublicationDate");
+            //string copyRightPublicationNumber = helper.json.String(pairs, "copyRightPublicationNumber");
+            //string copyRightApplicationNumber = helper.json.String(pairs, "copyRightApplicationNumber");
+            //string copyRightApplicationDate = helper.json.String(pairs, "copyRightApplicationDate");
+            //string copyRightClass = helper.json.String(pairs, "copyRightClass");
+            //string copyRightSubClass = helper.json.String(pairs, "copyRightSubClass");
+            //string copyRightWorkType = helper.json.String(pairs, "copyRightWorkType");
+            //string copyRightWorkNature = helper.json.String(pairs, "copyRightWorkNature");
+            //string copyRightWorkDescription = helper.json.String(pairs, "copyRightWorkDescription");
+            //string copyRightWorkLanguage = helper.json.String(pairs, "copyRightWorkLanguage");
+            //string copyRightWorkPublication = helper.json.String(pairs, "copyRightWorkPublication");
+
+            //string copyRightWorkPublicationCountry = helper.json.String(pairs, "copyRightWorkPublicationCountry");
+
+
+
+
+        }
+
+        public List<Hobby> LoadHobbies(string UserId)
+        {
+            List<Hobby> hobbies = entities.Hobbies.Where(t => t.MemberId == UserId).ToList();
+            return hobbies;
+        }
+
+        public Hobby CreateOrUpdateHobbies(string UserId, object data)
+        {
+            Helper helper = new Helper();
+            JObject pairs = JObject.Parse(data.ToString());
+            Hobby hobby = entities.Hobbies.Where(t => t.MemberId == UserId
+                                      && t.Hobby1 == helper.json.String(pairs, "hobbyTitle")).FirstOrDefault();
+
+            if (hobby == null)
+            {
+                hobby = new Hobby();
+                entities.Hobbies.Add(hobby);
+                hobby.MemberId = UserId;
+                hobby.Hobby1 = helper.json.String(pairs, "hobbyTitle");
+            }
+
+            entities.SaveChanges();
+
+            return hobby;
+        }
+
+        public List<PublicProfile> GetPublicProfileDetails(string UserId)
+        {
+            List<PublicProfile> publicProfile = entities.PublicProfiles.Where(t => t.MemberId == UserId).ToList();
+            return publicProfile;
+        }
+
+        public PublicProfile CreateOrUpdatePublicProfileDetails(string UserId, object data)
+        {
+            Helper helper = new Helper();
+            JObject pairs = JObject.Parse(data.ToString());
+            PublicProfile publicProfile = entities.PublicProfiles.Where(t => t.MemberId == UserId
+                                                 && t.Title == helper.json.String(pairs, "profileTitle")).FirstOrDefault();
+
+            if (publicProfile == null)
+            {
+                publicProfile = new PublicProfile();
+                entities.PublicProfiles.Add(publicProfile);
+                publicProfile.MemberId = UserId;
+                publicProfile.Title = helper.json.String(pairs, "profileTitle");
+            }
+            publicProfile.Link = helper.json.String(pairs, "link");
+
+            entities.SaveChanges();
+
+            return publicProfile;
+        }
+
+
+
+        //public object GetActiveTemplates()
+        //{
+        //    throw new NotImplementedException();
+        //}
     }
 }

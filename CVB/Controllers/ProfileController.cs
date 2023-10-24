@@ -37,6 +37,9 @@ namespace CVB.Controllers
                 MemberId = new Helpers.Helper().security.EncryptString(userId.ToString()),
                 ReturnUrl = returnUrl
             };
+            
+            //new Helpers.security().EncryptString(model.Email + " " + model.MemberId)
+            
             return View(model);
         }
         

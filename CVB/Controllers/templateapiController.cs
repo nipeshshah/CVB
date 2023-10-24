@@ -44,7 +44,13 @@ namespace CVB.Controllers
         {
             return Ok(content: blhandler.blResumeTemplates.SubmitResume(UserId, submitPayload));
         }
-        
+
+        [HttpGet]
+        [Route("api/resumes/{UserId}")]
+        public IHttpActionResult GetResumes(string UserId)
+        {
+            return Ok(content: blhandler.blResumeTemplates.GetResumes(UserId));
+        }
 
     }
 }

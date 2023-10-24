@@ -20,6 +20,7 @@ namespace DBHandler.Database
         public string AwardedBy { get; set; }
         public Nullable<System.DateTime> ReceivedOn { get; set; }
         public string AreaCompititionTitle { get; set; }
+        public string Description { get; set; }
     
         public virtual Member Member { get; set; }
     }

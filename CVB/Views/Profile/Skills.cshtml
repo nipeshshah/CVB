@@ -18,8 +18,8 @@
             var html = "";
             exps.forEach(function name(item) {
                 html += `<tr><td>` + item.Skill1 + `</td>
-                             <td>`+ userprofile.getProficiency(item.Proficiency) + `</td>
-                             <td>`+ item.Certifications + `</td></tr>`
+                                 <td>`+ userprofile.getProficiency(item.Proficiency) + `</td>
+                                 <td>`+ item.Certifications + `</td></tr>`
             });
             $('#skillsRow').replaceWith(html);
         }
@@ -31,8 +31,9 @@
                 certifications: $("#certifications").val()
             };
 
-            userprofile.updateSkills(formData);
-            userprofile.loadSkills(callback);
+            userprofile.updateSkills(formData, function () {
+                userprofile.loadSkills(callback);
+            });
 
         }
 

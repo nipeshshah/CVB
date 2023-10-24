@@ -19,7 +19,7 @@
             $('#languagesRow').html('<tr>');
             var html = "";
             debugger;
-            JSON.parse(data.data).forEach(function name(params) {
+            langs.forEach(function name(params) {
                 html += '<tr>'
                 html += '<td>' + params.Language1 + '</td>'
                 html += '<td>' + userprofile.getProficiency(params.ReadProficiency) + '</td>'
@@ -41,9 +41,9 @@
             // Convert the JavaScript object to JSON
             //var formDataJSON = JSON.stringify(formData);
 
-            userprofile.updateLanguage(formData);
-            userprofile.loadLanguages(callback);
-
+            userprofile.updateLanguage(formData, function () {
+userprofile.loadLanguages(callback);
+            });
         }
 
     </script>

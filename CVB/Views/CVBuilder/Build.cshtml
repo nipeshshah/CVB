@@ -23,7 +23,7 @@
         var langs = JSON.parse(data.data);
         $('#templateRoes').html('<tr>');
         var html = "";
-        JSON.parse(data.data).forEach(function name(params) {
+        langs.forEach(function name(params) {
             html += `<div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.1s">
                     <a class="cat-item rounded p-4" href="">
                         <img src="~/Assets/img/Template1.PNG" class="card-img-top cat-item rounded p-4" style="height: 233px;" onclick="updateImage(this); return false" alt="Image 1">

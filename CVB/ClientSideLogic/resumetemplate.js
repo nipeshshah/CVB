@@ -7,5 +7,8 @@
     },
     submitNewResume: function submitNewResume(payLoad, callback) {
         post('template/api/submitresume/' + "4938f26b-4ed0-4a40-9c5e-d5934ff8c819", payLoad, callback);
+    },
+    getresumes: function getresumes(callback) {
+        get('template/api/resumes/' + "4938f26b-4ed0-4a40-9c5e-d5934ff8c819", callback);
     }
 }

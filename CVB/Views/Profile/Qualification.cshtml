@@ -39,8 +39,10 @@
                 completedDate: $("#completedDate").val()
             };
 
-            userprofile.updateQualification(formData);
-            userprofile.loadQualification(callback);
+            userprofile.updateQualification(formData, function () {
+                userprofile.loadQualification(callback);    
+            });
+            
 
         }
 
