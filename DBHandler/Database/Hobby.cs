@@ -17,6 +17,7 @@ namespace DBHandler.Database
         public int Id { get; set; }
         public string MemberId { get; set; }
         public string Hobby1 { get; set; }
+        public string Description { get; set; }
     
         public virtual Member Member { get; set; }
     }

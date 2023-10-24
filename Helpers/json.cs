@@ -19,7 +19,7 @@ namespace Helpers
             if (pairs == null || pairs[name] == null || pairs[name]?.ToString() == "")
                 return SqlDateTime.MinValue.Value;
             else
-                return Convert.ToDateTime(pairs["startDate"].ToString());
+                return Convert.ToDateTime(pairs[name].ToString());
         }
 
         public int Boolean(JObject pairs, string name)
