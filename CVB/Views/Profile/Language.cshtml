@@ -1,0 +1,126 @@
+﻿
+@{
+    ViewBag.Title = "Language";
+    Layout = "~/Views/Shared/ViewPage1.cshtml";
+}
+@section scripts {
+    <script src="~/ClientSideLogic/profile.js"></script>
+    <script>
+
+        $(document).ready(function () {
+            console.log('First Call:');
+
+            userprofile.loadLanguages(callback);
+
+        });
+
+        function callback(data) {
+            var langs = JSON.parse(data.data);
+            $('#languagesRow').html('<tr>');
+            var html = "";
+            debugger;
+            JSON.parse(data.data).forEach(function name(params) {
+                html += '<tr>'
+                html += '<td>' + params.Language1 + '</td>'
+                html += '<td>' + userprofile.getProficiency(params.ReadProficiency) + '</td>'
+                html += '<td>' + userprofile.getProficiency(params.WriteProficiency) + '</td>'
+                html += '<td>' + userprofile.getProficiency(params.SpeakProficiency) + '</td>'
+                html += '</tr>'
+            });
+            $('#languagesRow').html(html + "</tr>");
+        }
+
+        function createLanguage() {
+            var formData = {
+                language: $("#language").val(),
+                readProficiency: $("#readProficiency").val(),
+                writeProficiency: $("#writeProficiency").val(),
+                speakProficiency: $("#speakProficiency").val()
+            };
+
+            // Convert the JavaScript object to JSON
+            //var formDataJSON = JSON.stringify(formData);
+
+            userprofile.updateLanguage(formData);
+            userprofile.loadLanguages(callback);
+
+        }
+
+    </script>
+}
+
+<div>
+    <section class="mb-2">
+        <div class="row d-flex justify-content-center">
+            <div class="col-md-12">
+                <form>
+                    <div class="row mb-4">
+                        <div class="col-md-3 col-sm-4">
+                            <div class="form-floating">
+                                <input type="text" id="language" class="form-control" name="language" placeholder="Language" />
+                                <label class="form-label" for="language">Language</label>
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-sm-4">
+                            <div class="form-floating">
+                                <select class="form-control" id="readProficiency" name="readProficiency">
+                                    <option value="None"></option>
+                                    <option value="Beginner">Beginner</option>
+                                    <option value="Intermediate">Intermediate</option>
+                                    <option value="Advanced">Advanced</option>
+                                    <option value="Expert">Expert</option>
+                                </select>
+                                <label class="form-label" for="readProficiency">Read Proficiency</label>
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-sm-4">
+                            <div class="form-floating">
+                                <select class="form-control" id="writeProficiency" name="writeProficiency">
+                                    <option value="None">None</option>
+                                    <option value="Beginner">Beginner</option>
+                                    <option value="Intermediate">Intermediate</option>
+                                    <option value="Advanced">Advanced</option>
+                                    <option value="Expert">Expert</option>
+                                </select>
+                                <label class="form-label" for="writeProficiency">Write Proficiency</label>
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-sm-4">
+                            <div class="form-floating">
+                                <select class="form-control" id="speakProficiency" name="speakProficiency">
+                                    <option value="None">None</option>
+                                    <option value="Beginner">Beginner</option>
+                                    <option value="Intermediate">Intermediate</option>
+                                    <option value="Advanced">Advanced</option>
+                                    <option value="Expert">Expert</option>
+                                </select>
+                                <label class="form-label" for="speakProficiency">Speak Proficiency</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-between bg-light mb-3">
+                        <div class="p-2 col-example">&nbsp;</div>
+                        <div class="p-2 col-example">&nbsp;</div>
+                        <div class="p-2 col-example"><button type="button" onclick="createLanguage()" class="btn btn-primary btn-lg m-1">Save</button></div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+</div>
+
+
+<div>
+    <table class="table align-middle mb-0 bg-white">
+        <thead class="bg-light">
+            <tr>
+                <th>Language</th>
+                <th>Read Proficiency</th>
+                <th>Write Proficiency</th>
+                <th>Speak Proficiency</th>
+            </tr>
+        </thead>
+        <tbody id="languagesRow">
+        </tbody>
+    </table>
+</div>

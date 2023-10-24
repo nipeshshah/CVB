@@ -35,21 +35,5 @@ namespace CVB.Controllers
         {
             return View();
         }
-
-        [Route("public/{username}/{resumename}")]
-        public ActionResult Public(string username, string resumename)
-        {
-            if (username == "")
-                throw new Exception("");
-
-            if(resumename == "")
-                return View();
-
-            ViewBag.User = username;
-            ViewBag.ResumeTemplate = resumename;
-
-            return View();
-
-        }
     }
 }

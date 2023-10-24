@@ -1014,7 +1014,6 @@
     <Content Include="Views\Shared\_LayoutCopy.cshtml" />
     <Content Include="Views\CVBuilder\Share.cshtml" />
     <Content Include="Views\Vacancy\Index.cshtml" />
-    <Content Include="Views\CVBuilder\Public.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
