@@ -170,6 +170,7 @@
       <DependentUpon>DBModel.edmx</DependentUpon>
       <LastGenOutput>DBModel.cs</LastGenOutput>
     </Content>
+    <Content Include="dbscript15112023.sql" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Database\DBModel.edmx.diagram">
