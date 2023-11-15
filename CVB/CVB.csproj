@@ -188,6 +188,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\ProfileController.cs" />
+    <Compile Include="Controllers\PublicController.cs" />
     <Compile Include="Controllers\templateapiController.cs" />
     <Compile Include="Controllers\UserProfileController.cs" />
     <Compile Include="Controllers\VacancyController.cs" />
@@ -1014,6 +1015,7 @@
     <Content Include="Views\Shared\_LayoutCopy.cshtml" />
     <Content Include="Views\CVBuilder\Share.cshtml" />
     <Content Include="Views\Vacancy\Index.cshtml" />
+    <Content Include="Views\Public\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

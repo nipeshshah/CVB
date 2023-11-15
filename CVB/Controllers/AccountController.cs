@@ -330,23 +330,23 @@ namespace CVB.Controllers
 
             // Sign in the user with this external login provider if the user already has a login
             var result = await SignInManager.ExternalSignInAsync(loginInfo, isPersistent: false);
-            return RedirectToAction("LoginSuccess","Profile", new { ReturnUrl = returnUrl });
-            
-            //switch (result)
-            //{
-            //    case SignInStatus.Success:
-            //        return RedirectToLocal(returnUrl);
-            //    case SignInStatus.LockedOut:
-            //        return View("Lockout");
-            //    case SignInStatus.RequiresVerification:
-            //        return RedirectToAction("SendCode", new { ReturnUrl = returnUrl, RememberMe = false });
-            //    case SignInStatus.Failure:
-            //    default:
-            //        // If the user does not have an account, then prompt the user to create an account
-            //        ViewBag.ReturnUrl = returnUrl;
-            //        ViewBag.LoginProvider = loginInfo.Login.LoginProvider;
-            //        return View("ExternalLoginConfirmation", new ExternalLoginConfirmationViewModel { Email = loginInfo.Email });
-            //}
+            //return RedirectToAction("LoginSuccess","Profile", new { ReturnUrl = returnUrl });
+
+            switch (result)
+            {
+                case SignInStatus.Success:
+                    return RedirectToLocal(returnUrl);
+                case SignInStatus.LockedOut:
+                    return View("Lockout");
+                case SignInStatus.RequiresVerification:
+                    return RedirectToAction("SendCode", new { ReturnUrl = returnUrl, RememberMe = false });
+                case SignInStatus.Failure:
+                default:
+                    // If the user does not have an account, then prompt the user to create an account
+                    ViewBag.ReturnUrl = returnUrl;
+                    ViewBag.LoginProvider = loginInfo.Login.LoginProvider;
+                    return View("ExternalLoginConfirmation", new ExternalLoginConfirmationViewModel { Email = loginInfo.Email });
+            }
         }
 
         //

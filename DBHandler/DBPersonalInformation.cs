@@ -83,6 +83,11 @@ namespace DBHandler
             helper = new Helper();
         }
 
+        public object CheckUniqueUrl(string publicurl)
+        {
+            return entities.Members.Count(t => t.PublicUrl.ToLower() == publicurl.ToLower()) == 0;
+        }
+
         public PersonalInformation GetPersonalInformationFromId(string userId)
         {
             PersonalInformation pi = entities.PersonalInformations.Where(t => t.MemberId == userId).FirstOrDefault();

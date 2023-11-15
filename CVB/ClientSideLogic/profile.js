@@ -102,6 +102,10 @@
         get('profile/api/loadpublicprofile/' + "4938f26b-4ed0-4a40-9c5e-d5934ff8c819", callback);
     },
 
+    checkUniqueUrl: function checkUniqueUrl(url, callback) {
+        get('profile/api/checkUniqueUrl/' + url, callback);
+    },
+
     getProficiency: function (proficiency) {
         var prof = '';
         switch (proficiency) {

@@ -1,36 +1,102 @@
 ﻿@model CVB.Models.ExternalLoginConfirmationViewModel
 @{
     ViewBag.Title = "Register";
-}
-<h2>@ViewBag.Title.</h2>
-<h3>Associate your @ViewBag.LoginProvider account.</h3>
+    Layout = "~/Views/Shared/_LayoutCopy.cshtml";
 
-@using (Html.BeginForm("ExternalLoginConfirmation", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
-{
-    @Html.AntiForgeryToken()
-
-    <h4>Association Form</h4>
-    <hr />
-    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-    <p class="text-info">
-        You've successfully authenticated with <strong>@ViewBag.LoginProvider</strong>.
-        Please enter a user name for this site below and click the Register button to finish
-        logging in.
-    </p>
-    <div class="form-group">
-        @Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
-            @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
-            @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
-        </div>
-    </div>
-    <div class="form-group">
-        <div class="col-md-offset-2 col-md-10">
-            <input type="submit" class="btn btn-default" value="Register" />
-        </div>
-    </div>
 }
 
-@section Scripts {
+@section scripts{
     @Scripts.Render("~/bundles/jqueryval")
+    <script src="~/ClientSideLogic/profile.js"></script>
+    <script>
+        function validateUniqueUrl() {
+            console.log($('.publicUrl').val());
+            var email = new RegExp('^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$');
+
+            if (email.test(VAL)) {
+                userprofile.checkUniqueUrl($('.publicUrl').val(), callback)
+            }
+            else {
+                validation(true);
+            }
+         }
+
+        function callback(result) {
+            var data = JSON.parse(result);
+            if (data.data == true)
+                validation(true);
+            else
+                validation(false);
+        }
+
+        function validation(isValid) {
+            if (isValid) {
+                $('#isValid').text("Public url not available");
+
+            }
+            else {
+                $('#isValid').text("Public url not available");
+            }
+
+        }
+    </script>
+
 }
+
+<div class="container-xxl pb-5">
+    <div class="container">
+        <h1 class="text-center mb-5 wow fadeInUp" data-wow-delay="0.1s">Associate your @ViewBag.LoginProvider account.</h1>
+        <div class="tab-class text-center wow fadeInUp" data-wow-delay="0.3s">
+            <p class="text-info">
+                You've successfully authenticated with <strong>@ViewBag.LoginProvider</strong>.
+                Please enter a user name for this site below and click the Register button to finish
+                logging in.
+            </p>
+            <h4>Sign Up Form</h4>
+            @using (Html.BeginForm("ExternalLoginConfirmation", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+            {
+                @Html.AntiForgeryToken()
+
+                <hr />
+                <div class="row mb-4">
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    <div class="col-md-4 col-sm-6">
+                        <div class="form-floating">
+                            @Html.TextBoxFor(m => m.Email, new { @class = "form-control", @placeholder = "Email" })
+                            @Html.LabelFor(m => m.Email, new { @class = "form-label" })
+                            @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-sm-6">
+                        <div class="form-floating">
+                            @Html.TextBoxFor(m => m.PublicUrl, new { @class = "publicUrl form-control", @placeholder = "Public Url", @onchange = "validateUniqueUrl()" })
+                            @Html.LabelFor(m => m.PublicUrl, new { @class = "form-label" })
+                            @Html.ValidationMessageFor(m => m.PublicUrl, "", new { @class = "text-danger" })
+                            <label id="isValid">Public Url is Available</label>
+                        </div>
+                    </div>
+                    <div class="col-sm-12 mt-4">
+                        <div class="d-flex justify-content-between bg-light mb-3">
+                            <div class="p-2 col-example">&nbsp;</div>
+                            <div class="p-2 col-example">&nbsp;</div>
+                            <div class="p-2 col-example">
+                                <input type="submit" class="btn btn-primary btn-lg m-1" value="Register" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+
+                    </div>
+                </div>
+            }
+
+        </div>
+    </div>
+</div>
+
+
+
+

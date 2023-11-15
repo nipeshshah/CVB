@@ -160,6 +160,7 @@
           <Property Name="ReferralCode" Type="nvarchar" MaxLength="10" />
           <Property Name="RegistrationDate" Type="datetime" />
           <Property Name="RegistrationType" Type="int" />
+          <Property Name="PublicUrl" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="NonCompanySharing">
           <Key>
@@ -1201,6 +1202,7 @@
           <NavigationProperty Name="Referrals1" Relationship="dbresumebuilderModel.FK_Referrals_Member1" FromRole="Member" ToRole="Referral" />
           <NavigationProperty Name="Sharings" Relationship="dbresumebuilderModel.FK_Sharing_Member" FromRole="Member" ToRole="Sharing" />
           <NavigationProperty Name="Sharings1" Relationship="dbresumebuilderModel.FK_Sharing_Member1" FromRole="Member" ToRole="Sharing" />
+          <Property Name="PublicUrl" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="NonCompanySharing">
           <Key>
@@ -1938,6 +1940,7 @@
           <EntitySetMapping Name="Members">
             <EntityTypeMapping TypeName="dbresumebuilderModel.Member">
               <MappingFragment StoreEntitySet="Member">
+                <ScalarProperty Name="PublicUrl" ColumnName="PublicUrl" />
                 <ScalarProperty Name="RegistrationType" ColumnName="RegistrationType" />
                 <ScalarProperty Name="RegistrationDate" ColumnName="RegistrationDate" />
                 <ScalarProperty Name="ReferralCode" ColumnName="ReferralCode" />

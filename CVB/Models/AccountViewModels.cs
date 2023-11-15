@@ -8,6 +8,11 @@ namespace CVB.Models
         [Required]
         [Display(Name = "Email")]
         public string Email { get; set; }
+
+        [Required]
+        [Display(Name = "UniquePublicUrl", Description = "This name will be your unique url to identify your public resume.")]
+        public string PublicUrl { get; set; }
+
     }
 
     public class ExternalLoginListViewModel

@@ -213,5 +213,12 @@ namespace CVB.Controllers
         {
             return Ok(blhandler.blPersonalInformation.CreateOrUpdatePublicProfileDetails("4938f26b-4ed0-4a40-9c5e-d5934ff8c819", data));
         }
+
+        [HttpGet]
+        [Route("api/checkUniqueUrl/{publicurl}")]
+        public IHttpActionResult CheckUniqueUrl(string publicurl)
+        {
+            return Ok(blhandler.blPersonalInformation.CheckUniqueUrl(publicurl));
+        }
     }
 }

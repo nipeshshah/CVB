@@ -14,7 +14,7 @@ namespace BusinessLogic
 
         public string Serialize<T>(T result)
         {
-            var settings = new JsonSerializerSettings { ReferenceLoopHandling = ReferenceLoopHandling.Ignore };
+            var settings = new JsonSerializerSettings { ReferenceLoopHandling = ReferenceLoopHandling.Ignore, MaxDepth = 1 };
             return JsonConvert.SerializeObject(result, Formatting.None, settings);
         }
     }

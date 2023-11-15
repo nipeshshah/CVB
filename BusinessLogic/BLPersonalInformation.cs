@@ -21,7 +21,6 @@ namespace BusinessLogic
         public object GetLanguages(string UserId)
         {
             return Serialize(personalInformation.LoadLanguages(UserId));
-            
         }
 
         public object CreateOrUpdateLanguage(string UserId, object data)
@@ -79,64 +78,69 @@ namespace BusinessLogic
             return Serialize(personalInformation.CreateOrUpdateProjects(userId, data));
         }
 
+        public object CheckUniqueUrl(string publicurl)
+        {
+            return Serialize(personalInformation.CheckUniqueUrl(publicurl));
+        }
+
         public object GetAwards(string userId)
         {
-            throw new NotImplementedException();
+            return Serialize(personalInformation.LoadAwards(userId));
         }
 
         public object GetCertifications(string userId)
         {
-            throw new NotImplementedException();
+            return Serialize(personalInformation.LoadCertifications(userId));
         }
 
-        public object CreateOrUpdateAwards(string v, object data)
+        public object CreateOrUpdateAwards(string userId, object data)
         {
-            throw new NotImplementedException();
+            return Serialize(personalInformation.CreateOrUpdateAwards(userId, data));
         }
 
-        public object CreateOrUpdateCertifications(string v, object data)
+        public object CreateOrUpdateCertifications(string userId, object data)
         {
-            throw new NotImplementedException();
+            return Serialize(personalInformation.CreateOrUpdateCertifications(userId, data));
         }
 
         public object GetCopyRight(string userId)
         {
-            throw new NotImplementedException();
+            return Serialize(personalInformation.LoadCopyRight(userId));
         }
 
-        public object CreateOrUpdateCopyRights(string v, object data)
+        public object CreateOrUpdateCopyRights(string userId, object data)
         {
-            throw new NotImplementedException();
+            return Serialize(personalInformation.CreateOrUpdateCopyRights(userId, data));
         }
 
         public object GetPatents(string userId)
         {
-            throw new NotImplementedException();
+            return Serialize(personalInformation.LoadPatents(userId));
         }
 
-        public object CreateOrUpdatePatents(string v, object data)
+        public object CreateOrUpdatePatents(string userId, object data)
         {
-            throw new NotImplementedException();
+            return Serialize(personalInformation.CreateOrUpdatePatents(userId, data));
         }
 
         public object GetHobbies(string userId)
         {
-            throw new NotImplementedException();
+            return Serialize(personalInformation.LoadHobbies(userId));
         }
 
-        public object CreateOrUpdateHobbies(string v, object data)
+        public object CreateOrUpdateHobbies(string userId, object data)
         {
-            throw new NotImplementedException();
+            return Serialize(personalInformation.CreateOrUpdateHobbies(userId, data));
         }
 
         public object GetPublicProfileDetails(string userId)
         {
-            throw new NotImplementedException();
+            return Serialize(personalInformation.LoadPublicProfile(userId));
         }
 
-        public object CreateOrUpdatePublicProfileDetails(string v, object data)
+        public object CreateOrUpdatePublicProfileDetails(string userId, object data)
         {
-            throw new NotImplementedException();
+            return Serialize(personalInformation.CreateOrUpdatePublicProfileDetails(userId, data));
         }
     }
 }
