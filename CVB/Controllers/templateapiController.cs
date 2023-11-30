@@ -52,5 +52,11 @@ namespace CVB.Controllers
             return Ok(content: blhandler.blResumeTemplates.GetResumes(UserId));
         }
 
+        [HttpGet]
+        [Route("api/publicresume/{templateid}/cv/{UserId}")]
+        public IHttpActionResult GetPublicResumes(int templateId, string userId)
+        {
+            return Ok(content: blhandler.blResumeTemplates.GetPublicResumes(templateId, userId));
+        }
     }
 }

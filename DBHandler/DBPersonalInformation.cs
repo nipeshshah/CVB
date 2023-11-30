@@ -54,6 +54,11 @@ namespace DBHandler
             return resume;
         }
 
+        public object GetPublicResumes(int templateId, string userId)
+        {
+            throw new NotImplementedException();
+        }
+
         public object GetResumes(string userId)
         {
             return entities.Resumes.Where(t => t.MemberId == userId).OrderByDescending(t => t.CreatedOn).Select(t => new {
@@ -62,7 +67,9 @@ namespace DBHandler
                 PublicUrl = t.PublicUrl,
                 Code = t.SecurityCode,
                 Downloads = t.DownloadCount,
-                User = t.Member.Name
+                User = t.Member.Name,
+                TemplateId =  t.TemplateId,
+                TemplateTitle = t.Template.Title
             }).ToList();
         }
 

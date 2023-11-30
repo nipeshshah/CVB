@@ -11,7 +11,7 @@
     <script>
         function validateUniqueUrl() {
             console.log($('.publicUrl').val());
-            var email = new RegExp('^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$');
+            var email = new RegExp('^[A-Z0-9._%+-]+@@[A-Z0-9.-]+\.[A-Z]{2,4}$');
 
             if (email.test(VAL)) {
                 userprofile.checkUniqueUrl($('.publicUrl').val(), callback)

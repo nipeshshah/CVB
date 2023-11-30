@@ -23,6 +23,11 @@ namespace BusinessLogic
         {
             return Serialize(resumeTemplate.GetResumes(userId));
         }
+
+        public object GetPublicResumes(int templateId, string userId)
+        {
+            return Serialize(resumeTemplate.GetPublicResumes(templateId, userId));
+        }
     }
 
 

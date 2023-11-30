@@ -9,10 +9,12 @@ namespace CVB.Controllers
     public class PublicController : Controller
     {
         // GET: Public
-        [Route("public/{username}/cv/{publicurl}")]
-        public ActionResult Index(string username, string publicurl)
+        [Route("public/{templateId}/cv/{publicurl}")]
+        public ActionResult Index(int templateId, string publicurl)
         {
-
+            //Get User & Template from Public Url
+            //Get Template and User Profile from Url
+            //Build Resume and Display
             return View();
         }
     }

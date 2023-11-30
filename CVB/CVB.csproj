@@ -659,6 +659,7 @@
     <Content Include="ClientSideLogic\moment.js\moment.js" />
     <Content Include="ClientSideLogic\moment.js\moment.min.js" />
     <Content Include="ClientSideLogic\profile.js" />
+    <Content Include="ClientSideLogic\publicresume.js" />
     <Content Include="ClientSideLogic\resumetemplate.js" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
