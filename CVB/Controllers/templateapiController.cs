@@ -38,6 +38,14 @@ namespace CVB.Controllers
             return Ok(blhandler.blResumeTemplates.GetActiveTemplateSections(templatename));
         }
 
+        [HttpGet]
+        [Route("api/activesections/public/{publicurl}/{templatename}")]
+        public IHttpActionResult GetPersonalDetailsByPublicUrl(string publicurl, string templatename)
+        {
+            //, publicurl
+            return Ok(blhandler.blResumeTemplates.GetActiveTemplateSections(templatename));
+        }
+
         [HttpPost]
         [Route("api/submitresume/{UserId}")]
         public IHttpActionResult SubmitResume(string UserId, SubmitPayload submitPayload)
@@ -57,6 +65,13 @@ namespace CVB.Controllers
         public IHttpActionResult GetPublicResumes(int templateId, string userId)
         {
             return Ok(content: blhandler.blResumeTemplates.GetPublicResumes(templateId, userId));
+        }
+
+        [HttpGet]
+        [Route("api/template/{templateid}")]
+        public IHttpActionResult GetTemplate(int templateId)
+        {
+            return Ok(blhandler.blResumeTemplates.GetTemplateName(templateId));
         }
     }
 }

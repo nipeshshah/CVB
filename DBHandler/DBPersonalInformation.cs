@@ -59,6 +59,12 @@ namespace DBHandler
             throw new NotImplementedException();
         }
 
+        public Template GetTemplateName(int templateId)
+        {
+            Template templatename = entities.Templates.Where(t => t.TemplateId == templateId).FirstOrDefault();
+            return templatename;
+        }
+
         public object GetResumes(string userId)
         {
             return entities.Resumes.Where(t => t.MemberId == userId).OrderByDescending(t => t.CreatedOn).Select(t => new {

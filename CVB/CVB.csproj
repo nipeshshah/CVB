@@ -1017,6 +1017,8 @@
     <Content Include="Views\CVBuilder\Share.cshtml" />
     <Content Include="Views\Vacancy\Index.cshtml" />
     <Content Include="Views\Public\Index.cshtml" />
+    <Content Include="Views\Shared\_LayoutPublic.cshtml" />
+    <Content Include="Views\Public\PassCodeVerification.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

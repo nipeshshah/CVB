@@ -8,17 +8,18 @@ namespace CVB.Controllers
 {
     public class HomeController : Controller
     {
-        public ActionResult Index()
+        public ActionResult Index(string token)
         {
-            return View();
-            //if(User.Identity.IsAuthenticated)
-            //{
-            //    ViewBag.
-            //}
-            //else
-            //{
-            //    return RedirectToAction("Login", "Account");
-            //}
+            //return View();
+            if (User.Identity.IsAuthenticated)
+            {
+                ViewBag.Token = token;
+                return View();
+            }
+            else
+            {
+                return RedirectToAction("Login", "Account");
+            }
         }
 
         public ActionResult About()

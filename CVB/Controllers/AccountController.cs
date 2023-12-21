@@ -79,7 +79,7 @@ namespace CVB.Controllers
             switch (result)
             {
                 case SignInStatus.Success:
-                    return RedirectToLocal(returnUrl);
+                    return RedirectToLocal(returnUrl, "");
                 case SignInStatus.LockedOut:
                     return View("Lockout");
                 case SignInStatus.RequiresVerification:
@@ -124,7 +124,7 @@ namespace CVB.Controllers
             switch (result)
             {
                 case SignInStatus.Success:
-                    return RedirectToLocal(model.ReturnUrl);
+                    return RedirectToLocal(model.ReturnUrl,"");
                 case SignInStatus.LockedOut:
                     return View("Lockout");
                 case SignInStatus.Failure:
@@ -335,8 +335,8 @@ namespace CVB.Controllers
             switch (result)
             {
                 case SignInStatus.Success:
-                    return RedirectToLocal(returnUrl);
-                case SignInStatus.LockedOut:
+                    return RedirectToLocal(returnUrl, loginInfo.Login.ProviderKey);
+                case SignInStatus.LockedOut  :
                     return View("Lockout");
                 case SignInStatus.RequiresVerification:
                     return RedirectToAction("SendCode", new { ReturnUrl = returnUrl, RememberMe = false });
@@ -377,7 +377,7 @@ namespace CVB.Controllers
                     if (result.Succeeded)
                     {
                         await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
-                        return RedirectToLocal(returnUrl);
+                        return RedirectToLocal(returnUrl, "");
                     }
                 }
                 AddErrors(result);
@@ -445,13 +445,13 @@ namespace CVB.Controllers
             }
         }
 
-        private ActionResult RedirectToLocal(string returnUrl)
+        private ActionResult RedirectToLocal(string returnUrl, string ProviderKey)
         {
             if (Url.IsLocalUrl(returnUrl))
             {
                 return Redirect(returnUrl);
             }
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Index", "Home", new { token = ProviderKey });
         }
 
         internal class ChallengeResult : HttpUnauthorizedResult
