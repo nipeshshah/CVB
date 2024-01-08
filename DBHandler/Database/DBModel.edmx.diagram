@@ -64,6 +64,8 @@
         <AssociationConnector Association="dbresumebuilderModel.FK_Referrals_Member1" />
         <AssociationConnector Association="dbresumebuilderModel.FK_Sharing_Member" />
         <AssociationConnector Association="dbresumebuilderModel.FK_Sharing_Member1" />
+        <EntityTypeShape EntityType="dbresumebuilderModel.AspNetUserLogin" Width="1.5" PointX="3" PointY="28.5" />
+        <AssociationConnector Association="dbresumebuilderModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

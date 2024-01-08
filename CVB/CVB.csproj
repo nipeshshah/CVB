@@ -220,6 +220,15 @@
     <Content Include="Assets2\img\com-logo-3.jpg" />
     <Content Include="Assets2\img\com-logo-4.jpg" />
     <Content Include="Assets2\img\com-logo-5.jpg" />
+    <Content Include="Assets2\img\image-2.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets2\img\image-1.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets2\img\image-3.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Assets2\img\testimonial-1.jpg" />
     <Content Include="Assets2\img\testimonial-2.jpg" />
     <Content Include="Assets2\img\testimonial-3.jpg" />
@@ -661,6 +670,7 @@
     <Content Include="ClientSideLogic\profile.js" />
     <Content Include="ClientSideLogic\publicresume.js" />
     <Content Include="ClientSideLogic\resumetemplate.js" />
+    <Content Include="ClientSideLogic\Validation.js" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -1023,6 +1033,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Framework\" />
+    <Folder Include="Models\Dto\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

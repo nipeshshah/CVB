@@ -1,22 +1,22 @@
 ﻿const userprofile = {
     personaldetails: function getPersonalDetails(callback) {
-        get('profile/api/personaldetails/' + "4938f26b-4ed0-4a40-9c5e-d5934ff8c819", callback);
+        get('profile/api/personaldetails/' + sessionStorage["token"], callback);
     },
     updatepersonaldetails: function postPersonalDetails(data, callback) {
         post('profile/api/personaldetails', data, callback);
     },
 
     loadLanguages: function loadLanguages(callback) {
-        get('profile/api/loadlanguages/' + "4938f26b-4ed0-4a40-9c5e-d5934ff8c819", callback);
+        get('profile/api/loadlanguages/' + sessionStorage["token"], callback);
     },
 
     updateLanguage: function createNewLanguage(data, callback) {
 
-        post('profile/api/createlanguage', data, callback);
+        post('profile/api/createlanguage/' + sessionStorage["token"], data, callback);
     },
 
     loadExperience: function loadExperience(callback) {
-        get('profile/api/loadexperience/' + "4938f26b-4ed0-4a40-9c5e-d5934ff8c819", callback);
+        get('profile/api/loadexperience/' + sessionStorage["token"], callback);
     },
 
     updateExperience: function createExperience(data, callback) {
@@ -24,7 +24,7 @@
     },
 
     loadQualification: function loadQualification(callback) {
-        get('profile/api/loadqualification/' + "4938f26b-4ed0-4a40-9c5e-d5934ff8c819", callback);
+        get('profile/api/loadqualification/' + sessionStorage["token"], callback);
     },
 
     updateQualification: function createQualification(data, callback) {
@@ -32,7 +32,7 @@
     },
 
     loadCourses: function loadCourses(callback) {
-        get('profile/api/loadcourses/' + "4938f26b-4ed0-4a40-9c5e-d5934ff8c819", callback);
+        get('profile/api/loadcourses/' + sessionStorage["token"], callback);
     },
 
     updateCourses: function createCourses(data, callback) {
@@ -40,7 +40,7 @@
     },
 
     loadSkills: function loadSkills(callback) {
-        get('profile/api/loadskills/' + "4938f26b-4ed0-4a40-9c5e-d5934ff8c819", callback);
+        get('profile/api/loadskills/' + sessionStorage["token"], callback);
     },
 
     updateSkills: function createSkills(data, callback) {
@@ -48,7 +48,7 @@
     },
 
     loadProjects: function loadProjects(callback) {
-        get('profile/api/loadprojects/' + "4938f26b-4ed0-4a40-9c5e-d5934ff8c819", callback);
+        get('profile/api/loadprojects/' + sessionStorage["token"], callback);
     },
 
     updateProjects: function createProjects(data, callback) {
@@ -60,7 +60,7 @@
     },
 
     loadAwards: function loadAwards(callback) {
-        get('profile/api/loadawards/' + "4938f26b-4ed0-4a40-9c5e-d5934ff8c819", callback);
+        get('profile/api/loadawards/' + sessionStorage["token"], callback);
     },
 
     updateCertification: function createCertification(data, callback) {
@@ -68,7 +68,7 @@
     },
 
     loadCertifications: function loadCertifications(callback) {
-        get('profile/api/loadcertifications/' + "4938f26b-4ed0-4a40-9c5e-d5934ff8c819", callback);
+        get('profile/api/loadcertifications/' + sessionStorage["token"], callback);
     },
 
     updateCopyRight: function createCopyRight(data, callback) {
@@ -76,14 +76,14 @@
     },
 
     loadCopyRights: function loadCopyRights(callback) {
-        get('profile/api/loadcopyrights/' + "4938f26b-4ed0-4a40-9c5e-d5934ff8c819", callback);
+        get('profile/api/loadcopyrights/' + sessionStorage["token"], callback);
     },
     updatePatent: function createPatent(data, callback) {
         post('profile/api/createpatent', data, callback);
     },
 
     loadPatents: function loadPatents(callback) {
-        get('profile/api/loadpatents/' + "4938f26b-4ed0-4a40-9c5e-d5934ff8c819", callback);
+        get('profile/api/loadpatents/' + sessionStorage["token"], callback);
     },
 
     updateHobbies: function createHobbies(data, callback) {
@@ -91,7 +91,7 @@
     },
 
     loadHobbies: function loadHobbies(callback) {
-        get('profile/api/loadhobbies/' + "4938f26b-4ed0-4a40-9c5e-d5934ff8c819", callback);
+        get('profile/api/loadhobbies/' + sessionStorage["token"], callback);
     },
 
     updatePublicProfile: function createPublicProfile(data, callback) {   
@@ -99,11 +99,15 @@
     },
 
     loadPublicProfile: function loadPublicProfile(callback) {
-        get('profile/api/loadpublicprofile/' + "4938f26b-4ed0-4a40-9c5e-d5934ff8c819", callback);
+        get('profile/api/loadpublicprofile/' + sessionStorage["token"], callback);
     },
 
     checkUniqueUrl: function checkUniqueUrl(url, callback) {
         get('profile/api/checkUniqueUrl/' + url, callback);
+    },
+
+    getUserId(providerkey, callback) {
+        get('profile/api/fetchuserbykey/' + providerkey, callback);
     },
 
     getProficiency: function (proficiency) {

@@ -10,6 +10,7 @@
 </style>
 @section scripts {
     <script src="~/ClientSideLogic/resumetemplate.js"></script>
+    <script src="~/ClientSideLogic/Validation.js"></script>
     <script>
         function changeIcon(obj) {
             $(obj).addClass('fa-check').removeClass('fa-times');
@@ -49,26 +50,54 @@
             }
         }
 
+        function validateFinalBuild() {
+            debugger;
+            var bool = true;
+            var titleValidation = new ValidateText($("#title"), "Title").Required().MinLength(3);
+            var publicUrlValidation = new ValidateText($("#publicurl"), "Public Url").Required().MinLength(5);//.ServiceValidate('uniquepublickey');
+            var passcodeValidation = new ValidateText($("#passcode"), "Passcode").Required().FixedLength(6);
+            var errors = [];
+            $.merge(errors, titleValidation.error)
+            $.merge(errors, publicUrlValidation.error)
+            $.merge(errors, passcodeValidation.error)
+            $('.errorMessageBox').html(errors.join('<br/>'));
+            return errors.length == 0;
+        }
+
         function generateResume() {
+            debugger;
+            if (validateFinalBuild()) {
+                var sections = []
+                $('input[type="checkbox"]:checked').each(function (i, item) {
+                    sections.push($(item).attr('sec'))
+                });
+                var data = {
+                    title: $('#title').val(),
+                    publicurl: $('#publicurl').val(),
+                    securitycode: $('#passcode').val(),
+                    template: '@ViewBag.Template',
+                    sections: sections
+                };
 
-            var sections = []
-            $('input[type="checkbox"]:checked').each(function (i, item) {
-                sections.push($(item).attr('sec'))
-            });
-            var data = {
-                title: $('#title').val(),
-                publicurl: $('#publicurl').val(),
-                securitycode: $('#passcode').val(),
-                template: '@ViewBag.Template',
-                sections: sections
+                cvtemplate.submitNewResume(data, submitcallback);
             };
-
-            cvtemplate.submitNewResume(data, submitcallback);
-
         }
 
         function submitcallback(result) {
             console.log(result);
+        }
+
+        function showPasscode(obj) {
+            debugger;
+            if ($(obj).attr('enablePassword') == 'false') {
+                $(obj).attr('enablePassword', 'true');
+                $('#passcodeField').hide();
+            }
+            else {
+                $(obj).attr('enablePassword', 'false');
+                $('#passcodeField').show();
+            }
+
         }
 
     </script>
@@ -77,6 +106,7 @@
     <div class="row">
         <div class="col-md-12 col-lg-6" style="background-color:whitesmoke">
             <form id="myForm" action="submit.php" method="POST">
+                <div class="errorMessageBox"></div>
                 <div class="row g-3" style="margin-left:5px">
                     <div class="col-lg-12 wow fadeIn" data-wow-delay="0.5s">
                         @*<a class="btn btn-primary py-3 px-5 mt-3" href="">Next</a>*@
@@ -97,6 +127,12 @@
                         </div>
                     </div>
                     <div class="col-lg-12 wow fadeIn" data-wow-delay="0.5s">
+                        <div class="form-check form-switch">
+                            <input class="form-check-input" enablePassword="false" onChange="showPasscode(this)" type="checkbox" id="flexSwitchCheckChecked" checked />
+                            <label class="form-check-label" for="flexSwitchCheckChecked">Enable Password Protection</label>
+                        </div>
+                    </div>
+                    <div class="col-lg-12 wow fadeIn" id="passcodeField" data-wow-delay="0.5s">
                         <div class="form-floating">
                             <input type="text" class="form-control" id="passcode" placeholder="Pass Code">
                             <label for="passcode">Pass Code</label>

@@ -51,6 +51,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Database\AspNetUserLogin.cs">
+      <DependentUpon>DBModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="DBPersonalInformation.cs" />
     <Compile Include="Database\AspNetUser.cs">
       <DependentUpon>DBModel.tt</DependentUpon>

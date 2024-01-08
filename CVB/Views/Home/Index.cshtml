@@ -1,9 +1,92 @@
 ﻿@{
-    ViewBag.Title = "Home Page";
+    ViewBag.Title = "Resume Vault";
     Layout = "~/Views/Shared/_LayoutCopy.cshtml";
 }
 
+@section scripts
+{
+    <script src="~/ClientSideLogic/profile.js"></script>
+    <script>
+
+        $(document).ready(function () {
+            console.log(sessionStorage["token"]);
+            userprofile.loadAwards(callback);
+            userprofile.getUserId('@ViewBag.Token', callback)
+        });
+
+        function callback(result) {
+            debugger;
+            sessionStorage["token"] = JSON.parse(JSON.parse(result.data)).UserId;
+        }
+
+    </script>
+}
+
 <!-- Contact Start -->
+<div class="container-xxl py-5">
+    <div class="container">
+        <h1 class="text-center mb-5 wow fadeInUp" data-wow-delay="0.1s">Explore By Category</h1>
+        <div class="row g-4">
+            <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.1s">
+                <a class="cat-item rounded p-4" href="">
+                    <i class="fa fa-3x fa-mail-bulk text-primary mb-4"></i>
+                    <h6 class="mb-3">Concept</h6>
+                    <p class="mb-0">TODO</p>
+                </a>
+            </div>
+            <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.3s">
+                <a class="cat-item rounded p-4" href="">
+                    <i class="fa fa-3x fa-headset text-primary mb-4"></i>
+                    <h6 class="mb-3">Frequently Asked Questions</h6>
+                    <p class="mb-0">TODO</p>
+                </a>
+            </div>
+            <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.5s">
+                <a class="cat-item rounded p-4" href="">
+                    <i class="fa fa-3x fa-user-tie text-primary mb-4"></i>
+                    <h6 class="mb-3">Milestones</h6>
+                    <p class="mb-0">TODO</p>
+                </a>
+            </div>
+            <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.7s">
+                <a class="cat-item rounded p-4" href="">
+                    <i class="fa fa-3x fa-tasks text-primary mb-4"></i>
+                    <h6 class="mb-3">Suggestions & Feedback</h6>
+                    <p class="mb-0">TODO</p>
+                </a>
+            </div>
+            <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.2s">
+                <a class="cat-item rounded p-4" href="">
+                    <i class="fa fa-3x fa-hands-helping text-primary mb-4"></i>
+                    <h6 class="mb-3">Statistics</h6>
+                    <p class="mb-0">TODO</p>
+                </a>
+            </div>
+            <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.4s">
+                <a class="cat-item rounded p-4" href="">
+                    <i class="fa fa-3x fa-book-reader text-primary mb-4"></i>
+                    <h6 class="mb-3">Testimonials</h6>
+                    <p class="mb-0">TODO</p>
+                </a>
+            </div>
+            <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.6s">
+                <a class="cat-item rounded p-4" href="">
+                    <i class="fa fa-3x fa-drafting-compass text-primary mb-4"></i>
+                    <h6 class="mb-3">Pricing</h6>
+                    <p class="mb-0">TODO</p>
+                </a>
+            </div>
+            <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.8s">
+                <a class="cat-item rounded p-4" href="">
+                    <i class="fa fa-3x fa-chart-line text-primary mb-4"></i>
+                    <h6 class="mb-3">Referral</h6>
+                    <p class="mb-0">TODO</p>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Category End -->
 <div class="container-xxl py-5">
     <div class="container">
         <h1 class="text-center mb-5 wow fadeInUp" data-wow-delay="0.1s">Contact For Any Query</h1>
@@ -84,7 +167,7 @@
 <!-- Contact End -->
 
 
-<div>
+@*<div>
     <section class="mb-2">
         <div class="row d-flex justify-content-center">
             <div class="col-md-12">
@@ -138,4 +221,4 @@
             </div>
         </div>
     </section>
-</div>
+</div>*@

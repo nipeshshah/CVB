@@ -51,7 +51,7 @@ namespace DBHandler
             }
 
             entities.SaveChanges();
-            return resume;
+            return resume.ResumeId;
         }
 
         public object GetPublicResumes(int templateId, string userId)
@@ -81,7 +81,7 @@ namespace DBHandler
 
         public List<Template> GetActiveTemplates()
         {
-            List<Template> pi = entities.Templates.ToList();
+            List<Template> pi = entities.Templates.Select(t => new TemplateDTO{ t. }).ToList();
             return pi;
         }
     }
@@ -155,10 +155,20 @@ namespace DBHandler
             return pi;
         }
 
+        public object GetUserIdFromKey(string providerkey)
+        {
+            AspNetUserLogin userLogin = entities.AspNetUserLogins.Where(t => t.ProviderKey == providerkey).FirstOrDefault();
+            if(userLogin != null)
+            {
+                return "{ \"UserId\":\"" + userLogin.UserId + "\" }";
+            }
+            return "";
+        }
+
         public object CreateOrUpdateSkills(string userId, object data)
         {
             JObject pairs = JObject.Parse(data.ToString());
-            Skill pi = new Skill(); // entities.Courses.Where(t => t.UserId == "4938f26b-4ed0-4a40-9c5e-d5934ff8c819").FirstOrDefault();
+            Skill pi = new Skill();
             pi.MemberId = userId;
             entities.Skills.Add(pi);
 
@@ -174,7 +184,7 @@ namespace DBHandler
         public object CreateOrUpdateProjects(string userId, object data)
         {
             JObject pairs = JObject.Parse(data.ToString());
-            Project pi = new Project(); // entities.Courses.Where(t => t.UserId == "4938f26b-4ed0-4a40-9c5e-d5934ff8c819").FirstOrDefault();
+            Project pi = new Project();
             pi.MemberId = userId;
             entities.Projects.Add(pi);
 
@@ -214,7 +224,7 @@ namespace DBHandler
             Helper fw = new Helper();
             JObject pairs = JObject.Parse(data.ToString());
 
-            Cours pi = new Cours(); // entities.Courses.Where(t => t.UserId == "4938f26b-4ed0-4a40-9c5e-d5934ff8c819").FirstOrDefault();
+            Cours pi = new Cours();
             //if (pi == null)
             //{
             //pi = new Cours();

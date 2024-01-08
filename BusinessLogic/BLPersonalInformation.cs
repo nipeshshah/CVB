@@ -142,5 +142,10 @@ namespace BusinessLogic
         {
             return Serialize(personalInformation.CreateOrUpdatePublicProfileDetails(userId, data));
         }
+
+        public object GetUserIdFromKey(string providerkey)
+        {
+            return Serialize(personalInformation.GetUserIdFromKey(providerkey));
+        }
     }
 }

@@ -5,11 +5,10 @@
 }
 @section scripts {
     <script src="~/ClientSideLogic/profile.js"></script>
+    <script src="~/ClientSideLogic/Validation.js"></script>
     <script>
 
         $(document).ready(function () {
-            console.log('First Call:');
-
             userprofile.loadAwards(callback);
 
         });
@@ -30,7 +29,15 @@
             $('#awardsRow').html(html + "</tr>");
         }
 
+        function ValidateAward() {
+            ValidateText($("#award-title").val(), "Award Title").Required();
+            ValidateText($("#awarded-by").val(), "Award By").Required();
+            ValidateDate($("#received-on").val(), "Received On").ValidDate().PastDate();
+
+        }
+
         function createAward() {
+            ValidateAward();
             var formData = {
                 title: $("#award-title").val(),
                 awardedBy: $("#awarded-by").val(),

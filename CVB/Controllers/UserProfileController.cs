@@ -24,24 +24,24 @@ namespace CVB.Controllers
         }
 
         [HttpPost]
-        [Route("api/personaldetails")]
-        public IHttpActionResult UpdatePersonalDetails(object data)
+        [Route("api/personaldetails/{UserId}")]
+        public IHttpActionResult UpdatePersonalDetails(string UserId, object data)
         {
-            return Ok(blhandler.blPersonalInformation.UpdatePersonalDetails("4938f26b-4ed0-4a40-9c5e-d5934ff8c819", data));
+            return Ok(blhandler.blPersonalInformation.UpdatePersonalDetails(UserId, data));
         }
     
         [HttpGet]
         [Route("api/loadLanguages/{UserId}")]
         public IHttpActionResult LoadLanguages(string UserId)
         {
-            return Ok(blhandler.blPersonalInformation.GetLanguages("4938f26b-4ed0-4a40-9c5e-d5934ff8c819"));
+            return Ok(blhandler.blPersonalInformation.GetLanguages(UserId));
         }
 
         [HttpPost]
-        [Route("api/createlanguage")]
-        public IHttpActionResult CreateLanguage(object data)
+        [Route("api/createlanguage/{UserId}")]
+        public IHttpActionResult CreateLanguage(string UserId, object data)
         {
-            return Ok(blhandler.blPersonalInformation.CreateOrUpdateLanguage("4938f26b-4ed0-4a40-9c5e-d5934ff8c819", data));
+            return Ok(blhandler.blPersonalInformation.CreateOrUpdateLanguage(UserId, data));
         }
 
 
@@ -49,28 +49,28 @@ namespace CVB.Controllers
         [Route("api/loadexperience/{UserId}")]
         public IHttpActionResult LoadExperience(string UserId)
         {
-            return Ok(blhandler.blPersonalInformation.GetExperiences("4938f26b-4ed0-4a40-9c5e-d5934ff8c819"));
+            return Ok(blhandler.blPersonalInformation.GetExperiences(UserId));
         }
 
         [HttpPost]
-        [Route("api/createexperience")]
-        public IHttpActionResult CreateExperience(object data)
+        [Route("api/createexperience/{UserId}")]
+        public IHttpActionResult CreateExperience(string UserId, object data)
         {
-            return Ok(blhandler.blPersonalInformation.CreateOrUpdateExperience("4938f26b-4ed0-4a40-9c5e-d5934ff8c819", data));
+            return Ok(blhandler.blPersonalInformation.CreateOrUpdateExperience(UserId, data));
         }
 
         [HttpGet]
         [Route("api/loadqualification/{UserId}")]
         public IHttpActionResult LoadQualification(string UserId)
         {
-            return Ok(blhandler.blPersonalInformation.GetQualification("4938f26b-4ed0-4a40-9c5e-d5934ff8c819"));
+            return Ok(blhandler.blPersonalInformation.GetQualification(UserId));
         }
 
         [HttpPost]
-        [Route("api/createqualification")]
-        public IHttpActionResult CreateQualification(object data)
+        [Route("api/createqualification/{UserId}")]
+        public IHttpActionResult CreateQualification(string UserId, object data)
         {
-            return Ok(blhandler.blPersonalInformation.CreateOrUpdateQualification("4938f26b-4ed0-4a40-9c5e-d5934ff8c819", data));
+            return Ok(blhandler.blPersonalInformation.CreateOrUpdateQualification(UserId, data));
         }
 
         [HttpGet]
@@ -81,10 +81,10 @@ namespace CVB.Controllers
         }
 
         [HttpPost]
-        [Route("api/createcourse")]
-        public IHttpActionResult CreateCourse(object data)
+        [Route("api/createcourse/{UserId}")]
+        public IHttpActionResult CreateCourse(string UserId, object data)
         {
-            return Ok(blhandler.blPersonalInformation.CreateOrUpdateCourse("4938f26b-4ed0-4a40-9c5e-d5934ff8c819", data));
+            return Ok(blhandler.blPersonalInformation.CreateOrUpdateCourse(UserId, data));
 
         }
 
@@ -96,10 +96,10 @@ namespace CVB.Controllers
         }
 
         [HttpPost]
-        [Route("api/createskills")]
-        public IHttpActionResult CreateSkill(object data)
+        [Route("api/createskills/{UserId}")]
+        public IHttpActionResult CreateSkill(string UserId, object data)
         {
-            return Ok(blhandler.blPersonalInformation.CreateOrUpdateSkill("4938f26b-4ed0-4a40-9c5e-d5934ff8c819", data));
+            return Ok(blhandler.blPersonalInformation.CreateOrUpdateSkill(UserId, data));
         }
 
         [HttpGet]
@@ -110,10 +110,10 @@ namespace CVB.Controllers
         }
 
         [HttpPost]
-        [Route("api/createprojects")]
-        public IHttpActionResult CreateProjects(object data)
+        [Route("api/createprojects/{UserId}")]
+        public IHttpActionResult CreateProjects(string UserId, object data)
         {
-            return Ok(blhandler.blPersonalInformation.CreateOrUpdateProjects("4938f26b-4ed0-4a40-9c5e-d5934ff8c819", data));
+            return Ok(blhandler.blPersonalInformation.CreateOrUpdateProjects(UserId, data));
         }
 
         [HttpGet]
@@ -124,10 +124,10 @@ namespace CVB.Controllers
         }
 
         [HttpPost]
-        [Route("api/createprojects")]
-        public IHttpActionResult CreatePublicProfile(object data)
+        [Route("api/createprojects/{UserId}")]
+        public IHttpActionResult CreatePublicProfile(string UserId, object data)
         {
-            return Ok(blhandler.blPersonalInformation.CreateOrUpdateProjects("4938f26b-4ed0-4a40-9c5e-d5934ff8c819", data));
+            return Ok(blhandler.blPersonalInformation.CreateOrUpdateProjects(UserId, data));
         }
 
         [HttpGet]
@@ -138,10 +138,10 @@ namespace CVB.Controllers
         }
 
         [HttpPost]
-        [Route("api/createaward")]
-        public IHttpActionResult CreateAward(object data)
+        [Route("api/createaward/{UserId}")]
+        public IHttpActionResult CreateAward(string UserId, object data)
         {
-            return Ok(blhandler.blPersonalInformation.CreateOrUpdateAwards("4938f26b-4ed0-4a40-9c5e-d5934ff8c819", data));
+            return Ok(blhandler.blPersonalInformation.CreateOrUpdateAwards(UserId, data));
         }
 
         [HttpGet]
@@ -152,10 +152,10 @@ namespace CVB.Controllers
         }
 
         [HttpPost]
-        [Route("api/createcertification")]
-        public IHttpActionResult CreateCertification(object data)
+        [Route("api/createcertification/{UserId}")]
+        public IHttpActionResult CreateCertification(string UserId, object data)
         {
-            return Ok(blhandler.blPersonalInformation.CreateOrUpdateCertifications("4938f26b-4ed0-4a40-9c5e-d5934ff8c819", data));
+            return Ok(blhandler.blPersonalInformation.CreateOrUpdateCertifications(UserId, data));
         }
 
         [HttpGet]
@@ -166,10 +166,10 @@ namespace CVB.Controllers
         }
 
         [HttpPost]
-        [Route("api/createcopyRight")]
-        public IHttpActionResult CreateCopyRight(object data)
+        [Route("api/createcopyRight/{UserId}")]
+        public IHttpActionResult CreateCopyRight(string UserId, object data)
         {
-            return Ok(blhandler.blPersonalInformation.CreateOrUpdateCopyRights("4938f26b-4ed0-4a40-9c5e-d5934ff8c819", data));
+            return Ok(blhandler.blPersonalInformation.CreateOrUpdateCopyRights(UserId, data));
         }
 
         [HttpGet]
@@ -180,10 +180,10 @@ namespace CVB.Controllers
         }
 
         [HttpPost]
-        [Route("api/createpatent")]
-        public IHttpActionResult CreatePatent(object data)
+        [Route("api/createpatent/{UserId}")]
+        public IHttpActionResult CreatePatent(string UserId, object data)
         {
-            return Ok(blhandler.blPersonalInformation.CreateOrUpdatePatents("4938f26b-4ed0-4a40-9c5e-d5934ff8c819", data));
+            return Ok(blhandler.blPersonalInformation.CreateOrUpdatePatents(UserId, data));
         }
 
         [HttpGet]
@@ -194,10 +194,10 @@ namespace CVB.Controllers
         }
 
         [HttpPost]
-        [Route("api/createhobby")]
-        public IHttpActionResult CreateHobby(object data)
+        [Route("api/createhobby/{UserId}")]
+        public IHttpActionResult CreateHobby(string UserId, object data)
         {
-            return Ok(blhandler.blPersonalInformation.CreateOrUpdateHobbies("4938f26b-4ed0-4a40-9c5e-d5934ff8c819", data));
+            return Ok(blhandler.blPersonalInformation.CreateOrUpdateHobbies(UserId, data));
         }
 
         [HttpGet]
@@ -208,10 +208,10 @@ namespace CVB.Controllers
         }
 
         [HttpPost]
-        [Route("api/createpublicprofile")]
-        public IHttpActionResult CreatePublicProfileDetails(object data)
+        [Route("api/createpublicprofile/{UserId}")]
+        public IHttpActionResult CreatePublicProfileDetails(string UserId, object data)
         {
-            return Ok(blhandler.blPersonalInformation.CreateOrUpdatePublicProfileDetails("4938f26b-4ed0-4a40-9c5e-d5934ff8c819", data));
+            return Ok(blhandler.blPersonalInformation.CreateOrUpdatePublicProfileDetails(UserId, data));
         }
 
         [HttpGet]
@@ -219,6 +219,13 @@ namespace CVB.Controllers
         public IHttpActionResult CheckUniqueUrl(string publicurl)
         {
             return Ok(blhandler.blPersonalInformation.CheckUniqueUrl(publicurl));
+        }
+
+        [HttpGet]
+        [Route("api/fetchuserbykey/{providerkey}")]
+        public IHttpActionResult GetUserIdFromKey(string providerkey)
+        {
+            return Ok(blhandler.blPersonalInformation.GetUserIdFromKey(providerkey));
         }
     }
 }

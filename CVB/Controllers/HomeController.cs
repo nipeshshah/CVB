@@ -11,7 +11,7 @@ namespace CVB.Controllers
         public ActionResult Index(string token)
         {
             //return View();
-            if (User.Identity.IsAuthenticated)
+            if (token != null && User.Identity.IsAuthenticated)
             {
                 ViewBag.Token = token;
                 return View();

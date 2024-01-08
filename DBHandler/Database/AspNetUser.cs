@@ -18,6 +18,7 @@ namespace DBHandler.Database
         public AspNetUser()
         {
             this.Members = new HashSet<Member>();
+            this.AspNetUserLogins = new HashSet<AspNetUserLogin>();
         }
     
         public string Id { get; set; }
@@ -35,5 +36,7 @@ namespace DBHandler.Database
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Member> Members { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<AspNetUserLogin> AspNetUserLogins { get; set; }
     }
 }

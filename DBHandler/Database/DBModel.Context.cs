@@ -53,5 +53,6 @@ namespace DBHandler.Database
         public virtual DbSet<Chat> Chats { get; set; }
         public virtual DbSet<Referral> Referrals { get; set; }
         public virtual DbSet<Sharing> Sharings { get; set; }
+        public virtual DbSet<AspNetUserLogin> AspNetUserLogins { get; set; }
     }
 }
